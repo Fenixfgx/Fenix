@@ -6,7 +6,7 @@ body {
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      
     }
 
     .container {
@@ -78,7 +78,7 @@ font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
     @media (max-width: 480px) {
       .container {
         max-width: 100%;
-        height: -webkit-fill-available;
+        
       }
     }
 
