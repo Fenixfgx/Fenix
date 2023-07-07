@@ -42,7 +42,7 @@ font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
     -webkit-appearance: none;
     tap-highlight-color: rgba(255,255,255,0);
     line-height: 1.2142em;
-    padding: 0.7em;
+    padding: 0.6em;
     font-size: 1em;
     background: #fff;
     border: 1px solid rgba(34,36,38,.15);
@@ -52,7 +52,7 @@ font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
     -webkit-transition: color .1s ease,border-color .1s ease;
     transition: color .1s ease,border-color .1s ease;
     width: 280px;
-    margin-bottom: 13px;
+    margin-bottom: 9px;
     }
 
     input[type="text"]:focus,
