@@ -51,15 +51,14 @@ body {
   background-color: var(--main-container-bg);
   box-shadow: var(--container-shadow);
   border-radius: 10px;
-  padding: 16px;
   transition: width 0.3s ease-in-out;
   position: relative;
-  width: 240px;
-  height: 100vh;
+  width: 200px;
+  height: 77vh;
   max-height: 600px;
 }
 .sidebar-container.shrink {
-  width: 92px;
+  width: 60px;
 }
 .sidebar-themeInput {
   opacity: 0;
