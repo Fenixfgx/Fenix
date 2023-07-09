@@ -54,7 +54,7 @@ body {
   transition: width 0.3s ease-in-out;
   position: relative;
   width: 200px;
-  height: 77vh;
+  height: 500px;
   max-height: 600px;
 }
 .sidebar-container.shrink {
