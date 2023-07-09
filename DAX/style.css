@@ -144,12 +144,12 @@ body {
 }
 .sidebar-viewButton {
   position: absolute;
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   border: none;
   right: -10px;
-  top: 32px;
+  top: -20px;
   display: flex;
   align-items: center;
   padding: 0;
