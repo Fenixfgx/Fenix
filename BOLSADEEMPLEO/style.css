@@ -89,6 +89,7 @@ font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
       border-radius: 4px;
       color: #fff;
       font-weight: bold;
+      max-width: 280px;
     }
 
     #errorContainer {
