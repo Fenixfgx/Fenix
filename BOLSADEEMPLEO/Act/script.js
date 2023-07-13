@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function() {
   
   // Rellenar el campo de correo en el formulario si se proporcionó un correo electrónico
   if (email) {
-    document.getElementById('email').value = email;
+    document.getElementById('email').value = decodeURIComponent(email);
   }
   
   // Escuchar el evento submit del formulario
