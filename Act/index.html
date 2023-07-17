@@ -8,44 +8,58 @@
 </head>
 <body>
 <!-- partial:index.partial.html -->
-<iframe id="Example2"
-    title="iframe Example 2"
-    width="400" height="300"
-    style="border:none" src="https://script.google.com/macros/s/AKfycbwX50UGmagQ8hckcgzwm3zmm8_bJztzJ_mcl8jJbpLuJf-4j-HbxGVz7v-CvbW2j5uB/exec">
-</iframe>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Formulario de ejemplo</title>
+</head>
+<body>
+    <h2>Formulario de ejemplo</h2>
+    <form action="https://script.google.com/macros/s/AKfycbzC_Qpc3S-uQrY7nBrjQzgZUuHEmVVUt-MNxI88nJpv7LN5TO9UjoDNVhCJ3xQR0u7g/exec" method="post">
+        <label for="ID">ID:</label>
+        <input type="text" id="ID" name="ID" required><br><br>
 
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-  // Obtener el valor del parámetro 'email' de la URL
-  const urlParams = new URLSearchParams(window.location.search);
-  const id = urlParams.get('id');
-  const registro = urlParams.get('registro');
+        <label for="mensaje">Mensaje:</label>
+        <input type="text" id="DAX" name="DAX" required><br><br>
 
-  // Rellenar el campo de correo en el formulario si se proporcionó un correo electrónico
-  if (id) {
-    document.getElementById('id').value = decodeURIComponent(id);
-  }
-
-  // Rellenar el campo con la palabra preestablecida si se proporcionó
-  if (registro) {
-    document.getElementById('registro').value = decodeURIComponent(registro);
-  }
-
-  // Escuchar el evento submit del formulario
-  document.getElementById('registrationForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Evitar el envío del formulario
-
-    // Obtener el valor del campo de correo electrónico
-    const email = document.getElementById('email').value;
-
-    // Realizar las acciones necesarias con el correo electrónico, por ejemplo, enviarlo a un servidor, almacenarlo en una base de datos, etc.
-    console.log('Correo electrónico registrado:', email);
-
-    // Redirigir al usuario a otra página después de registrar el correo electrónico
-    window.location.href = 'gracias.html';
-  });
-});
-</script>
+        <input type="submit" value="Enviar">
+    </form>
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // Obtener el valor del parámetro 'email' de la URL
+      const urlParams = new URLSearchParams(window.location.search);
+      const ID = urlParams.get('ID');
+      const DAX = urlParams.get('DAX');
+  
+      // Rellenar el campo de correo en el formulario si se proporcionó un correo electrónico
+      if (ID) {
+        document.getElementById('ID').value = decodeURIComponent(ID);
+      }
+  
+      // Rellenar el campo con la palabra preestablecida si se proporcionó
+      if (DAX) {
+        document.getElementById('DAX').value = decodeURIComponent(DAX);
+      }
+  
+      // Escuchar el evento submit del formulario
+      document.getElementById('registrationForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Evitar el envío del formulario
+  
+        // Obtener el valor del campo de correo electrónico
+        const email = document.getElementById('email').value;
+  
+        // Realizar las acciones necesarias con el correo electrónico, por ejemplo, enviarlo a un servidor, almacenarlo en una base de datos, etc.
+        console.log('Correo electrónico registrado:', email);
+  
+        // Redirigir al usuario a otra página después de registrar el correo electrónico
+        window.location.href = 'gracias.html';
+      });
+    });
+  </script>
+  
+</body>
+</html>
 <!-- partial -->
   
 </body>
