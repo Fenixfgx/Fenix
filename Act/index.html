@@ -11,6 +11,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario de ejemplo</title>
   <style>
         body {
@@ -19,13 +20,61 @@
     </style>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.5/dist/sweetalert2.all.min.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    input[type="submit"] {
+      background-color: green;
+      border: none;
+      border-radius: 6px;
+      color: white;
+      padding: 13px;
+      font-size: 1em;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      animation: floatButton 9s ease infinite;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra debajo del botón */
+    }
+
+    /* Efecto brillante */
+    input[type="submit"]::after {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: rgba(255, 255, 255, 0.4);
+      transform: scale(0);
+      transition: transform 0.3s ease-out;
+    }
+
+    /* Animación cuando el cursor pasa por encima */
+    input[type="submit"]:hover::after {
+      transform: scale(1);
+    }
+
+    /* Animación cuando se hace clic */
+    input[type="submit"]:active::after {
+      transform: scale(0);
+    }
+
+    /* Animación de flotabilidad */
+    @keyframes floatButton {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+  </style>
 </head>
+  
 <body>
-    <h2>Formulario de ejemplo</h2>
+    <h2>Activación de Usuario</h2>
     <form id="miFormulario" action="https://script.google.com/macros/s/AKfycbx4yNf1aorF_EAmIGfJbg1lyUZmUOSgFNl_CphBcQVdbOb0dO7zH8YfcWwt_vPGEMpL/exec" method="post">
 <p>Hola estás a punto de Activar tu Usuario, para hacerlo solo tienes que hacer clic en el botón Activar Usuario</p>
-<input type="submit" value="Activar Usuario" style="background-color: green;border: none;border-radius: 6px;color: white;
-    padding: 13px; font-size: 1em;">
+<input type="submit" value="Activar Usuario">
         <input type="text" id="ID" style="display: none;" name="ID" required><br><br>
 
 
