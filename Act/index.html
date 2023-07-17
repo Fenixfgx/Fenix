@@ -12,18 +12,68 @@
 <html>
 <head>
     <title>Formulario de ejemplo</title>
+  <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.5/dist/sweetalert2.all.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <h2>Formulario de ejemplo</h2>
-    <form action="https://script.google.com/macros/s/AKfycbzC_Qpc3S-uQrY7nBrjQzgZUuHEmVVUt-MNxI88nJpv7LN5TO9UjoDNVhCJ3xQR0u7g/exec" method="post">
-        <label for="ID">ID:</label>
-        <input type="text" id="ID" name="ID" required><br><br>
+    <form id="miFormulario" action="https://script.google.com/macros/s/AKfycbx4yNf1aorF_EAmIGfJbg1lyUZmUOSgFNl_CphBcQVdbOb0dO7zH8YfcWwt_vPGEMpL/exec" method="post">
+<p>Hola estás a punto de Activar tu Usuario, para hacerlo solo tienes que hacer clic en el botón Activar Usuario</p>
+<input type="submit" value="Activar Usuario" style="background-color: green;border: none;border-radius: 6px;color: white;
+    padding: 13px; font-size: 1em;">
+        <input type="text" id="ID" style="display: none;" name="ID" required><br><br>
 
-        <label for="mensaje">Mensaje:</label>
-        <input type="text" id="DAX" name="DAX" required><br><br>
 
-        <input type="submit" value="Enviar">
+        <input type="text" id="DAX"  name="DAX" style="display: none;" required ><br><br>
+
+        
     </form>
+
+    <script>
+    // Agregar el evento submit al formulario
+    document.getElementById("miFormulario").addEventListener("submit", function(event) {
+        // Evitar la redirección predeterminada del formulario
+        event.preventDefault();
+
+        // Obtener los datos del formulario
+        var formData = new FormData(document.getElementById("miFormulario"));
+
+        // Enviar el formulario al script de Google Apps Script usando Ajax
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "https://script.google.com/macros/s/AKfycbx4yNf1aorF_EAmIGfJbg1lyUZmUOSgFNl_CphBcQVdbOb0dO7zH8YfcWwt_vPGEMpL/exec");
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    // Mostrar la notificación personalizada de éxito con SweetAlert
+                    Swal.fire({
+                        icon: 'success',
+                        title: '¡Usuario Activado con Éxito!',
+                        showConfirmButton: false,
+                        timer: 1500 // Ocultar automáticamente la notificación después de 1.5 segundos
+                    });
+
+                    // Restablecer el formulario después del envío si lo deseas
+                    // document.getElementById("miFormulario").reset();
+                } else {
+                    // Mostrar la notificación personalizada de error con SweetAlert
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Usuario Activado',
+                        text: 'Ya puedes cerrar esta Pestaña e Iniciar Sesión en la APP',
+                        confirmButtonText: 'Cerrar'
+                    });
+                }
+            }
+        };
+        xhr.send(formData);
+    });
+</script>
+
   
   <script>
     document.addEventListener("DOMContentLoaded", function() {
