@@ -677,7 +677,7 @@ bodyx {
 }
 
 .card[data-state="#about"] {
-  height: 550px;
+  height: 470px;
   width: 98%;
   .card-main {
     padding-top: 0;
@@ -685,12 +685,12 @@ bodyx {
 }
 
 .card[data-state="#contact"] {
-  height: 550px;
+  height: 470px;
   width: 98%;
 }
 
 .card[data-state="#experience"] {
-  height: 550px;
+  height: 470px;
   width: 98%;
 }
 
@@ -885,20 +885,22 @@ bodyx {
 @-webkit-keyframes fadeIn {
   0% {
     opacity: 0;
-    transform: translatey(40px);
+    transform: translateY(40px);
   }
   100% {
     opacity: 1;
+    transform: translateY(0);
   }
 }
 
 @keyframes fadeIn {
   0% {
     opacity: 0;
-    transform: translatey(40px);
+    transform: translateY(40px);
   }
   100% {
     opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -908,11 +910,7 @@ bodyx {
 }
 
 .card-timeline:after {
-  background: linear-gradient(
-    to top,
-    rgba(134, 214, 243, 0) 0%,
-    rgba(81, 106, 204, 1) 100%
-  );
+  background: linear-gradient(to top, rgba(134, 214, 243, 0) 0%, rgba(81, 106, 204, 1) 100%);
   content: "";
   left: 42px;
   width: 2px;

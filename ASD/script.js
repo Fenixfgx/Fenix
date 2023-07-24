@@ -319,12 +319,13 @@ const buttons = document.querySelectorAll(".card-buttons button");
 const sections = document.querySelectorAll(".card-section");
 const card = document.querySelector(".card");
 
+const isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
 const handleButtonClick = (e) => {
   const targetSection = e.target.getAttribute("data-section");
   const section = document.querySelector(targetSection);
   card.setAttribute("data-state", targetSection);
 
-  // Si el targetSection no es "#about", agregamos la clase "is-active" al contenedor de la tarjeta, de lo contrario, la eliminamos.
   if (targetSection !== "#about") {
     card.classList.add("is-active");
   } else {
@@ -337,6 +338,13 @@ const handleButtonClick = (e) => {
   section.classList.add("is-active");
 };
 
-buttons.forEach((btn) => {
-  btn.addEventListener("click", handleButtonClick);
-});
+// Utilizamos eventos táctiles para dispositivos móviles
+if (isMobileDevice) {
+  buttons.forEach((btn) => {
+    btn.addEventListener("touchstart", handleButtonClick);
+  });
+} else {
+  buttons.forEach((btn) => {
+    btn.addEventListener("click", handleButtonClick);
+  });
+}
