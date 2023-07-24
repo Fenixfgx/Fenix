@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Tabbed Log In &amp; Register Panel REadvance</title>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/semantic.min.css'><link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<script src="https://apis.google.com/js/api.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.5/dist/sweetalert2.all.min.js"></script>
+<div id="section-index" class="flexin">
+
+  <div class="tabs tabs-style-flip">
+    <nav>
+      <ul>
+        <li><a href="#section-flip-1"><span><i class="fa fa-lock"></i> Acceso</span></a></li>
+        <li><a href="#section-flip-2"><span><i class="fa fa-user-plus"></i> Registro</span></a></li>
+      </ul>
+    </nav>
+    <div class="content-wrap">
+      <section id="section-flip-1">
+
+       <form id="login-form" class="ui large form">
+  <div class="ui segment">
+    <h2 class="ui header">Iniciar Sesión</h2>
+    <div class="field">
+      <div class="ui left icon input">
+        <i class="user icon"></i>
+<input type="text" name="username" id="username-input" placeholder="Correo Electrónico" onkeyup="toLowerCase(this)" style="
+    margin-top: -8px;
+    margin-bottom: -7px;
+">
+      </div>
+    </div>
+    <div class="field">
+      <div class="ui left icon input">
+        <i class="lock icon"></i>
+        <input type="password" name="password" placeholder="Contraseña">
+      </div>
+    </div>
+
+    <!-- Agregar el checkbox para "Recordarme" -->
+    <div class="field">
+      <div class="ui checkbox">
+        <input type="checkbox" name="rememberMe" id="remember-me">
+        <label for="remember-me" style="top: -11px;">Recordarme</label>
+      </div>
+    </div>
+<button id="acceder-button" class="ui fluid large orange submit button" type="submit" style="
+    margin-top: -18px;
+">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      Acceder
+    </button>
+    <br>
+    <a href="#section-3" style="margin-top: -9px; font-size: 14px; display: block;">¿Olvidaste la Contraseña?</a>
+  </div>
+  <div class="ui error message"></div>
+</form>
+<!-- Asegúrate de que jQuery esté cargado antes de este script -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+  // Función que se ejecuta al cargar la página
+  $(document).ready(function() {
+    // Intentar obtener las credenciales almacenadas en localStorage
+    var storedUsername = localStorage.getItem("username");
+    var storedPassword = localStorage.getItem("password");
+
+    if (storedUsername && storedPassword) {
+      // Si se encontraron credenciales almacenadas, completar los campos
+      $("#username-input").val(storedUsername);
+      $("#password-input").val(storedPassword);
+      $("#remember-me").prop("checked", true); // Marcar el checkbox
+    }
+
+    // Función que se ejecuta cuando se envía el formulario
+    $("#login-form").submit(function(event) {
+      event.preventDefault(); // Evitar el envío por defecto del formulario
+
+      // Obtener los valores ingresados en los campos
+      var username = $("#username-input").val();
+      var password = $("#password-input").val();
+      var rememberMe = $("#remember-me").is(":checked");
+
+      if (rememberMe) {
+        // Si el checkbox está marcado, almacenar las credenciales en localStorage
+        localStorage.setItem("username", username);
+        localStorage.setItem("password", password);
+      } else {
+        // Si el checkbox no está marcado, eliminar las credenciales de localStorage
+        localStorage.removeItem("username");
+        localStorage.removeItem("password");
+      }
+    });
+  });
+</script>
+
+<script>
+  function toLowerCase(element) {
+    element.value = element.value.toLowerCase();
+  }
+</script>
+
+
+        <div class="ui message">
+          No tienes Usuario? <a href="#section-flip-2">Regístrate</a>
+        </div>
+      </section>
+      
+
+      <section id="section-flip-2">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<h2 class="ui header" style="
+    margin-bottom: 0px;
+    margin-top: 0px;
+    padding-top: 11px;
+    padding-bottom: 4px;
+    background-color: white;
+">Registrar Usuario</h2>
+<iframe id="Registro" title="Registro" width="100%" style="height: 55vh;border:none" src="https://script.google.com/macros/s/AKfycbxODTxEYMfom1f2yrdbG2fMXQO-iSih_LgtRhqbL5vGZJRi-x0JduvIUxey3xTPOHGH/exec">
+</iframe>
+        <div class="ui message">
+          Ya tienes Usuario? <a href="#section-flip-1">Inicia Sesión</a>
+        </div>
+      </section>
+    
+      <section id="section-3">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<iframe  title="RP" width="100%" style="height: 55vh;border:none" src="https://script.google.com/macros/s/AKfycbwc8QOm_DInsbcQ47J5utpKXM9KT_xuzkBH-M61Is0qbzNqYZyNYDEa7Bl0_xFXLEI/exec">
+</iframe>
+        <div class="ui message">
+          Recordaste tu Contraseña? - <a href="#section-flip-1">Inicia Sesión</a>
+        </div>
+      </section>
+      
+    </div>
+    <!-- /content -->
+  </div>
+  <!-- /tabs -->
+</div>
+
+
+ <!-- APP -->
+<section id="hidden-section" style="display: none; width: 100%;">
+  
+  
+
+<section id="Dashboard">
+  <h1>HELLO WORLD</h1>
+  <p>ID: <span id="user-id"></span></p>
+</section>
+
+<section id="Inbox" style="display: none;">
+  <h1>Hola Mundo</h1>
+  <p>Correo Electrónico: <span id="user-email"></span></p>
+</section>
+
+<section id="HV" style="display: none; width: 100%;" class="HV">
+  <bodyx><div class="card" data-state="#about">
+  <div class="card-header">
+    <div class="card-cover" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_qbjkfrRbVFYTVyD3aN4Pddz_iMUXW0DnD4Q40eMv&s')"></div>
+    <img class="card-avatar" id="foto" />
+    <h1 class="card-fullname" id="nombre"></h1>
+    <h2 class="card-jobtitle" id="profesion"></h2>
+  </div>
+  <div class="card-main">
+    <div class="card-section is-active" id="about">
+      <div class="card-content">
+        <div class="card-subtitle">ACERCA DE</div>
+        <p class="card-desc" id="acerca">
+        </p>
+<div style="margin-top: 12px;">
+       <p class="card-desc" >Edad: <span id="edad"></span> Años.</p>
+</div>
+      </div>
+
+    </div>
+    <div class="card-section" id="experience">
+      <div class="card-content">
+        <div class="card-subtitle">EXPERIENCIA LABORAL</div>
+        <div class="card-timeline">
+          <div class="card-item" >
+            <div class="card-item-title" id="exp"></div>
+          </div>
+          <div class="card-item" style="display:none" >
+            
+          </div>
+          <div class="card-item" style="display:none">
+            <div class="card-item-title"></div>
+            <div class="card-item-desc"></div>
+          </div>
+          <div class="card-item" style="display:none">
+            <div class="card-item-title"></div>
+            <div class="card-item-desc"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-section" id="contact">
+      <div class="card-content">
+        <div class="card-subtitle">CONTACTO</div>
+        <div class="card-contact-wrapper">
+          <div class="card-contact">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+              <circle cx="12" cy="10" r="3" />
+            </svg>
+           <p id="ubicacion">  </p>
+          </div>
+          <div class="card-contact">
+            <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" />
+            </svg><p id="tel">  </p>
+          </div>
+          <div class="card-contact">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+              <path d="M22 6l-10 7L2 6" />
+            </svg>
+            <p id="email">  </p>
+          </div>
+          </div>
+      </div>
+    </div>
+    <div class="card-buttons">
+      <button data-section="#about" class="is-active">ACERCA DE</button>
+      <button data-section="#experience">EXPERIENCIA</button>
+      <button data-section="#contact">CONTACTO</button>
+    </div>
+  </div>
+</div></bodyx>
+</section>
+
+<section id="Activity" style="display: none;">
+  <h1>Actividad</h1>
+</section>
+
+<section id="Settings" style="display: none;">
+  <h1>Configuración</h1>
+</section>
+
+<script>
+  function showDashboard() {
+    document.getElementById('Dashboard').style.display = 'block';
+    document.getElementById('Inbox').style.display = 'none';
+    document.getElementById('HV').style.display = 'none';
+    document.getElementById('Activity').style.display = 'none';
+    document.getElementById('Settings').style.display = 'none';
+  }
+
+  function showInbox() {
+    document.getElementById('Dashboard').style.display = 'none';
+    document.getElementById('Inbox').style.display = 'block';
+    document.getElementById('HV').style.display = 'none';
+    document.getElementById('Activity').style.display = 'none';
+    document.getElementById('Settings').style.display = 'none';
+  }
+
+  function showHV() {
+    document.getElementById('Dashboard').style.display = 'none';
+    document.getElementById('Inbox').style.display = 'none';
+    document.getElementById('HV').style.display = 'block';
+    document.getElementById('Activity').style.display = 'none';
+    document.getElementById('Settings').style.display = 'none';
+  }
+
+  function showActivity() {
+    document.getElementById('Dashboard').style.display = 'none';
+    document.getElementById('Inbox').style.display = 'none';
+    document.getElementById('HV').style.display = 'none';
+    document.getElementById('Activity').style.display = 'block';
+    document.getElementById('Settings').style.display = 'none';
+  }
+
+  function showSettings() {
+    document.getElementById('Dashboard').style.display = 'none';
+    document.getElementById('Inbox').style.display = 'none';
+    document.getElementById('HV').style.display = 'none';
+    document.getElementById('Activity').style.display = 'none';
+    document.getElementById('Settings').style.display = 'block';
+  }
+</script>
+  
+<html1 style="z-index: 1;
+    position: fixed;
+    top: 13%;">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sidebar</title>
+</head>
+<body>
+  <div class="sidebar-container shrink">
+    <div class="sidebar-profileSection">
+      <img id="user-photo" width="40" height="40">
+      <span id="user-name"></span>
+    </div>
+    <button class="sidebar-viewButton" type="button" aria-label="Expand Sidebar" title="Expand" onClick="handleSidebarView()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+        class="feather feather-chevron-left">
+        <polyline points="15 18 9 12 15 6"></polyline>
+      </svg>
+    </button>
+    <div class="sidebar-wrapper">
+      <div class="sidebar-themeContainer">
+        <label labelFor="theme-toggle" class="sidebar-themeLabel">
+          <input class="sidebar-themeInput" type="checkbox" id="theme-toggle" onChange="handleThemeChange()">
+          <div class="sidebar-themeType light">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="sidebar-listIcon">
+              <circle cx="12" cy="12" r="5"></circle>
+              <path
+                d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42">
+              </path>
+            </svg>
+            <span class="sidebar-themeInputText">Light</span>
+          </div>
+          <div class="sidebar-themeType dark">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="sidebar-listIcon">
+              <path
+                d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+            <span class="sidebar-themeInputText">Dark</span>
+          </div>
+        </label>
+      </div>
+      <ul class="sidebar-list">
+<li class="sidebar-listItem">
+  <a href="#" onclick="showDashboard()">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="sidebar-listIcon">
+      <rect x="3" y="3" rx="2" ry="2" class="sidebar-listIcon"></rect>
+      <path d="M3 9h18M9 21V9"></path>
+    </svg>
+    <span class="sidebar-listItemText">Dashboard</span>
+  </a>
+</li>
+<li class="sidebar-listItem">
+  <a href="#" onclick="showInbox()">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="sidebar-listIcon">
+      <polyline points="22 12 16 12 14 15 10 15 8 12 2 12"></polyline>
+      <path
+        d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z">
+      </path>
+    </svg>
+    <span class="sidebar-listItemText">Inbox</span>
+  </a>
+</li>
+<li class="sidebar-listItem">
+  <a href="#" onclick="showHV()">
+<svg fill="#4183c4" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve" stroke="#4183c4" stroke-width="15.872"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <g> <path d="M504.441,172.066l-36.506-36.506c-10.078-10.078-26.428-10.078-36.506,0L230.623,336.358 c-2.842,2.833-4.975,6.289-6.238,10.095l-18.253,54.758c-0.913,2.748-1.203,5.572-1.178,8.38h-25.515H51.202v25.6h135.091h44.109 v-0.154c2.807,0.026,5.632-0.256,8.38-1.178l54.758-18.253c3.806-1.271,7.262-3.405,10.095-6.238l200.798-200.798 C514.519,198.502,514.519,182.153,504.441,172.066z M230.623,409.378l18.253-54.758l36.506,36.506L230.623,409.378z M303.643,372.873l-36.514-36.514l182.554-182.545l36.506,36.506L303.643,372.873z"></path> </g> </g> <g> <g> <path d="M137.73,51.2c-42.351,0-76.8,34.449-76.8,76.8s34.449,76.8,76.8,76.8c42.351,0,76.8-34.449,76.8-76.8 S180.081,51.2,137.73,51.2z M137.73,179.2c-28.279,0-51.2-22.921-51.2-51.2s22.921-51.2,51.2-51.2c28.279,0,51.2,22.921,51.2,51.2 S166.009,179.2,137.73,179.2z"></path> </g> </g> <g> <g> <path d="M214.12,225.826c-2.219-12.177-12.817-21.026-25.19-21.026h-51.2h-51.2c-12.373,0-22.972,8.849-25.182,21.026 L51.202,281.6H77.22l9.31-51.2h38.4v51.2h25.6v-51.2h38.4l9.31,51.2h26.018L214.12,225.826z"></path> </g> </g> <g> <g> <rect x="230.402" y="76.8" width="153.6" height="25.6"></rect> </g> </g> <g> <g> <path d="M51.202,332.8v25.6h142.217l6.682-20.053c0.657-1.954,1.732-3.703,2.611-5.547H51.202z"></path> </g> </g> <g> <g> <polygon points="230.402,153.6 230.402,179.2 351.583,179.2 377.183,153.6 "></polygon> </g> </g> <g> <g> <path d="M413.331,117.444c6.17-6.17,13.722-10.351,21.871-12.74V0H0.002v512h435.2V314.027l-25.6,25.6V486.4h-384V25.6h384v95.573 L413.331,117.444z"></path> </g> </g> </g></svg>
+<span class="sidebar-listItemText" style="margin-left: 5px;"> Mi Pefil HV</span>
+  </a>
+</li>
+<li class="sidebar-listItem">
+  <a href="#" onclick="showActivity()">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="sidebar-listIcon">
+      <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+    </svg>
+    <span class="sidebar-listItemText">Actividad</span>
+  </a>
+</li>
+<li class="sidebar-listItem">
+  <a href="#" onclick="showSettings()">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="sidebar-listIcon">
+      <circle cx="12" cy="12" r="3"></circle>
+     <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"></path>
+    </svg>
+    <span class="sidebar-listItemText">Ajustes</span>
+  </a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</body>
+</html>
+  
+</section>
+<!-- /APP -->
+
+<script>
+  // Lógica para mostrar las secciones correspondientes al hacer clic en los enlaces
+  document.addEventListener('DOMContentLoaded', function() {
+    var links = document.querySelectorAll('.tabs-style-flip a');
+    var sections = document.querySelectorAll('.content-wrap section');
+
+    function showSection(e) {
+      e.preventDefault();
+      var target = e.target.getAttribute('href');
+      sections.forEach(function(section) {
+        section.classList.remove('content-current');
+      });
+      document.querySelector(target).classList.add('content-current');
+    }
+
+    links.forEach(function(link) {
+      link.addEventListener('click', showSection);
+    });
+  });
+</script>
+<script>
+  document.getElementById("login-form").addEventListener("submit", function(event) {
+    event.preventDefault(); // Evitar el envío del formulario por defecto
+
+    var accederButton = document.getElementById("acceder-button");
+    var progressWheel = document.createElement("div");
+    progressWheel.classList.add("progress-wheel");
+
+    accederButton.appendChild(progressWheel);
+
+    // Simular el tiempo de carga durante 5 segundos
+    setTimeout(function() {
+      progressWheel.remove();
+      // Aquí puedes realizar cualquier otra acción que desees después del tiempo de carga
+      // Por ejemplo, redireccionar a otra página
+    }, 5000);
+  });
+</script>
+<!-- partial -->
+  <script  src="./script.js"></script>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>
