@@ -24,7 +24,7 @@ bodyx {
   position: relative;
   z-index: 1;
   overflow-x: hidden;
-  background-color: white;
+  background-color: #ffffffdb;
   display: flex;
   transition: 0.3s;
   flex-direction: column;
@@ -92,7 +92,6 @@ bodyx {
 }
 
 .card-cover {
-  background-color: lightblue;
   width: 100%;
   height: 100%;
   position: absolute;
