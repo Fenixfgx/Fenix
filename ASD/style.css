@@ -297,7 +297,7 @@ body {
 }
 
 body.dark {
-  --main-bg: #00071d;
+  --main-bg: #131c31;
   --item-hover: #1c2339;
   --secondary-bg: #36415e;
   --main-container-bg: #131c31;
@@ -338,7 +338,7 @@ body {
   transition: width 0.3s ease-in-out;
   position: relative;
   width: 200px;
-  height: 500px;
+  height: 481px;
   max-height: 600px;
 }
 .sidebar-container.shrink {
@@ -636,3 +636,68 @@ body {
     height: 62px;
     border-radius: 12px;
     }
+
+/* Estilos para el tema oscuro */
+.dark section {
+  background-color: #131c31;
+  color: #fff;
+}
+
+.dark .card-header {
+  background-color: #131c31;
+  color: #fff;
+}
+
+.dark .card-main {
+  background-color: #131c31;
+  color: #fff;
+}
+
+.dark .card-desc {
+  background-color: #131c31;
+  color: #fff;
+}
+
+.dark .card-content {
+  background-color: #131c31;
+  color: #fff;
+}
+.dark .card-contact {
+  background-color: #131c31;
+  color: #fff;
+}
+.dark .card-buttons {
+  background-color: #131c31;
+  color: #fff;
+}
+
+.dark .card-buttons button.is-active{
+  background-color: #131c31;
+  color: #ffffffc7;
+}
+
+.dark .button{
+  background-color: #005cbb;
+  color: #ffffffc7;
+}
+/* Ajusta el color de los elementos adicionales si es necesario */
+/* Agregar transiciones de entrada y salida */
+.bubble-content {
+  position: absolute;
+  top: 5px;
+  right: 30%;
+  transform: translateX(50%);
+  background-color: rgb(51, 51, 51);
+  color: rgb(255, 255, 255);
+  padding: 6px;
+  border-radius: 4px;
+  white-space: nowrap;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.3s ease-in-out;
+}
+
+.bubble-visible {
+  visibility: visible;
+  opacity: 1;
+}

@@ -2,7 +2,7 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>CodePen - Tabbed Log In &amp; Register Panel REadvance</title>
+  <title>CodePen - Tabbed Log In &amp; Register Panel REadvance 1</title>
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/semantic.min.css'><link rel="stylesheet" href="./style.css">
 
 </head>
@@ -163,10 +163,15 @@
 </section>
 
 <section id="HV" style="display: none; width: 100%;" class="HV">
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="https://fenixfgx.github.io/Fenix/BOLSADEEMPLEO/stylex.css">
-  <bodyx><div class="card" data-state="#about">
+<bodyx><div class="card" data-state="#about">
   <div class="card-header">
-    <div class="card-cover" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_qbjkfrRbVFYTVyD3aN4Pddz_iMUXW0DnD4Q40eMv&s')"></div>
+<button onclick="showFormModal()" id="editButton" class="button" style="z-index: 1;position: absolute;right: 1px;border-radius: 50%;padding: 10px;padding-top: 11px;padding-bottom: 11px;padding-right: 8px;padding-left: 8px;rotate: 84deg;box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);border: none;font-size: 25px;" onclick="showImage()">✎</button>
+<div id="bubble" class="bubble-content" style="position: absolute;top: -1px;right: 30%;transform: translateX(50%);background-color: rgb(51, 51, 51);color: rgb(255, 255, 255);padding: 6px;border-radius: 4px;white-space: nowrap;visibility: visible;">Edita tu Perfil &gt;</div>
+
+
+<div class="card-cover"></div>
     <img class="card-avatar" id="foto" />
     <h1 class="card-fullname" id="nombre"></h1>
     <h2 class="card-jobtitle" id="profesion"></h2>
@@ -181,7 +186,6 @@
        <p class="card-desc" >Edad: <span id="edad"></span> Años.</p>
 </div>
       </div>
-
     </div>
     <div class="card-section" id="experience">
       <div class="card-content">
@@ -225,7 +229,7 @@
               <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
               <path d="M22 6l-10 7L2 6" />
             </svg>
-            <p id="email">  </p>
+            <p id="correo">  </p>
           </div>
           </div>
       </div>
@@ -236,7 +240,325 @@
       <button data-section="#contact">CONTACTO</button>
     </div>
   </div>
-</div></bodyx>
+</div></button>
+  <!-- Agrega este input fuera del modal -->
+<input type="hidden" id="tempCodexx">
+<p id="coddex" style="display: none;"></p>
+<script>
+
+  </script>
+<style>
+    /* Estilos del formulario */
+    .formulario-hv body { font-family: Arial, sans-serif; }
+    .formulario-hv form { max-width: 500px; margin: 0 auto; border: 1px solid #ccc; border-radius: 5px; }
+    .formulario-hv input[type="text"], .formulario-hv input[type="date"], .formulario-hv input[type="tel"], .formulario-hv input[type="email"], .formulario-hv textarea, .formulario-hv select { width: 100%; padding: 14px; margin-bottom: -13px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; font-size: 15px }
+    .formulario-hv textarea { width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; resize: vertical; height: 212px;}
+  
+.dark .formulario-hv input[type="text"], .dark .formulario-hv input[type="date"], .dark .formulario-hv input[type="tel"], .dark .formulario-hv input[type="email"], .dark .formulario-hv textarea, .dark .formulario-hv select { width: 100%;
+    padding: 14px;
+    margin-bottom: -13px;
+    border: 1px solid #1e356b;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 15px;
+    background-color: #1e356b;
+    color: white;}
+
+  .dark ::placeholder {
+  color: white; 
+}
+  
+    .formulario-hv input[type="submit"] { background-color: #4CAF50; color: #fff; border: none; border-radius: 4px; cursor: pointer; padding: 12px 20px; font-size: 16px; }
+    .formulario-hv input[type="submit"]:hover { background-color: #45a049; }
+    .formulario-hv .form-group { display: none; }
+    .formulario-hv .form-group.active { display: flex; flex-wrap: wrap; gap: 20px; }
+    .formulario-hv .step-buttons { display: flex; justify-content: space-between; margin-top: 20px; }
+    .formulario-hv .step-buttons button { background-color: #007BFF; color: #fff; border: none; border-radius: 4px; cursor: pointer; padding: 10px 20px; font-size: 14px; }
+    .formulario-hv .step-buttons button:hover { background-color: #0056b3; }
+    @media (max-width: 200px) {
+      .formulario-hv .form-group { flex-direction: column; }
+      .formulario-hv .step-buttons { flex-direction: column; align-items: center; }
+      .formulario-hv .step-buttons button { margin-bottom: 10px; }
+    }
+    /* Estilos para el botón personalizado de carga */
+    .formulario-hv .custom-file-input {
+      display: none;
+    }
+    .formulario-hv .custom-file-label {
+      background-color: #007BFF;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      padding: 10px 20px;
+      font-size: 14px;
+      text-align: center;
+    }
+    .formulario-hv .custom-file-label:hover {
+      background-color: #0056b3;
+    }
+  
+  /* Estilo para el contenedor del input */
+input[type="date"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 16px;
+}
+
+/* Estilo para el texto dentro del input */
+input[type="date"]::before {
+  content: attr(value);
+  color: #aaa;
+}
+
+/* Estilo para el texto seleccionado */
+input[type="date"]:valid::before {
+  content: none;
+}
+  
+    .swal2-html-container {
+    z-index: 1;
+    justify-content: center;
+    margin: 0;
+    padding: 1em 0.5em 1em;
+    color: #545454;
+    font-size: 1.125em;
+    font-weight: 400;
+    line-height: normal;
+    text-align: center;
+    word-wrap: break-word;
+    word-break: break-word;
+}
+    .swal2-popup {
+    position: relative;
+    box-sizing: border-box;
+    width: 32em;
+    max-width: 100%;
+    padding: 1em 0 1.25em;
+    border: none;
+    background: #fff;
+    font-family: inherit;
+    font-size: 1rem;
+}
+  
+  .dark .swal2-title {
+    color: white;
+}
+  
+  .dark .swal2-popup {
+    background: #131c31;
+    
+}
+  
+  .swal2-content {
+    z-index: 1;
+    justify-content: center;
+    margin: 0;
+    padding: 0 1em;
+    color: #545454;
+    font-size: 1.125em;
+    font-weight: 400;
+    line-height: normal;
+    text-align: center;
+    word-wrap: break-word;
+}
+  </style>
+  <script>
+    
+      function areAllFieldsFilled(formGroup) {
+      const inputs = formGroup.querySelectorAll('input[required], textarea[required]');
+      for (const input of inputs) {
+        if (!input.value.trim()) {
+          return false;
+        }
+      }
+      return true;
+    }
+    
+    
+      function showFormModal() {
+        const formHTML = `
+          <form class="formulario-hv" id="miFormulario" action="https://script.google.com/macros/s/AKfycbxUw83OXSyFW7m754fSZARIW2yM4qPeoHo_HoSNXM5Zxn6NQMhwPi2-vASUoMX0QiMJ/exec" method="post">
+            <div class="form-group step1">
+              <input type="text" id="nombres" name="nombres" placeholder="Nombres" required>
+              <input type="text" id="apellidos" name="apellidos" placeholder="Apellidos" required>
+<input type="date" id="fn" name="fn" value="Fecha de Nacimiento" required>
+              <input type="text" id="profesion" name="profesion" placeholder="Profesión" required>
+<select id="ne" name="ne" required>
+    <option value="" disabled selected>Nivel Educativo</option>
+    <option value="Ninguno">Ninguno</option>
+    <option value="Primaria">Primaria</option>
+    <option value="Secundaria">Secundaria</option>
+    <option value="Técnico">Técnico</option>
+    <option value="Tecnólogo">Tecnólogo</option>
+    <option value="Universidad">Universidad</option>
+  </select>
+            </div>
+            <div class="form-group step2">
+              <textarea id="acerca" name="acerca" placeholder="Acerca de Mi" rows="4" required></textarea>
+            </div>
+            <div class="form-group step3">
+              <textarea id="exp" name="exp" placeholder="Experiencia Laboral" rows="4" required></textarea>
+            </div>
+            <div class="form-group step4">
+              <input type="text" id="ubicacion" name="ubicacion" placeholder="Ubicación" required>
+              <input type="tel" id="tel" name="tel" placeholder="Teléfono" required>
+              <input type="tel" id="wha" name="wha" placeholder="Whatsapp" required>
+              <input type="email" id="email" name="email" placeholder="Correo" required>
+            </div>
+            <div class="form-group step5">
+<h1 id="codexx" style="margin: auto;background-color: black;color: ghostwhite;padding-right: 10px;padding-left: 10px;"></h1>
+<iframe width="100%" height="300" style="border:none" src="https://script.google.com/macros/s/AKfycbyE5d92ejKJq9ylI8CkxYRYLr94Lv0-50VAbtmr2CuPnKq8GFRqfopcF4hJOKYVqpVZ/exec"> </iframe>
+            </div>
+            <div class="form-group step6">
+            <p style="background-color: aliceblue; padding: 10px; border-radius: 12px;">Al tocar el Botón Enviar aceptas el tratamiento de Datos Ingresados, y permites la publicación y divulgación de los datos correspondientes a la Hoja de Vida</p>
+<input type="hidden" id="ID" name="ID" placeholder="CODEX" required>
+            </div>
+            <div class="step-buttons">
+              <button type="button" onclick="prevStep()">Anterior</button>
+              <button type="button" onclick="nextStep()">Siguiente</button>
+            </div>
+          </form>
+        `;
+
+        Swal.fire({
+        title: 'Mi Perfil HV',
+        width: '80%' ,
+        html: formHTML,
+        showConfirmButton: false,
+        showCloseButton: true,
+        didOpen: () => {
+          const formGroups = document.querySelectorAll('.form-group');
+          const stepButtons = document.querySelector('.step-buttons');
+          let currentStep = 1;
+
+          function showStep(step) {
+            formGroups.forEach(group => group.classList.remove('active'));
+            document.querySelector(`.step${step}`).classList.add('active');
+
+            if (step === 1) {
+              stepButtons.querySelector('button:first-child').style.display = 'none';
+            } else if (step === 6) {
+              stepButtons.querySelector('button:last-child').innerText = 'Enviar';
+            } else {
+              stepButtons.querySelector('button:first-child').style.display = 'inline-block';
+              stepButtons.querySelector('button:last-child').innerText = 'Siguiente';
+            }
+          }
+
+function nextStep() {
+  const currentFormGroup = document.querySelector(`.step${currentStep}`);
+  if (areAllFieldsFilled(currentFormGroup)) {
+    Swal.resetValidationMessage(); // Restablecer el mensaje de validación
+    currentStep++;
+    if (currentStep > 6) {
+      // Si estamos en el último paso, enviamos el formulario
+      const form = document.getElementById("miFormulario");
+      const formData = new FormData(form);
+      const xhr = new XMLHttpRequest();
+      xhr.open("POST", form.action);
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+          if (xhr.status === 200) {
+            // Mostrar la notificación personalizada de éxito con SweetAlert
+            Swal.fire({
+              icon: 'success',
+              title: '¡Usuario Activado con Éxito!',
+              showConfirmButton: false,
+              timer: 1500 // Ocultar automáticamente la notificación después de 1.5 segundos
+            });
+
+            // Restablecer el formulario después del envío si lo deseas
+            form.reset();
+          } else {
+            // Mostrar la notificación personalizada de error con SweetAlert
+            Swal.fire({
+              icon: 'success',
+              title: 'Perfil Actualizado con Exito',
+              text: 'Tu Hoja de Vida Acaba de ser actualizada, para ver los cambios reinicia el App',
+              confirmButtonText: 'Cerrar'
+            });
+          }
+        }
+      };
+      xhr.send(formData);
+    } else {
+      showStep(currentStep);
+    }
+  } else {
+    Swal.showValidationMessage('Completa todos los campos obligatorios antes de continuar.');
+  }
+}
+const tempCodexxElement = document.getElementById('tempCodexx');
+const codexxElement = document.getElementById('codexx');
+const idElement = document.getElementById('ID');
+
+codexxElement.textContent = tempCodexxElement.value;
+idElement.value = tempCodexxElement.value;
+
+          function prevStep() {
+            currentStep--;
+            if (currentStep < 1) currentStep = 1;
+            showStep(currentStep);
+          }
+
+          showStep(currentStep);
+
+          const prevButton = document.querySelector('.step-buttons button:first-child');
+          const nextButton = document.querySelector('.step-buttons button:last-child');
+
+          prevButton.addEventListener('click', () => prevStep());
+          nextButton.addEventListener('click', () => nextStep());
+        },
+        willClose: () => {
+          formModal = null;  // Ocultar el mensaje de validación al cerrar el modal
+        }
+      });
+    }
+  </script>
+    
+    <script>
+    // Agregar el evento submit al formulario
+    document.getElementById("miFormulario").addEventListener("submit", function(event) {
+        // Evitar la redirección predeterminada del formulario
+        event.preventDefault();
+
+        // Obtener los datos del formulario
+        var formData = new FormData(document.getElementById("miFormulario"));
+
+        // Enviar el formulario al script de Google Apps Script usando Ajax
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "https://script.google.com/macros/s/AKfycbxKgfLJzdgrs65jYiM8p3TpdP-p7XBkjft_jDMuNET2fWoWx7B6WuV8eZPTroQ4cP5z/exec");
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    // Mostrar la notificación personalizada de éxito con SweetAlert
+                    Swal.fire({
+                        icon: 'success',
+                        title: '¡Usuario Activado con Éxito!',
+                        showConfirmButton: false,
+                        timer: 1500 // Ocultar automáticamente la notificación después de 1.5 segundos
+                    });
+
+                    document.getElementById("miFormulario").reset();
+                } else {
+                    // Mostrar la notificación personalizada de error con SweetAlert
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Usuario Activado',
+                        text: 'Ya puedes cerrar esta Pestaña e Iniciar Sesión en la APP',
+                        confirmButtonText: 'Cerrar'
+                    });
+                }
+            }
+        };
+        xhr.send(formData);
+    });
+</script>
 </section>
 
 <section id="Activity" style="display: none;">
@@ -338,7 +660,7 @@
         </label>
       </div>
       <ul class="sidebar-list">
-<li class="sidebar-listItem">
+<li class="sidebar-listItem" style="margin-top:-20px;">
   <a href="#" onclick="showDashboard()">
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 24 24"
       stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="sidebar-listIcon">

@@ -114,7 +114,7 @@ form.addEventListener('submit', function(event) {
       // Obtiene los datos de la hoja de cálculo
       return gapi.client.sheets.spreadsheets.values.get({
         spreadsheetId: '1hSQRfY-Qov93K9MJCZRDY3ojA-3wr2IiWOiwomCKrSE',
-        range: 'Registros!A:P' // Considera todas las columnas necesarias para la búsqueda
+        range: 'Registros!A:Z' // Considera todas las columnas necesarias para la búsqueda
       });
     }).then(function(response) {
       const data = response.result.values;
@@ -152,13 +152,14 @@ for (let i = 0; i < data.length; i++) {
         const nombre = userData[1];
         const userEmail = userData[3]; 
         const userPhoto = userData[15];
-        const profesion = userData[1];
-        const acerca = userData[1];
-        const ubicacion = userData[1];
-        const tel = userData[1];
-        const email = userData[1];
-        const edad = userData[1];
-        const exp = userData[1];
+        const profesion = userData[11];
+        const acerca = userData[14];
+        const ubicacion = userData[13];
+        const tel = userData[10];
+        const correo = userData[20];
+        const edad = userData[12];
+        const exp = userData[16];
+        const codexx = userData[7];
         const foto = userData[15];
         
         // ...
@@ -167,6 +168,7 @@ for (let i = 0; i < data.length; i++) {
         const userIdElement = document.getElementById('user-id');
         userIdElement.textContent = userId;
 
+        
         const userNameElement = document.getElementById('user-name');
         userNameElement.textContent = userName;
         
@@ -185,8 +187,8 @@ for (let i = 0; i < data.length; i++) {
         const telElement = document.getElementById('tel');
         telElement.textContent = tel;
         
-        const emailElement = document.getElementById('email');
-        emailElement.textContent = email;
+        const correoElement = document.getElementById('correo');
+        correoElement.textContent = correo;
         
         const edadElement = document.getElementById('edad');
         edadElement.textContent = edad;
@@ -202,17 +204,23 @@ const userPhotoElement = document.getElementById('user-photo');
 if (userPhoto) {
   userPhotoElement.setAttribute('src', userPhoto);
 } else {
-  userPhotoElement.setAttribute('src', 'https://cdn-icons-png.flaticon.com/512/3237/3237472.png'); 
+  userPhotoElement.setAttribute('src', 'https://fenixfgx.github.io/Fenix/BOLSADEEMPLEO/perfil.png'); 
 }  
-        
+      
 const fotoElement = document.getElementById('foto');
 
 if (foto) {
   fotoElement.setAttribute('src', foto);
 } else {
-  fotoElement.setAttribute('src', 'https://cdn-icons-png.flaticon.com/512/3237/3237472.png'); 
+  fotoElement.setAttribute('src', 'https://fenixfgx.github.io/Fenix/BOLSADEEMPLEO/perfil.png'); 
 }  
-        
+          
+          // Después de asignar el valor a codexx, también copiamos el valor al input oculto
+const tempCodexxElement = document.getElementById('tempCodexx');
+tempCodexxElement.value = codexx;
+  
+  const siguienteInput = document.getElementById('codexx');
+siguienteInput.value = codexx;
         // Continúa incrustando los demás datos en los elementos HTML correspondientes
      } else if (activationRequired) {
        Swal.fire({
@@ -263,23 +271,36 @@ if (foto) {
         startTimer();
       }
     };
+    const changeThemeForSections = (darkMode) => {
+  const sections = document.querySelectorAll('section');
+  sections.forEach((section) => {
+    if (darkMode) {
+      section.classList.add('dark');
+    } else {
+      section.classList.remove('dark');
+    }
+  });
+};
 
     const handleThemeChange = () => {
-      const body = document.body;
-      body.classList.toggle('dark');
+  const body = document.body;
+  body.classList.toggle('dark');
 
-      const themeToggle = document.getElementById('theme-toggle');
-      const lightThemeType = document.querySelector('.sidebar-themeType.light');
-      const darkThemeType = document.querySelector('.sidebar-themeType.dark');
+  const themeToggle = document.getElementById('theme-toggle');
+  const lightThemeType = document.querySelector('.sidebar-themeType.light');
+  const darkThemeType = document.querySelector('.sidebar-themeType.dark');
 
-      if (themeToggle.checked) {
-        lightThemeType.style.display = 'none';
-        darkThemeType.style.display = 'block';
-      } else {
-        lightThemeType.style.display = 'block';
-        darkThemeType.style.display = 'none';
-      }
-    };
+  if (themeToggle.checked) {
+    lightThemeType.style.display = 'none';
+    darkThemeType.style.display = 'block';
+    changeThemeForSections(true); // Cambiar a tema oscuro para todas las secciones
+  } else {
+    lightThemeType.style.display = 'block';
+    darkThemeType.style.display = 'none';
+    changeThemeForSections(false); // Cambiar a tema claro para todas las secciones
+  }
+};
+
 
    window.addEventListener('DOMContentLoaded', () => {
   const sidebarContainer = document.querySelector('.sidebar-container');
@@ -340,3 +361,26 @@ const handleButtonClick = (e) => {
 buttons.forEach((btn) => {
   btn.addEventListener("click", handleButtonClick);
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+  setTimeout(showBubble, 25000);
+});
+
+// Función para mostrar la burbuja
+function showBubble() {
+  var bubble = document.getElementById('bubble');
+  bubble.classList.add('bubble-visible'); // Agregar la clase para mostrar la burbuja con transición
+}
+
+setTimeout(function () {
+      bubble.classList.remove('bubble-visible');
+    }, 56000); 
+// Función para mostrar la imagen alta usando SweetAlert
+function showImage() {
+Swal.fire({
+  title: 'iframe',
+  
+  showCancelButton: true,
+  showCloseButton: true
+});
+}
