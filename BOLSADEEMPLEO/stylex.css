@@ -159,6 +159,7 @@ bodyx {
     margin: 0;
     left: 50%;
     transform: translateX(-50%) translateY(-7px);
+    z-index: 3;
 }
 
 .card-main {
