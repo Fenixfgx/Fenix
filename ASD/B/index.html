@@ -1,15 +1,19 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>CodePen - boton whatsapp</title>
-  <link rel="stylesheet" href="./style.css">
-
+    <title>Botón de WhatsApp</title>
+    <script>
+        function redirectToWhatsApp() {
+            // Reemplaza "1234567890" con el número de teléfono adecuado
+            window.location.href = 'https://wa.me/1234567890';
+        }
+    </script>
 </head>
 <body>
-<!-- partial:index.partial.html -->
-<a class="fab fa-whatsapp" href="https://wa.me/34555005500/?text=tu%20texto%20personalizado" target="_top">Anchor text</a>
-<!-- partial -->
-  
+
+<button onclick="redirectToWhatsApp()">
+    <img src="ruta_a_la_imagen_del_boton.png" alt="Botón de WhatsApp">
+</button>
+
 </body>
 </html>
