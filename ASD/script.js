@@ -445,25 +445,24 @@ whatsappElement.addEventListener("click", function () {
     }
 });
 
-// Función para guardar el estado actual del código en el historial
+// Función para guardar el estado actual del código en el almacenamiento local
 function saveCodeState() {
   const code = document.querySelector('script#main-script').innerHTML;
-  history.replaceState({ code: code }, null, window.location.href);
+  localStorage.setItem('codeState', code);
 }
 
-// Función para cargar el estado del código desde el historial
+// Función para cargar y restaurar el estado del código desde el almacenamiento local
 function loadCodeState() {
-  window.addEventListener('popstate', function(event) {
-    if (event.state && event.state.code) {
-      document.querySelector('script#main-script').innerHTML = event.state.code;
-      eval(event.state.code); // Vuelve a ejecutar el código
-    }
-  });
+  const savedCode = localStorage.getItem('codeState');
+  if (savedCode) {
+    document.querySelector('script#main-script').innerHTML = savedCode;
+    eval(savedCode); // Vuelve a ejecutar el código
+  }
 }
 
-// Llama a la función de inicialización en el evento DOMContentLoaded
+// Llamado al cargar la página
 document.addEventListener('DOMContentLoaded', function() {
-  loadCodeState(); // Carga el estado del código al cargar la página
+  loadCodeState(); // Carga y restaura el estado del código al cargar la página
 
   // Agregar listeners para otros eventos que cambien el estado del código
   // Por ejemplo, eventos de cambio de tabs, envío de formulario, etc.
@@ -475,6 +474,3 @@ document.addEventListener('DOMContentLoaded', function() {
     link.addEventListener('click', saveCodeState);
   });
 });
-
-// Llamado al cargar la página
-saveCodeState();
