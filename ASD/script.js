@@ -1,13 +1,3 @@
-/**
- * cbpFWTabs.js v1.0.0
- * http://www.codrops.com
- *
- * Licensed under the MIT license.
- * https://www.opensource.org/licenses/mit-license.php
- * 
- * Copyright 2014, Codrops
- * http://www.codrops.com
- */
 ;
 (function(window) {
 
@@ -150,12 +140,15 @@ for (let i = 0; i < data.length; i++) {
         const userId = userData[0]; 
         const userName = userData[1]; 
         const nombre = userData[1];
+        const apellido = userData[2];
         const userEmail = userData[3]; 
         const userPhoto = userData[15];
         const profesion = userData[11];
         const acerca = userData[14];
+        const NivelEducativo = userData[18];
         const ubicacion = userData[13];
         const tel = userData[10];
+        const whatsapp = userData[19];
         const correo = userData[20];
         const edad = userData[12];
         const exp = userData[16];
@@ -175,17 +168,26 @@ for (let i = 0; i < data.length; i++) {
         const nombreElement = document.getElementById('nombre');
         nombreElement.textContent = nombre;
         
+        const apellidoElement = document.getElementById('apellido');
+        apellidoElement.textContent = apellido;
+        
         const profesionElement = document.getElementById('profesion');
         profesionElement.textContent = profesion;
         
         const acercaElement = document.getElementById('acerca');
         acercaElement.textContent = acerca;
         
+        const NivelEducativoElement = document.getElementById('NivelEducativo');
+        NivelEducativoElement.textContent = NivelEducativo;
+        
         const ubicacionElement = document.getElementById('ubicacion');
         ubicacionElement.textContent = ubicacion;
         
         const telElement = document.getElementById('tel');
         telElement.textContent = tel;
+        
+        const whatsappElement = document.getElementById('whatsapp');
+        whatsappElement.textContent = whatsapp;
         
         const correoElement = document.getElementById('correo');
         correoElement.textContent = correo;
@@ -384,3 +386,61 @@ Swal.fire({
   showCloseButton: true
 });
 }
+
+function copiarTexto() {
+  var elementoCodexx = document.getElementById("codexx");
+  var textoParaCopiar = elementoCodexx.innerText;
+
+  var inputTemp = document.createElement("input");
+  document.body.appendChild(inputTemp);
+  inputTemp.value = textoParaCopiar;
+  inputTemp.select();
+  document.execCommand("copy");
+  document.body.removeChild(inputTemp);
+
+  new Noty({
+    text: "¡Código Copiado!",
+    type: "information",
+    theme: "sunset",
+    timeout: 2500, // Duración de la notificación en milisegundos (en este caso, 2.5 segundos)
+  }).show();
+}
+function checkWhatsAppContent() {
+    // Obtén el elemento con el ID "whatsapp"
+    var whatsappElement = document.getElementById("whatsapp");
+
+    // Obtén el contenedor div con la clase "card-contact"
+    var cardContactDiv = document.getElementById("card-contact");
+
+    // Verifica si el contenido del elemento es vacío
+    if (whatsappElement.innerHTML.trim() === "") {
+        // Si el contenido es vacío, oculta el contenedor completo
+        cardContactDiv.style.display = "none";
+    } else {
+        // Si hay contenido, muestra el contenedor
+        cardContactDiv.style.display = "flex"; // Puedes usar "flex", "grid", etc. según tu diseño
+    }
+}
+
+// Ejecuta la función inicialmente para comprobar el contenido al cargar la página
+checkWhatsAppContent();
+// Verifica cada 2 segundos si hay contenido y oculta/muestra el contenedor según corresponda
+setInterval(checkWhatsAppContent, 2000);
+
+// Obtén el elemento con el ID "whatsapp"
+var whatsappElement = document.getElementById("whatsapp");
+
+// Agrega un evento click al elemento de WhatsApp
+whatsappElement.addEventListener("click", function () {
+    // Obtén el número de WhatsApp del contenido del elemento
+    var whatsappNumber = whatsappElement.textContent.trim();
+
+    // Verifica si el número de WhatsApp es válido
+    if (whatsappNumber) {
+        // Crea el enlace de WhatsApp con el número
+        var whatsappLink = "https://api.whatsapp.com/send?phone=57" + whatsappNumber;
+
+        // Abre el enlace en una nueva ventana/tab
+        window.open(whatsappLink, "_blank");
+    }
+});
