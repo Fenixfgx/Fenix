@@ -438,7 +438,7 @@ whatsappElement.addEventListener("click", function () {
     // Verifica si el número de WhatsApp es válido
     if (whatsappNumber) {
         // Crea el enlace de WhatsApp con el número
-        var whatsappLink = "https://api.whatsapp.com/send?phone=57" + whatsappNumber;
+        var whatsappLink = "https://wa.me/57" + whatsappNumber;
 
         // Abre el enlace en una nueva ventana/tab
         window.open(whatsappLink, "_blank");
