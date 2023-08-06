@@ -445,35 +445,36 @@ whatsappElement.addEventListener("click", function () {
     }
 });
 
-// Función para guardar el contenido actual del código en el almacenamiento local
+// Función para guardar el estado actual del código en el historial
 function saveCodeState() {
-  const codeContent = document.querySelector('script[type="text/javascript"]').textContent;
-  localStorage.setItem('codeContent', codeContent);
+  const code = document.querySelector('script#main-script').innerHTML;
+  history.replaceState({ code: code }, null, window.location.href);
 }
 
-// Función para cargar el contenido del código desde el almacenamiento local al volver atrás
+// Función para cargar el estado del código desde el historial
 function loadCodeState() {
-  const savedCodeContent = localStorage.getItem('codeContent');
-  if (savedCodeContent) {
-    const scriptElement = document.querySelector('script[type="text/javascript"]');
-    scriptElement.textContent = savedCodeContent;
-  }
+  window.addEventListener('popstate', function(event) {
+    if (event.state && event.state.code) {
+      document.querySelector('script#main-script').innerHTML = event.state.code;
+      eval(event.state.code); // Vuelve a ejecutar el código
+    }
+  });
 }
-
-// Agrega un manejador para el evento popstate
-window.addEventListener('popstate', function(event) {
-  // Carga el contenido del código según el historial de navegación
-  loadCodeState();
-});
 
 // Llama a la función de inicialización en el evento DOMContentLoaded
 document.addEventListener('DOMContentLoaded', function() {
-  loadCodeState(); // Carga el contenido del código al cargar la página
+  loadCodeState(); // Carga el estado del código al cargar la página
 
-  // Guardar el contenido del código antes de redirigir
+  // Agregar listeners para otros eventos que cambien el estado del código
+  // Por ejemplo, eventos de cambio de tabs, envío de formulario, etc.
+
+  // Guardar el estado del código antes de redirigir
   // Por ejemplo, cuando se haga clic en un enlace que redirija a otra página
   const links = document.querySelectorAll('a');
   links.forEach(link => {
     link.addEventListener('click', saveCodeState);
   });
 });
+
+// Llamado al cargar la página
+saveCodeState();
