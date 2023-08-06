@@ -451,6 +451,9 @@ function saveCodeState() {
   localStorage.setItem('codeState', code);
 }
 
+// Llamado antes de recargar la página
+window.addEventListener('beforeunload', saveCodeState);
+
 // Función para cargar y restaurar el estado del código desde el almacenamiento local
 function loadCodeState() {
   const savedCode = localStorage.getItem('codeState');
@@ -463,14 +466,5 @@ function loadCodeState() {
 // Llamado al cargar la página
 document.addEventListener('DOMContentLoaded', function() {
   loadCodeState(); // Carga y restaura el estado del código al cargar la página
-
-  // Agregar listeners para otros eventos que cambien el estado del código
-  // Por ejemplo, eventos de cambio de tabs, envío de formulario, etc.
-
-  // Guardar el estado del código antes de redirigir
-  // Por ejemplo, cuando se haga clic en un enlace que redirija a otra página
-  const links = document.querySelectorAll('a');
-  links.forEach(link => {
-    link.addEventListener('click', saveCodeState);
-  });
 });
+
