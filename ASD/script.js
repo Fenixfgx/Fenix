@@ -444,3 +444,36 @@ whatsappElement.addEventListener("click", function () {
         window.open(whatsappLink, "_blank");
     }
 });
+
+// Función para guardar el contenido actual del código en el almacenamiento local
+function saveCodeState() {
+  const codeContent = document.querySelector('script[type="text/javascript"]').textContent;
+  localStorage.setItem('codeContent', codeContent);
+}
+
+// Función para cargar el contenido del código desde el almacenamiento local al volver atrás
+function loadCodeState() {
+  const savedCodeContent = localStorage.getItem('codeContent');
+  if (savedCodeContent) {
+    const scriptElement = document.querySelector('script[type="text/javascript"]');
+    scriptElement.textContent = savedCodeContent;
+  }
+}
+
+// Agrega un manejador para el evento popstate
+window.addEventListener('popstate', function(event) {
+  // Carga el contenido del código según el historial de navegación
+  loadCodeState();
+});
+
+// Llama a la función de inicialización en el evento DOMContentLoaded
+document.addEventListener('DOMContentLoaded', function() {
+  loadCodeState(); // Carga el contenido del código al cargar la página
+
+  // Guardar el contenido del código antes de redirigir
+  // Por ejemplo, cuando se haga clic en un enlace que redirija a otra página
+  const links = document.querySelectorAll('a');
+  links.forEach(link => {
+    link.addEventListener('click', saveCodeState);
+  });
+});
