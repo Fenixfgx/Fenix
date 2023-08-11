@@ -73,6 +73,9 @@ bodyx {
   bottom: 18px;
   font-size: 19px;
 }
+.cardas.is-active .cardas-apel {
+  display: none;
+}
 .cardas.is-active .cardas-jobtitle {
   bottom: 16px;
   letter-spacing: 1px;
