@@ -35,6 +35,7 @@ bodyx {
 .cardas[data-state="#aboutas"] {
   max-height: 450px;
   width: 340px;
+  min-height: 382px
 }
 .cardas[data-state="#aboutas"] .card-main {
   padding-top: 0;
@@ -48,6 +49,7 @@ bodyx {
 
 .cardas[data-state="#experienceas"] {
   max-height: 450px;
+  min-height: 382px
   width: 340px;
 }
 
