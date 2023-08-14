@@ -33,7 +33,7 @@ bodyx {
 }
 
 .cardas[data-state="#aboutas"] {
-
+  max-height: 450px;
   width: 340px;
 }
 .cardas[data-state="#aboutas"] .card-main {
@@ -41,12 +41,12 @@ bodyx {
 }
 
 .cardas[data-state="#contactas"] {
- 
+  max-height: 450px;
   width: 340px;
 }
 
 .cardas[data-state="#experienceas"] {
-
+  max-height: 450px;
   width: 340px;
 }
 
