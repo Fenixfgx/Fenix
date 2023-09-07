@@ -178,3 +178,207 @@ sendButton.addEventListener("click", async () => {
     messageInput.value = ""; // Limpiar el input después de enviar el mensaje
   }
 });
+
+// ... Código anterior ...
+
+
+// Función para abrir el modal al hacer clic en una imagen
+function openModal(imageUrl) {
+  const modal = document.getElementById("imageModal");
+  const modalImage = document.getElementById("modalImage");
+
+  modal.style.display = "block";
+  modal.classList.add("show"); // Agregar la clase "show" para la animación de apertura
+  modalImage.src = imageUrl;
+}
+
+// Función para cerrar el modal
+function closeModal() {
+  const modal = document.getElementById("imageModal");
+  modal.classList.remove("show"); // Quitar la clase "show" para la animación de cierre
+
+  // Esperar a que termine la animación y luego ocultar el modal
+  setTimeout(() => {
+    modal.style.display = "none";
+  }, 300); // La misma duración que la transición en CSS
+}
+
+// Agregar eventos para abrir y cerrar el modal
+chat.addEventListener("click", (event) => {
+  const clickedElement = event.target;
+
+  if (clickedElement.tagName === "IMG") {
+    const imageUrl = clickedElement.src;
+    openModal(imageUrl);
+  }
+});
+
+// Cerrar el modal al hacer clic en la "x"
+const closeModalButton = document.querySelector(".close");
+closeModalButton.addEventListener("click", closeModal);
+
+// Cerrar el modal si se hace clic fuera de él
+window.addEventListener("click", (event) => {
+  const modal = document.getElementById("imageModal");
+  if (event.target === modal) {
+    closeModal();
+  }
+});
+
+let batteryLevel; // Variable para almacenar el nivel de batería
+let sendButtonEnabled = true; // Inicialmente, el botón "Send" está habilitado
+let adViewed = false; // Variable para rastrear si el anuncio se ha visto
+
+// Verificar si hay un nivel de batería almacenado en el almacenamiento local
+const storedBatteryLevel = localStorage.getItem("batteryLevel");
+
+// Inicializar batteryLevel con el valor almacenado o 10 si no hay un valor almacenado
+batteryLevel = storedBatteryLevel ? parseInt(storedBatteryLevel) : 10;
+
+// Actualizar la representación en la página
+document.getElementById("battery-level").textContent = batteryLevel;
+
+
+function updateBatteryImage() {
+    let batteryImageSrc;
+    if (batteryLevel > 8) {
+        batteryImageSrc = "https://fenixfgx.github.io/Fenix/GIRLS/states/b5.png"; // Imagen para batería > 8
+    } else if (batteryLevel >= 5) {
+        batteryImageSrc = "https://fenixfgx.github.io/Fenix/GIRLS/states/b4.png"; // Imagen para batería entre 5 y 8
+    } else if (batteryLevel >= 3) {
+        batteryImageSrc = "https://fenixfgx.github.io/Fenix/GIRLS/states/b3.png"; // Imagen para batería entre 3 y 4
+    } else if (batteryLevel >= 1) {
+        batteryImageSrc = "https://fenixfgx.github.io/Fenix/GIRLS/states/b2.png"; // Imagen para batería entre 1 y 2
+    } else {
+        batteryImageSrc = "https://fenixfgx.github.io/Fenix/GIRLS/states/b1.png"; // Imagen para batería igual a 0
+    }
+
+    // Cambiar la imagen de la batería en la página
+    const batteryImage = document.getElementById("battery-image");
+    batteryImage.src = batteryImageSrc;
+}
+
+// Llamar a la función para cambiar la imagen al iniciar
+updateBatteryImage();
+
+function checkBatteryStatus() {
+      if (batteryLevel === 0) {
+        // Muestra una notificación estilo Sweet Alert con solo el botón "Mostrar Anuncio"
+        const swal = Swal.fire({
+          title: 'Batería Baja',
+          text: '¡Puedes Recargar Viendo un Anuncio!',
+          imageUrl: 'https://fenixfgx.github.io/Fenix/GIRLS/BatteryL.png',
+          imageWidth: 170,
+          imageAlt: 'Batería Baja',
+          showConfirmButton: false, // Oculta el botón "Aceptar"
+          html: `<button class="Recarga" onclick="callNativeFunction()">Recargar Batería con un Anuncio</button>`,
+        });
+
+        sendButtonEnabled = false;
+        sendButton.disabled = true;
+// Cierra el Sweet Alert automáticamente después de 3 segundos cuando se hace clic en "Recarga"
+        document.querySelector('.Recarga').addEventListener('click', () => {
+          setTimeout(() => {
+            swal.close(); // Cierra el Sweet Alert
+
+            // Restablece el contador a 5 después de 5 segundos
+            setTimeout(() => {
+              batteryLevel = 10;
+              updateBatteryImage();
+              document.getElementById("battery-level").textContent = batteryLevel;
+            }, 5000); // 5000 milisegundos = 5 segundos
+            sendButtonEnabled = true;
+            sendButton.disabled = false;
+            updateBatteryImage();
+          }, 3000); // 3000 milisegundos = 3 segundos
+        });
+      }
+    }
+
+    // Ejecuta la función "checkBatteryStatus" cada 10 segundos (10000 milisegundos)
+    setInterval(checkBatteryStatus, 20000);
+// Función para actualizar el estado de la batería y verificar si se agotó
+function updateBattery() {
+  batteryLevel--;
+  document.getElementById("battery-level").textContent = batteryLevel;// Guardar el nivel de la batería en el almacenamiento local
+    localStorage.setItem("batteryLevel", batteryLevel);
+
+    if (batteryLevel <= 0) {
+    // La batería se agotó, mostrar un alert y desactivar el botón "Send"
+    Swal.fire({
+          title: 'Batería Baja',
+          text: '¡Puedes Recargar Viendo un Anuncio!',
+          imageUrl: 'https://fenixfgx.github.io/Fenix/GIRLS/BatteryL.png',
+          imageWidth: 170,
+          imageAlt: 'Batería Baja',
+          showCancelButton: false,
+          showConfirmButton: false,
+          html: `<button class="Recarga" onclick="callNativeFunction()">Recargar Batería con un Anuncio</button>`,
+        });
+    sendButtonEnabled = false;
+    sendButton.disabled = true;
+// Cierra el Sweet Alert automáticamente después de 3 segundos cuando se hace clic en "Recarga"
+        document.querySelector('.Recarga').addEventListener('click', () => {
+          setTimeout(() => {
+            swal.close(); // Cierra el Sweet Alert
+
+            // Restablece el contador a 5 después de 5 segundos
+            setTimeout(() => {
+              batteryLevel = 10;
+              updateBatteryImage();
+              document.getElementById("battery-level").textContent = batteryLevel;
+            }, 5000); // 5000 milisegundos = 5 segundos
+            sendButtonEnabled = true;
+            sendButton.disabled = false;
+            
+          }, 3000); // 3000 milisegundos = 3 segundos
+        });
+      }
+    }
+
+function adViewedSuccessfully() {
+    adViewed = true;
+    // Realiza otras acciones necesarias aquí
+}
+
+// Función para recargar la batería
+function rechargeBattery() {
+    if (adViewed === true) {
+        // Solo recarga la batería si el anuncio se ha visto
+        batteryLevel = 10;
+        document.getElementById("battery-level").textContent = batteryLevel;
+        sendButtonEnabled = true; // Habilitar el botón "Send" al recargar la batería
+        sendButton.disabled = false; // Habilitar el botón "Send"
+        const rechargeModal = document.getElementById("recharge-modal");
+        rechargeModal.style.display = "none";
+        adViewed = false; // Restablece el estado del anuncio
+    } else {
+        // Muestra un mensaje de error o realiza otra acción si el anuncio no se ha visto
+    }
+}
+
+
+
+// Actualizar el estado de la batería al hacer clic en el botón "Send"
+sendButton.addEventListener("click", async () => {
+  // Si el botón "Send" está desactivado, mostrar un alert
+  if (!sendButtonEnabled) {
+    showAlertIfDisabled();
+    return; // Salir sin enviar el mensaje
+  }
+
+  // Resto del código...
+updateBatteryImage();
+  // Actualizar el estado de la batería
+  updateBattery();
+
+  // Almacenar la conversación en el almacenamiento local después de agregar la respuesta del asistente
+  const conversation = chat.innerHTML;
+  localStorage.setItem("conversation", conversation);
+
+  messageInput.value = ""; // Limpiar el input después de enviar el mensaje
+});
+
+// Al hacer clic en el botón de recarga en el modal
+const rechargeButton = document.getElementById("recharge-button");
+rechargeButton.addEventListener("click", rechargeBattery);
