@@ -1,4 +1,4 @@
-const API_KEY = "";
+const API_KEY = "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";
 
 async function getAssistantResponse(userMessage) {
   const lowerCaseMessage = userMessage.toLowerCase();
