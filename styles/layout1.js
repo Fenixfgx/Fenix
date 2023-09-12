@@ -1,3 +1,66 @@
+// API Key de Google Sheets
+const apiKey = 'AIzaSyC7trVxLML3qsNu1jYg7Qmmgc-RuWsMZg8';
+
+// ID de la hoja de cálculo de Google Sheets
+const sheetId = '1hd-MsyNl1zwjDi6g9SRpMMxpShVFIG3-6ZVOvd_8Jxg';
+
+// Nombre de la hoja en la que se encuentra la casilla
+const sheetName = 'Anime';
+
+// Rango de la casilla que deseas obtener (por ejemplo, A1)
+const cellRange = 'A1';
+
+// URL para obtener el valor de la casilla
+const apiUrl = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${sheetName}!${cellRange}?key=${apiKey}`;
+
+// Realiza una solicitud GET a la API de Google Sheets
+fetch(apiUrl)
+  .then(response => response.json())
+  .then(data => {
+    // Obtiene el valor de la casilla
+    const cellValue = data.values[0][0];
+
+    // Actualiza el valor de "daxe" con el valor de la casilla "axe"
+    daxe = cellValue;
+
+    // Muestra un alert con el valor de la casilla
+    alert('El valor de la casilla es: ' + daxe);
+  })
+  .catch(error => {
+    console.error('Error al obtener el valor de la casilla:', error);
+  });
+
+      
+async function getAssistantResponse(userMessage) {
+  const lowerCaseMessage = userMessage.toLowerCase();
+
+  const activators = ["me darias una foto", "me darías una foto", "regalas una foto", "me regalarias una foto", "me regalarías una foto", "dar una foto", "enviarme una foto", "envíame una foto", "enviame una foto", "me enviarias una foto", "me enviarías una foto", "me envias una foto","me envías una foto","envíame otra foto", "otra imagen","foto tuya","imagen tuya","enviame otra foto","quiero una foto", "quiero una imagen","Me darias una foto","Me darias una imagen", "enviaras una imagen", "enviaras una foto", "enviarás una imagen", "enviarás una foto", "Envíame una foto", "Envíame una foto", "Enviame una foto", "Me enviarias una foto", "Envíame otra foto", "Enviame otra foto", "otra foto", "selfi","selfie","Me darias una imagen", "Envíame una imagen", "Envíame una imagen", "Enviame una imagen", "Me enviarias una imagen", "Envíame otra imagen", "Enviame otra imagen","fotico", "fotito", "Me darias una foto", "Envíame una foto", "Envíame una foto", "Enviame una foto", "Me enviarias una foto", "Envíame otra foto", "Enviame otra foto","Me darias una imagen", "Envíame una imagen", "Envíame una imagen", "Enviame una imagen", "Me enviarias una imagen", "Envíame otra imagen", "Enviame otra imagen","Me darias una foto", "Envíame una foto", "Envíame una foto", "Enviame una foto", "Me enviarias una foto", "Envíame otra foto", "Enviame otra foto","Me darias una imagen", "Envíame una imagen", "Envíame una imagen", "Enviame una imagen", "Me enviarias una imagen", "Envíame otra imagen", "Enviame otra imagen","Me darias una foto", "Envíame una foto", "Envíame una foto", "Enviame una foto", "Me enviarias una foto", "Envíame otra foto", "Enviame otra foto","Me darias una imagen", "Envíame una imagen", "Envíame una imagen", "Enviame una imagen", "Me enviarias una imagen", "Envíame otra imagen", "Enviame otra imagen","Me darias una foto", "Envíame una foto", "Envíame una foto", "Enviame una foto", "Me enviarias una foto", "Envíame otra foto", "Enviame otra foto","Me darias una imagen", "Envíame una imagen", "Envíame una imagen", "Enviame una imagen", "Me enviarias una imagen", "Envíame otra imagen", "Enviame otra imagen", "quiero ver tu cara", "quiero ver tu rostro", "quiero ver tu hermoso rostro", , "quiero ver tu hermosa cara"]; // Agrega más activadores si es necesario
+
+  if (activators.some(activator => lowerCaseMessage.includes(activator))) {
+    const randomImage = getRandomImage();
+    return `<img src="${randomImage}" alt="Random Image">`;
+  } else {
+    const response = await fetch(`https://api.openai.com/v1/chat/completions`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${daxe}`,
+      },
+      body: JSON.stringify({
+        model: "gpt-3.5-turbo-0301",
+        max_tokens: 30,
+        messages: [
+          {"role": "system", "content": "Your role is: a friendly girlfriend, responding lovingly to each interaction with the user"},
+          {"role": "user", "content": userMessage}
+        ]
+      }),
+    });
+
+    const data = await response.json();
+    return data.choices[0].message.content;
+  }
+}
+    
 let lastImageIndex = -2;
 
 function getRandomImage() {
