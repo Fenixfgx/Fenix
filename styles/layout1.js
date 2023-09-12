@@ -22,12 +22,9 @@ fetch(apiUrl)
 
     // Actualiza el valor de "daxe" con el valor de la casilla "axe"
     daxe = cellValue;
-
-    // Muestra un alert con el valor de la casilla
-    alert('El valor de la casilla es: ' + daxe);
   })
   .catch(error => {
-    console.error('Error al obtener el valor de la casilla:', error);
+    console.error('Error al obtener el valor:', error);
   });
 
       
@@ -61,7 +58,7 @@ async function getAssistantResponse(userMessage) {
   }
 }
     
-let lastImageIndex = -2;
+let lastImageIndex = -20;
 
 function getRandomImage() {
   const imageGallery = [
