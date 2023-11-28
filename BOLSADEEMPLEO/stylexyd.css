@@ -116,6 +116,10 @@ bodyxd {
   background-color: #131c31;
 }
 
+.dark .carddc-cover {
+  background-color: #131c31;
+}
+
 .carddc-avatar {
   width: 100px;
   height: 100px;
