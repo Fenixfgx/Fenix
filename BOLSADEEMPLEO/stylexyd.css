@@ -30,9 +30,23 @@ bodyxd {
   transition: 0.3s;
   flex-direction: column;
   border-radius: 10px;
-  box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.2);
+  box-shadow: -1px 0px 17px 0px rgb(0 0 0 / 45%);
 }
 
+.dark .carddc {
+max-width: 340px;
+    margin: auto;
+    overflow-y: auto;
+    position: relative;
+    z-index: 1;
+    overflow-x: hidden;
+    background-color: #ffffffdb;
+    display: flex;
+    transition: 0.3s;
+    flex-direction: column;
+    border-radius: 10px;
+    box-shadow: 11px 3px 60px -10px rgb(25 137 219);
+}
 .carddc[data-state="#aboutdc"] {
   max-height: 450px;
   width: 340px;
