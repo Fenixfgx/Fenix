@@ -90,8 +90,12 @@ bodyxd {
   flex-shrink: 0;
   width: 100%;
   transition: 0.3s;
+}
+
+.dark .carddc-header {
   background-color: #131c31;
 }
+
 .carddc-header * {
   transition: 0.3s;
 }
@@ -174,6 +178,9 @@ bodyxd {
   display: flex;
   padding-top: 10px;
   flex-direction: column;
+}
+
+.dark .carddc-main {
   background-color: #131c31;
 }
 
@@ -195,6 +202,10 @@ bodyxd {
   margin: 0;
   font-weight: 410;
   font-family: "DM Sans", sans-serif;
+}
+
+.dark .carddc-desc {
+  color: white;
 }
 
 .carddc-social {
