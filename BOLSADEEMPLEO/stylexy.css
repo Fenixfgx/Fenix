@@ -19,6 +19,7 @@ bodyx {
 
 .cardas {
     max-width: 340px;
+    width: 95%;
     margin: auto;
     overflow-y: auto;
     position: relative;
