@@ -288,6 +288,10 @@ max-width: 340px;
   outline: 0;
   border-bottom: 3px solid transparent;
 }
+
+.carddc-buttons button {
+  color: white;
+}
 .carddc-buttons button.is-active, .card-buttons button:hover {
   color: #2b2c48;
   border-bottom: 3px solid #8a84ff;
