@@ -21,8 +21,8 @@
         <div class="login-container">
             <h2>Login</h2>
             <form id="login-form">
-                <input type="text" id="username" placeholder="Usuario">
-                <input type="password" id="password" placeholder="Contraseña">
+                <input style="width: 93%;" type="text" id="username" placeholder="Usuario">
+                <input style="width: 93%;" type="password" id="password" placeholder="Contraseña">
                 <button type="submit">Iniciar sesión</button>
             </form>
         </div>
@@ -42,9 +42,19 @@
     <section id="cartera-section" class="hidden">
     <div class="content-container">
       <button id="go-back-to-hola">Volver</button>
+        <div class="tabla">
         <h3>Mis Aportes Tesorería</h3>
         <input type="hidden" id="search-tesoreria" placeholder="Buscar por nombre">
-        <table class="totala" id="tesoreria-list"></table>
+        <table class="totala" id="tesoreria-list"></table><br>
+        <table style="width:106%;">
+          <tr>
+    <th>Concepto</th>
+    <th>Monto</th>
+    <th>Fecha&nbsp;&nbsp;</th>
+    <th style="border-right: none;">Comprobante</th>
+  </tr>
+</table>
+          </div>
         <h2 style="display:none;" id="total-column-B"></h2> 
         <input type="hidden" id="search" placeholder="Buscar por nombre">
         <table id="cartera-list"></table>
@@ -57,6 +67,15 @@
         <button id="go-back-to-hola-2">Volver</button>
         <h3>Mis Aportes Obras de Urbanismo</h3>
         <h2 id="total-column-B2"></h2> 
+        <table>
+          <tr>
+    <th>Columna 1</th>
+    <th>Columna 2</th>
+    <th>Columna 3</th>
+    <th>Columna 4</th>
+  </tr>
+</table>
+
         <input type="text" id="search-2" placeholder="Buscar por nombre">
         <table id="cartera-list-2"></table>
     </div>
