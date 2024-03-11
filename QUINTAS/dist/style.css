@@ -1,0 +1,146 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.totala{
+  text-align-last: right;
+  margin-right: 12px;
+  
+  td {
+  font-size: 1em;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+    text-align: left;
+  }
+}
+
+.tar {
+  
+  margin-left: 5%;
+    margin-right: 5%;
+    background-color: aliceblue;
+  bottom: 12px;
+    position: fixed;
+   border-radius: 12px;
+  
+  td {
+    padding-left: 5%;
+    text-align-last: left;
+    background-color: aliceblue;
+    font-weight: bold;
+  }
+  
+}
+
+td {
+    font-size: 14px;
+    width: 25%;
+    text-align: -webkit-center;
+}
+
+#DEB-list{
+  margin-left: 2%;
+  margin-right: 8%;
+  text-align-last: right;
+}
+
+.hidden {
+    display: none;
+}
+
+.login-container,
+.content-container {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+input[type="text"],
+input[type="password"],
+button {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+}
+
+#cartera-list {
+    list-style-type: none;
+    padding: 0;
+    flex-direction: column-reverse;
+    display: flex;
+}
+
+#cartera-list-2 {
+    list-style-type: none;
+    padding: 0;
+    flex-direction: column-reverse;
+    display: flex;
+}
+
+#cartera-list-3 {
+    list-style-type: none;
+    padding: 0;
+    flex-direction: column-reverse;
+    display: flex;
+}
+
+#cartera-list-4 {
+    list-style-type: none;
+    padding: 0;
+    flex-direction: column-reverse;
+    display: flex;
+}
+
+#cartera-list li {
+    margin-bottom: 5px;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+}
+
+.close {
+    color: #fff;
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
