@@ -30,8 +30,7 @@
 
     <section id="hola-section" class="hidden">
         <div class="content-container">
-            <h3>Hola</h3>
-            <p id="content"></p>
+            <div style="display: ruby;"><p>¡Hola&nbsp;</p><p id="content"></p><p>!</p></div>
             <button id="go-to-cartera">Mis Aportes Tesorería</button>
           <button id="go-to-cartera-2">Mis Aportes Obras de Urbanismo</button>
           <button id="go-to-cartera-3">Tesoreria General</button>
@@ -67,12 +66,12 @@
         <button id="go-back-to-hola-2">Volver</button>
         <h3>Mis Aportes Obras de Urbanismo</h3>
         <h2 id="total-column-B2"></h2> 
-        <table>
+        <table style="width:106%;">
           <tr>
-    <th>Columna 1</th>
-    <th>Columna 2</th>
-    <th>Columna 3</th>
-    <th>Columna 4</th>
+    <th>Concepto</th>
+    <th>Monto</th>
+    <th>Fecha&nbsp;&nbsp;</th>
+    <th style="border-right: none;">Comprobante</th>
   </tr>
 </table>
 
@@ -87,15 +86,29 @@
         <h3>Tesoreria General</h3>
         <table id="DEB-list"></table>
         <h2 id="total-column-BG"></h2> 
+      <table style="width:95%;">
+          <tr>
+    <th>Concepto</th>
+    <th>Monto</th>
+    <th>Fecha&nbsp;&nbsp;</th>
+  </tr>
+</table>
         <input type="hidden" id="search-3" placeholder="Buscar por nombre">
         <table id="cartera-list-3"></table>
     </div>
 </section>
- 
+
   <section id="cartera-section-4" class="hidden">
     <div class="content-container">
       <button id="go-back-to-hola-4">Volver</button>
         <h3>Obras de Urbanismo General</h3>
+        <table style="width:95%;">
+          <tr>
+    <th>Concepto</th>
+    <th>Monto</th>
+    <th>Fecha&nbsp;&nbsp;</th>
+  </tr>
+</table>
         <input type="hidden" id="search-4" placeholder="Buscar por nombre">
         <table id="cartera-list-4"></table>
         <table class="tar" id="target-list"></table>
