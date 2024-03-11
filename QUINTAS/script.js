@@ -27,6 +27,7 @@ document.getElementById('login-form').addEventListener('submit', async (e) => {
         document.getElementById('search-3').value = ' ';
         document.getElementById('search-4').value = ' ';
         document.getElementById('search-tesoreria').value = defaultSearchValue;
+        document.getElementById('search-mou').value = defaultSearchValue;
 // Establecer el mismo valor por defecto en el campo de búsqueda de la sección 2
 
         // Filtrar la cartera basada en el valor por defecto del campo de búsqueda para ambas secciones
@@ -515,7 +516,7 @@ async function init3() {
 }
 
 // Llamar a la función de inicialización cuando se active la sección "Cartera 1"
-document.getElementById('go-to-cartera').addEventListener('click', async () => {
+document.getElementById('hola-section').addEventListener('click', async () => {
     await init3();
     populateDEBTable();
 });
@@ -538,6 +539,66 @@ function populateDEBTable() {
         // Agregar celda con los datos de la columna de la hoja "DEBERES"
         const cell = document.createElement('td');
         cell.textContent = rowData[0]; // Se supone que rowData tiene un solo elemento
+        row.appendChild(cell);
+
+        table.appendChild(row);
+    });
+}
+
+///
+
+
+const MOU_RANGE = 'MOU!B:C'; // Rango para obtener datos de la hoja "MOU"
+
+let MOUData = []; // Variable global para almacenar los datos originales de la hoja "MOU"
+
+// Llamar a la función de inicialización al cargar la página
+document.addEventListener('DOMContentLoaded', async () => {
+    await init4();
+});
+
+async function init4() {
+    // Obtener datos de la hoja "MOU"
+    MOUData = await fetchSheetData(SHEET_ID, MOU_RANGE);
+    populateMOUTable(); // Llamar a la función de población de la tabla después de obtener los datos
+}
+
+// Llamar a la función de inicialización cuando se active la sección "hola-section"
+document.getElementById('hola-section').addEventListener('click', async () => {
+    await init4();
+    populateMOUTable();
+
+    // Activar automáticamente el buscador al cargar la sección "hola-section"
+    const searchTerm = document.getElementById('search-mou').value.trim().toLowerCase();
+    const filteredData = MOUData.filter(row => row[0].toLowerCase().includes(searchTerm));
+    populateMOUTable(filteredData);
+});
+
+// Agregar un evento de entrada al campo de búsqueda
+document.getElementById('search-mou').addEventListener('input', () => {
+    const searchTerm = document.getElementById('search-mou').value.trim().toLowerCase();
+    const filteredData = MOUData.filter(row => row[0].toLowerCase().includes(searchTerm));
+    populateMOUTable(filteredData);
+});
+
+function populateMOUTable(data = MOUData) {
+    const table = document.getElementById('MOU-list');
+    table.innerHTML = ''; // Limpiar la tabla antes de agregar nuevos datos
+
+    // Crear la cabecera de la tabla
+    const headerRow = document.createElement('tr');
+    const header = document.createElement('th');
+    header.textContent = 'Monto Aportado'; // Modificar el título según el contenido de la columna de la hoja "MOU"
+    headerRow.appendChild(header);
+    table.appendChild(headerRow);
+
+    // Agregar cada fila de datos como una nueva fila en la tabla
+    data.forEach(rowData => {
+        const row = document.createElement('tr');
+
+        // Agregar celda con los datos de la columna de la hoja "MOU"
+        const cell = document.createElement('td');
+        cell.textContent = rowData[1]; // Se supone que la columna "B" está en el índice 1
         row.appendChild(cell);
 
         table.appendChild(row);
