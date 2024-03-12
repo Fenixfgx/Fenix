@@ -664,7 +664,7 @@ function generateCharts() {
         data: [percentage, 100 - percentage],
         backgroundColor: [
           '#ffc500', // Color of completed percentage
-          '#849ab1' // Color of remaining percentage
+          '#438bd7' // Color of remaining percentage
         ]
       }],
       labels: [] // Empty labels

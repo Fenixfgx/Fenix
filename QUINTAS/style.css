@@ -202,3 +202,15 @@ button {
     margin-top: 21%;
     margin-left: 13%;
 }
+
+.logo{
+  width: 73px;
+    position: absolute;
+    right: 30px;
+    top: 15px;
+}
+
+.hola {
+ font-size: 18px; 
+ font-weight: bold;
+}
