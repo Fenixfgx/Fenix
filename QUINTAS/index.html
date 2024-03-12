@@ -15,6 +15,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <section id="login-section">
@@ -31,6 +32,22 @@
     <section id="hola-section" class="hidden">
         <div class="content-container">
             <div style="display: ruby;"><p>¡Hola&nbsp;</p><p id="content"></p><p>!</p></div>
+            <table id="TARGET2-list"></table>
+                  </div>
+      <div style="display: flex; flex-wrap: wrap;">
+            <div id="chart-container-1">
+    <canvas id="chart-1"></canvas>
+        </div>
+        <div id="chart-container-2">
+            <canvas id="chart-2"></canvas>
+        </div>
+          <div id="chart-container-3">
+            <canvas id="chart-3"></canvas>
+        </div> 
+        <div id="chart-container-4">
+            <canvas id="chart-4"></canvas>
+        </div>
+        </div>
             <button id="go-to-cartera">Mis Aportes Tesorería</button>
           <button id="go-to-cartera-2">Mis Aportes Obras de Urbanismo</button>
           <button id="go-to-cartera-3">Tesoreria General</button>

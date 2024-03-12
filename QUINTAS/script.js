@@ -604,3 +604,84 @@ function populateMOUTable(data = MOUData) {
         table.appendChild(row);
     });
 }
+
+///
+
+
+const TARGET2_RANGE = 'TARGET!F2:F5'; // Rango para obtener datos de la hoja "DEBERES"
+
+let TARGET2Data = []; // Variable global para almacenar los datos originales de la hoja "DEBERES"
+
+// Llamar a la función de inicialización al cargar la página
+document.addEventListener('DOMContentLoaded', async () => {
+    await init5();
+});
+
+async function init5() {
+    // Obtener datos de la hoja "TARGET"
+    TARGET2Data = await fetchSheetData(SHEET_ID, TARGET2_RANGE);
+    populateTARGET2Table();
+    generateCharts();
+}
+
+function populateTARGET2Table() {
+    const table = document.getElementById('TARGET2-list');
+    table.innerHTML = ''; // Limpiar la tabla antes de agregar nuevos datos
+
+    // Agregar cada fila de datos como una nueva fila en la tabla
+    TARGET2Data.forEach(rowData => {
+        const row = document.createElement('tr');
+
+        // Agregar celda con los datos de la columna de la hoja "TARGET"
+        const cell = document.createElement('td');
+        cell.textContent = rowData[0]; // Se supone que rowData tiene un solo elemento
+        row.appendChild(cell);
+
+        table.appendChild(row);
+    });
+}
+
+function generateCharts() {
+  TARGET2Data.forEach((rowData, index) => {
+    const ctx = document.getElementById(`chart-${index + 1}`).getContext('2d');
+    const percentage = parseFloat(rowData[0].replace('%', '')); // Extract the percentage value
+
+    // Configure chart data
+    const data = {
+      datasets: [{
+        data: [percentage, 100 - percentage],
+        backgroundColor: [
+          '#ffc500', // Color of completed percentage
+          '#849ab1' // Color of remaining percentage
+        ]
+      }],
+          };
+
+    // Configure chart options for displaying the value inside the donut
+    const options = {
+      responsive: true,
+      tooltips: {
+        enabled: false // Disable default tooltips
+      },
+      plugins: {
+        // Add a plugin to display the value in the center of the donut
+        doughnutLabel: {
+          labels: [{
+            font: {
+              size: 16,
+              weight: 'bold'
+            },
+            formatter: (value, context) => `${percentage}%` // Display percentage value
+          }]
+        }
+      }
+    };
+
+    // Create the chart with updated options
+    new Chart(ctx, {
+      type: 'doughnut',
+      data: data,
+      options: options
+    });
+  });
+}

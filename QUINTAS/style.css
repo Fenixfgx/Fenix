@@ -159,3 +159,16 @@ button {
     text-decoration: none;
     cursor: pointer;
 }
+
+#chart-container-1{
+  width: 50%;
+}
+#chart-container-2{
+  width: 50%;
+}
+#chart-container-3{
+  width: 50%;
+}
+#chart-container-4{
+  width: 50%;
+}
