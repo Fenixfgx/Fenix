@@ -211,8 +211,10 @@ button {
 }
 
 .hola {
- font-size: 18px; 
+ font-size: 18px;
  font-weight: bold;
+ z-index: 2;
+ position: static;
 }
 
 #anuncio-list{
