@@ -622,7 +622,19 @@ async function init5() {
     TARGET2Data = await fetchSheetData(SHEET_ID, TARGET2_RANGE);
     populateTARGET2Table();
     generateCharts();
+    generateH2Elements(); // Generar los elementos h2 con los valores de la tabla
 }
+
+function generateH2Elements() {
+    TARGET2Data.forEach((rowData, index) => {
+        const value = rowData[0];
+        const h2 = document.createElement('h2');
+        h2.textContent = value;
+        h2.id = `value-${index + 1}`; // Asignar un id único
+        document.getElementById(`h2-container-${index + 1}`).appendChild(h2); // Agregar el h2 al contenedor correspondiente
+    });
+}
+
 
 function populateTARGET2Table() {
     const table = document.getElementById('TARGET2-list');
@@ -655,14 +667,12 @@ function generateCharts() {
           '#849ab1' // Color of remaining percentage
         ]
       }],
-          };
+      labels: [] // Empty labels
+    };
 
     // Configure chart options for displaying the value inside the donut
     const options = {
       responsive: true,
-      tooltips: {
-        enabled: false // Disable default tooltips
-      },
       plugins: {
         // Add a plugin to display the value in the center of the donut
         doughnutLabel: {
@@ -671,7 +681,11 @@ function generateCharts() {
               size: 16,
               weight: 'bold'
             },
-            formatter: (value, context) => `${percentage}%` // Display percentage value
+            formatter: (value, context) => {
+              const data = context.chart.data.datasets[0].data;
+              const percentage = data[0];
+              return `${percentage}%`;
+            }
           }]
         }
       }

@@ -28,23 +28,27 @@
             </form>
         </div>
     </section>
-
+  
     <section id="hola-section" class="hidden">
         <div class="content-container">
             <div style="display: ruby;"><p>¡Hola&nbsp;</p><p id="content"></p><p>!</p></div>
-            <table id="TARGET2-list"></table>
+            <table style="display:none;" id="TARGET2-list"></table>
                   </div>
       <div style="display: flex; flex-wrap: wrap;">
             <div id="chart-container-1">
+              <p style=" display: flex;">Porcentaje de Progreso&nbsp;<spawn id="h2-container-1"></spawn>%</p>
     <canvas id="chart-1"></canvas>
         </div>
-        <div id="chart-container-2">
+        <div style="display:none;" id="chart-container-2">
+          <h2 id="h2-container-2"></h2>
             <canvas id="chart-2"></canvas>
         </div>
-          <div id="chart-container-3">
+          <div style="display:none;" id="chart-container-3">
+            <h2 id="h2-container-3"></h2>
             <canvas id="chart-3"></canvas>
         </div> 
-        <div id="chart-container-4">
+        <div style="display:none;" id="chart-container-4">
+          <h2 id="h2-container-4"></h2>
             <canvas id="chart-4"></canvas>
         </div>
         </div>

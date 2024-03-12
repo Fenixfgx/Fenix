@@ -159,9 +159,12 @@ button {
     text-decoration: none;
     cursor: pointer;
 }
-
+#chart-1 {
+  margin-top: -22px;
+  margin-bottom: 12px;
+}
 #chart-container-1{
-  width: 50%;
+  margin: auto;
 }
 #chart-container-2{
   width: 50%;
@@ -171,4 +174,31 @@ button {
 }
 #chart-container-4{
   width: 50%;
+}
+
+#value-1 {
+    font-size: 1em;
+    text-align-last: center;
+    margin-top: 0px;
+}
+
+#value-2 {
+    font-size: 1em;
+    position: absolute;
+    margin-top: 21%;
+    margin-left: 13%;
+}
+
+#value-3 {
+   font-size: 1em;
+    position: absolute;
+    margin-top: 21%;
+    margin-left: 13%;
+}
+
+#value-4 {
+    font-size: 1em;
+    position: absolute;
+    margin-top: 21%;
+    margin-left: 13%;
 }
