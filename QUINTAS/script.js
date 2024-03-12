@@ -449,7 +449,7 @@ function populateFilteredTesoreriaTable(filteredData) {
 ///
 
 
-const TARGET_RANGE = 'TARGET!A:B'; // Rango para obtener datos de la hoja "TESORERIA"
+const TARGET_RANGE = 'TARGET!A1:B5'; // Rango para obtener datos de la hoja "TESORERIA"
 
 let targetData = []; // Variable global para almacenar los datos originales de la tesorería
 
@@ -464,7 +464,7 @@ async function init2() {
 }
 
 // Llamar a la función de inicialización cuando se active la sección "Cartera 1"
-document.getElementById('go-to-cartera').addEventListener('click', async () => {
+document.getElementById('go-to-cartera-4').addEventListener('click', async () => {
     await init2();
     populateTargetTable();
 });
@@ -501,7 +501,7 @@ function populateTargetTable() {
 ///
 
 
-const DEBERES_RANGE = 'DEBERES!D2:D2'; // Rango para obtener datos de la hoja "DEBERES"
+const DEBERES_RANGE = 'DEBERES!E2:E2'; // Rango para obtener datos de la hoja "DEBERES"
 
 let DEBData = []; // Variable global para almacenar los datos originales de la hoja "DEBERES"
 
@@ -699,3 +699,55 @@ function generateCharts() {
     });
   });
 }
+//// 
+
+const ANUNCIO_RANGE = 'TARGET!A11:B12'; // Rango para obtener datos de la hoja "TESORERIA"
+
+let anuncioData = []; // Variable global para almacenar los datos originales de la tesorería
+
+// Llamar a la función de inicialización al cargar la página
+document.addEventListener('DOMContentLoaded', async () => {
+    await init6();
+});
+
+async function init6() {
+    // Obtener datos de la tesorería
+    anuncioData = await fetchSheetData(SHEET_ID, ANUNCIO_RANGE);
+}
+
+// Llamar a la función de inicialización cuando se active la sección "Cartera 1"
+document.addEventListener('DOMContentLoaded', async () => {
+    await init6();
+    populateAnuncioTable();
+});
+
+function populateAnuncioTable() {
+    const table = document.getElementById('anuncio-list');
+    table.innerHTML = ''; // Limpiar la tabla antes de agregar nuevos datos
+
+    // Agregar cada fila de datos como una nueva fila en la tabla
+    anuncioData.forEach(rowData => {
+        const row = document.createElement('tr');
+
+        // Agregar celda con los datos de la columna "B" de TARGET
+        const cell = document.createElement('td');
+        cell.textContent = rowData[1]; // Se supone que rowData tiene dos elementos, el segundo es la columna "B"
+        row.appendChild(cell);
+
+        table.appendChild(row);
+    });
+}
+
+const table = document.getElementById('anuncio-list');
+let backgroundColorIndex = 0;
+const colors = ['rgb(0 128 38 / 43%)', 'rgb(205 10 10 / 53%)'];
+
+function changeBackgroundColor() {
+    if (table.textContent.trim().length > 0) { // Verificar si la tabla tiene contenido
+        table.style.backgroundColor = colors[backgroundColorIndex];
+        backgroundColorIndex = (backgroundColorIndex + 1) % colors.length;
+    }
+}
+
+// Cambiar el color de fondo cada 2 segundos
+setInterval(changeBackgroundColor, 2000);
