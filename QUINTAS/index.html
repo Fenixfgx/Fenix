@@ -9,21 +9,23 @@
 <body>
 <!-- partial:index.partial.html -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <section id="login-section">
         <div class="login-container">
-            <h2>Login</h2>
+            <h2>Acceso</h2>
+            <img class="logo" src="https://fenixfgx.github.io/Fenix/QUINTAS/QUINTAS_LOGO.png">
             <form id="login-form">
                 <input style="width: 93%;" type="text" id="username" placeholder="Usuario">
                 <input style="width: 93%;" type="password" id="password" placeholder="Contraseña">
+                <input type="checkbox" id="remember-me">
+                <label for="remember-me">Recordarme</label> 
                 <button type="submit">Iniciar sesión</button>
             </form>
         </div>
@@ -142,10 +144,48 @@
         <span class="close">&times;</span>
         <img class="modal-content" id="img01">
     </div>
-
-    <script src="script.js"></script>
 </body>
 </html>
+
+<script>
+    // Obtener elementos del formulario
+    const form = document.getElementById('login-form');
+    const usernameInput = document.getElementById('username');
+    const passwordInput = document.getElementById('password');
+    const rememberMeCheckbox = document.getElementById('remember-me');
+
+    // Al cargar la página, verificar si hay credenciales almacenadas
+    document.addEventListener('DOMContentLoaded', () => {
+        const rememberedUsername = localStorage.getItem('username');
+        const rememberedPassword = localStorage.getItem('password');
+
+        if (rememberedUsername && rememberedPassword) {
+            usernameInput.value = rememberedUsername;
+            passwordInput.value = rememberedPassword;
+            rememberMeCheckbox.checked = true; // Marcar el checkbox
+        }
+    });
+
+    // Al enviar el formulario, guardar las credenciales si se selecciona "Recordarme"
+    form.addEventListener('submit', (event) => {
+        event.preventDefault(); // Evitar que el formulario se envíe normalmente
+
+        const username = usernameInput.value;
+        const password = passwordInput.value;
+
+        if (rememberMeCheckbox.checked) {
+            localStorage.setItem('username', username);
+            localStorage.setItem('password', password);
+        } else {
+            // Limpiar las credenciales almacenadas si el usuario no selecciona "Recordarme"
+            localStorage.removeItem('username');
+            localStorage.removeItem('password');
+        }
+
+        // Aquí puedes agregar la lógica para enviar las credenciales al servidor y procesar el inicio de sesión
+        console.log('Credenciales enviadas:', { username, password });
+    });
+</script>
 <!-- partial -->
   <script  src="./script.js"></script>
 
