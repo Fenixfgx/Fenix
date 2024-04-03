@@ -205,7 +205,9 @@ bodyx {
 
 .cardas-content {
   padding: 20px;
-    margin-top: 10px;
+  margin-top: 10px;
+  height: 180px;
+  overflow: auto;
 }
 
 .cardas-desc {
