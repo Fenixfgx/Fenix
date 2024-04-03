@@ -176,7 +176,7 @@ max-width: 340px;
 
 .carddc-jobtitle {
   position: absolute;
-  bottom: -24px;
+  bottom: 0px;
   font-size: 11px;
   white-space: nowrap;
   font-weight: 500;
