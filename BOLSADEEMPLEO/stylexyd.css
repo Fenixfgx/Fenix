@@ -219,6 +219,8 @@ max-width: 340px;
   margin: 0;
   font-weight: 410;
   font-family: "DM Sans", sans-serif;
+  max-height: 182px;
+  overflow: auto;
 }
 
 .dark .carddc-desc {
