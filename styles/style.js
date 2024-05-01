@@ -6,3 +6,4 @@ const of0x11 = 'Ofertas';
 const sn00x1 = 'Ofertas';
 const sn01x1 = 'Aspirantes';
 const sn10x1 = 'Directorio';
+const SHEET_NAMEE = 'Ofertas';
