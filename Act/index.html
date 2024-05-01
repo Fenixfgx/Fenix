@@ -72,7 +72,7 @@
   
 <body>
     <h2>Activación de Usuario</h2>
-    <form id="miFormulario" action="https://script.google.com/macros/s/AKfycbx4yNf1aorF_EAmIGfJbg1lyUZmUOSgFNl_CphBcQVdbOb0dO7zH8YfcWwt_vPGEMpL/exec" method="post">
+    <form id="miFormulario" action="https://script.google.com/macros/s/AKfycbwlXpDwH_u_c7gmGKS9fhQXZkAnl8XuNPUYtLkorrEYw7_CadvdgcRy_grmF6NfNwhS/exec" method="post">
 <p>Hola estás a punto de Activar tu Usuario, para hacerlo solo tienes que hacer clic en el botón Activar Usuario</p>
 <input type="submit" value="Activar Usuario">
         <input type="text" id="ID" style="display: none;" name="ID" required><br><br>
@@ -94,7 +94,7 @@
 
         // Enviar el formulario al script de Google Apps Script usando Ajax
         var xhr = new XMLHttpRequest();
-        xhr.open("POST", "https://script.google.com/macros/s/AKfycbxrRJTQbalySSsBLiiz2sc3SOvvNnUTClIgjISTJo_lEolrw-cNodIqMTqbTwcUanH-/exec");
+        xhr.open("POST", "https://script.google.com/macros/s/AKfycbwlXpDwH_u_c7gmGKS9fhQXZkAnl8XuNPUYtLkorrEYw7_CadvdgcRy_grmF6NfNwhS/exec");
         xhr.onreadystatechange = function() {
             if (xhr.readyState === XMLHttpRequest.DONE) {
                 if (xhr.status === 200) {
