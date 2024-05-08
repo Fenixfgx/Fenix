@@ -1,0 +1,2647 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - PJ2</title>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/semantic.min.css'><link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!-- CSS de Noty -->
+<link rel="stylesheet" href="https://fenixfgx.github.io/Fenix/DAX/noty.css" />
+<!-- JS de Noty -->
+<script src="https://fenixfgx.github.io/Fenix/DAX/noty.js"></script>
+
+
+<script src="https://apis.google.com/js/api.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.5/dist/sweetalert2.all.min.js"></script>
+<div id="section-index" class="flexin">
+  <div class="tabs tabs-style-flip">
+    <nav>
+      <ul>
+        <li><a href="#section-flip-1"><span><i class="fa fa-lock"></i> Acceso</span></a></li>
+        <li><a href="#section-flip-2"><span><i class="fa fa-user-plus"></i> Registro</span></a></li>
+      </ul>
+    </nav>
+    <div class="content-wrap">
+      <section id="section-flip-1">
+
+       <form id="login-form" class="ui large form">
+  <div class="ui segment">
+    <h2 class="ui header">Iniciar Sesión</h2>
+    <div class="field">
+      <div class="ui left icon input">
+        <i class="user icon"></i>
+<input type="text" name="username" id="username-input" placeholder="Correo Electrónico" onkeyup="toLowerCase(this)" style="
+    margin-top: -8px;
+    margin-bottom: -7px;
+">
+      </div>
+    </div>
+    <div class="field">
+      <div class="ui left icon input">
+        <i class="lock icon"></i>
+        <input type="password" name="password" id="password-input" placeholder="Contraseña">
+      </div>
+    </div>
+ 
+    <!-- Agregar el checkbox para "Recordarme" -->
+    <div class="field">
+      <div class="ui checkbox">
+        <input type="checkbox" name="rememberMe" id="remember-me" checked>
+        <label for="remember-me" style="top: -11px;">Recordarme</label>
+      </div>
+    </div>
+<button id="acceder-button" class="ui fluid large orange submit button" type="submit" style="
+    margin-top: -18px;
+">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      Acceder
+    </button>
+    <br>
+    <a href="#section-3" style="margin-top: -9px; font-size: 14px; display: block;">¿Olvidaste la Contraseña?</a>
+  </div>
+  <div class="ui error message"></div>
+</form>
+<!-- Asegúrate de que jQuery esté cargado antes de este script -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+  // Función que se ejecuta al cargar la página
+  $(document).ready(function() {
+    // Intentar obtener las credenciales almacenadas en localStorage
+    var storedUsername = localStorage.getItem("username");
+    var storedPassword = localStorage.getItem("password");
+
+    if (storedUsername && storedPassword) {
+      // Si se encontraron credenciales almacenadas, completar los campos
+      $("#username-input").val(storedUsername);
+      $("#password-input").val(storedPassword);
+      $("#remember-me").prop("checked", true); // Marcar el checkbox
+    }
+
+    // Función que se ejecuta cuando se envía el formulario
+    $("#login-form").submit(function(event) {
+      event.preventDefault(); // Evitar el envío por defecto del formulario
+
+      // Obtener los valores ingresados en los campos
+      var username = $("#username-input").val();
+      var password = $("#password-input").val();
+      var rememberMe = $("#remember-me").is(":checked");
+
+      if (rememberMe) {
+        // Si el checkbox está marcado, almacenar las credenciales en localStorage
+        localStorage.setItem("username", username);
+        localStorage.setItem("password", password);
+      } else {
+        // Si el checkbox no está marcado, eliminar las credenciales de localStorage
+        localStorage.removeItem("username");
+        localStorage.removeItem("password");
+      }
+    });
+  });
+</script>
+
+<script>
+  function toLowerCase(element) {
+    element.value = element.value.toLowerCase();
+  }
+</script>
+
+        <div class="ui message">
+          No tienes Usuario? <a href="#section-flip-2">Regístrate</a>
+        </div>
+      </section>
+      
+      <section id="section-flip-2">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<h2 class="ui header" style="
+    margin-bottom: 0px;
+    margin-top: 0px;
+    padding-top: 11px;
+    padding-bottom: 4px;
+    background-color: white;
+">Registrar Usuario</h2>
+<iframe id="Registro" title="Registro" width="100%" style="height: 55vh;border:none" src="https://script.google.com/macros/s/AKfycbyq-SZoukK5s6o5qmvSsxDlG9YagSk8kAwNSsZk511LIlt2uyTZU7lY-Cg-YNqa4iWu/exec">
+</iframe>
+        <div class="ui message">
+          Ya tienes Usuario? <a href="#section-flip-1">Inicia Sesión</a>
+        </div>
+      </section>
+    
+      <section id="section-3">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<iframe  title="RP" width="100%" style="height: 55vh;border:none" src="https://script.google.com/macros/s/AKfycbydKwyZZhV56URTaBy9P6OfXvecq6SFYuB-sWI2kh8frBltZLcFmK2d9jepkaXEIsE/exec">
+</iframe>
+        <div class="ui message">
+          Recordaste tu Contraseña? - <a href="#section-flip-1">Inicia Sesión</a>
+        </div>
+      </section>
+      
+    </div>
+    <!-- /content -->
+  </div>
+  <!-- /tabs -->
+</div>
+
+
+ <!-- APP -->
+
+<section id="Carga" style="display: none; width: 100%;">
+<p style="text-align-last: center;">Cargando ...</p>
+<div style="margin: auto; margin-left: 41%; font-family: Roboto, Arial;color: #ADAFB6;display: flex;justify-content: center;align-items: center;background: rgba(249, 251, 255,0.6);" class="boxes">
+    <div class="box">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <div class="box">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <div class="box">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <div class="box">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
+</section>
+
+<section id="hidden-section" style="display: none; width: 100%;">
+
+<section id="W">
+  <h1>Pantalla de Bienvenida</h1>
+</section>
+ 
+<section id="Dashboard" style="display: none;">
+  <!-- Buscador con Toggle Button de Busco: Trabajo o Trabajadores -->
+  <!-- Para Trabajadores, Filtro por región, modalidad de trabajo: virtual etc, Profesion -->
+  <!-- Para Empresas, Filtro nivel academico, region, profesión -->
+  <!-- Cards HV DISPONIBLE en orden de llegada, los primeros arriba -->
+  <!-- Cards Publicaciones de Empresas, es posible que las publicaciones tengan formatos diferentes a las HV -->
+  <!-- Directorio de Empresas -->
+
+<html1 lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buscador de Empleos</title>
+</head>
+<div class="bodys"><div>
+  <div class="containerDX">
+    <input type="text" maxlength= "12"             placeholder="Search..." class="searchbar">
+  <img src="https://images-na.ssl-images-amazon.com/images/I/41gYkruZM2L.png" alt="Magnifying Glass" class="buttonsearch">
+  </div>
+  <div class="category-buttons">
+<button onclick="showAspirante()" name="Aspirantes" class="category-button" data-category="empleo" style="border-radius: 20px;font-size: 1.5em;font-weight: 800;">HV</button>
+    <button onclick="showOfertas()" name="Ofertas" class="category-button active" data-category="ofertas"><svg class="BE" width="35px" height="35px" viewBox="0 0 512.00 512.00" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="currentColor"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="20.48"></g><g id="SVGRepo_iconCarrier"> <title>Buscar Trabajo</title> <g id="Page-1" stroke-width="0.00512" fill="currentColor" fill-rule="currentColor"> <g id="Combined-Shape" fill="currentColor" transform="translate(42.666667, 64.000000)"> <path d="M277.333333,1.42108547e-14 L298.666667,21.3333333 L298.666,64 L426.666667,64 L426.666667,362.666667 L3.55271368e-14,362.666667 L3.55271368e-14,64 L128,64 L128,21.3333333 L149.333333,1.42108547e-14 L277.333333,1.42108547e-14 Z M42.6664912,220.935181 L42.6666667,320 L384,320 L384.000468,220.935097 C341.375319,233.130501 298.701692,240.759085 256.000479,243.809455 L256,277.333333 L170.666667,277.333333 L170.666323,243.809465 C127.965163,240.759108 85.2915887,233.130549 42.6664912,220.935181 Z M384,106.666667 L42.6666667,106.666667 L42.6668606,176.433085 C99.6386775,193.933257 156.507113,202.666667 213.333333,202.666667 C270.159803,202.666667 327.028489,193.933181 384.000558,176.432854 L384,106.666667 Z M256,42.6666667 L170.666667,42.6666667 L170.666667,64 L256,64 L256,42.6666667 Z"> </path> </g> </g> </g></svg></button>
+    <button onclick="showDirectorio()" name="Directorio de Empresas" class="category-button" data-category="empresas" style="
+    border-radius: 20px;
+"><svg fill="currentColor" width="35px" height="35px" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M7 2L7 7L2 7L2 46L14 46L14 44L4 44L4 9L9 9L9 4L29 4L29 7L11 7L11 9L34 9L34 20L36 20L36 7L31 7L31 2 Z M 8 12L8 14L12 14L12 12 Z M 17 12L17 14L21 14L21 12 Z M 26 12L26 14L30 14L30 12 Z M 8 17L8 19L12 19L12 17 Z M 17 17L17 19L21 19L21 17 Z M 26 17L26 19L30 19L30 17 Z M 29 20C25.742188 20 23.328125 21.324219 22.074219 23.296875C20.929688 25.09375 20.875 27.339844 21.59375 29.433594C21.515625 29.566406 21.402344 29.679688 21.328125 29.839844C21.171875 30.191406 21.035156 30.589844 21.054688 31.097656L21.054688 31.101563C21.109375 32.378906 21.851563 33.046875 22.398438 33.421875C22.628906 34.640625 23.207031 35.660156 24 36.390625L24 38.53125C23.824219 38.953125 23.472656 39.308594 22.796875 39.679688C22.089844 40.070313 21.132813 40.4375 20.144531 40.917969C19.15625 41.398438 18.125 42.011719 17.324219 42.988281C16.519531 43.96875 16 45.308594 16 47L16 48L48.050781 48L47.992188 46.941406C47.902344 45.363281 47.316406 44.117188 46.488281 43.222656C45.664063 42.328125 44.644531 41.765625 43.679688 41.320313C42.714844 40.875 41.785156 40.535156 41.109375 40.171875C40.464844 39.832031 40.148438 39.511719 40 39.160156L40 37.472656C40.597656 36.609375 40.859375 35.617188 40.9375 34.6875C41.414063 34.265625 41.96875 33.617188 42.125 32.457031C42.230469 31.625 42.019531 30.996094 41.695313 30.464844C42.144531 29.277344 42.328125 27.84375 41.933594 26.417969C41.707031 25.589844 41.277344 24.777344 40.5625 24.171875C40.003906 23.691406 39.238281 23.425781 38.390625 23.308594L37.75 22L37.125 22C36.097656 22 35.085938 22.238281 34.214844 22.578125C33.871094 22.714844 33.558594 22.863281 33.265625 23.027344C33.101563 22.808594 32.921875 22.601563 32.714844 22.414063C32.105469 21.863281 31.261719 21.550781 30.324219 21.421875L29.621094 20 Z M 8 22L8 24L12 24L12 22 Z M 17 22L17 24L19.484375 24L20.761719 22 Z M 28.4375 22.113281L29.027344 23.300781L29.644531 23.300781C30.464844 23.300781 30.96875 23.535156 31.371094 23.894531C31.773438 24.257813 32.066406 24.796875 32.238281 25.429688C32.582031 26.695313 32.289063 28.339844 32.007813 28.792969L31.644531 29.371094L32.050781 29.921875C32.289063 30.238281 32.441406 30.566406 32.363281 31.007813C32.253906 31.625 32.03125 31.707031 31.589844 32.089844L31.257813 32.375L31.246094 32.8125C31.210938 33.792969 30.871094 34.777344 30.300781 35.339844L30 35.632813L30 38.988281L30.058594 39.152344C30.453125 40.25 31.335938 40.933594 32.234375 41.429688C33.132813 41.925781 34.101563 42.289063 34.976563 42.714844C35.851563 43.140625 36.609375 43.625 37.132813 44.261719C37.496094 44.699219 37.71875 45.289063 37.855469 46L18.144531 46C18.28125 45.289063 18.503906 44.699219 18.867188 44.261719C19.390625 43.625 20.148438 43.140625 21.023438 42.714844C21.898438 42.289063 22.867188 41.925781 23.765625 41.429688C24.664063 40.933594 25.546875 40.25 25.941406 39.152344L26 38.988281L26 35.523438L25.5625 35.226563C25.101563 34.914063 24.34375 33.769531 24.238281 32.742188L24.183594 32.1875L23.683594 31.945313C23.398438 31.808594 23.082031 31.753906 23.050781 31.015625C23.050781 31.015625 23.082031 30.824219 23.15625 30.65625C23.234375 30.484375 23.375 30.304688 23.332031 30.347656L23.8125 29.867188L23.542969 29.242188C22.796875 27.523438 22.898438 25.722656 23.761719 24.367188C24.550781 23.125 26.097656 22.269531 28.4375 22.113281 Z M 36.558594 24.113281L37.089844 25.199219L37.714844 25.199219C38.472656 25.199219 38.921875 25.398438 39.265625 25.691406C39.613281 25.984375 39.859375 26.414063 40.003906 26.949219C40.300781 28.019531 40.085938 29.480469 39.746094 30.144531L39.417969 30.796875L39.933594 31.308594C39.867188 31.242188 40.195313 31.785156 40.140625 32.195313C40.011719 33.175781 39.871094 33.113281 39.449219 33.390625L39.03125 33.667969L39 34.171875C38.953125 35.042969 38.515625 36.351563 38.28125 36.589844L38 36.878906L38 39.621094L38.058594 39.78125C38.4375 40.835938 39.296875 41.476563 40.167969 41.9375C41.035156 42.398438 41.980469 42.738281 42.84375 43.136719C43.707031 43.535156 44.476563 43.984375 45.019531 44.578125C45.367188 44.953125 45.601563 45.433594 45.769531 46L39.921875 46C39.757813 44.777344 39.3125 43.765625 38.675781 42.988281C37.875 42.011719 36.84375 41.398438 35.855469 40.917969C34.867188 40.4375 33.910156 40.070313 33.203125 39.679688C32.527344 39.308594 32.175781 38.953125 32 38.53125L32 36.296875C32.691406 35.421875 33.054688 34.390625 33.15625 33.34375C33.542969 33.003906 34.144531 32.417969 34.332031 31.359375C34.484375 30.492188 34.226563 29.785156 33.90625 29.210938C34.4375 27.988281 34.59375 26.460938 34.167969 24.902344C34.164063 24.886719 34.15625 24.871094 34.152344 24.855469C34.367188 24.71875 34.640625 24.5625 34.949219 24.441406C35.4375 24.25 36.007813 24.179688 36.558594 24.113281 Z M 8 27L8 29L12 29L12 27 Z M 17 27L17 29L19.753906 29L19.394531 27 Z M 8 32L8 34L12 34L12 32 Z M 17 32L17 34L20.449219 34L19.613281 32 Z M 8 37L8 39L12 39L12 37 Z M 17 37L17 39L21 39L21 37Z"></path></g></svg></button>
+  </div>
+  
+  <p class="blacklab" id="active-category-name">Ofertas</p>
+  </div>
+<section id="Ofertas" style="display: block;margin-top: -24px;">
+  <html lang="es" >
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<div class="wrapper" id="Cardempr" >
+  <div style="display:none;">
+  <div class="profile-card js-profile-card">
+    <div class="profile-card__img">
+      <img  id="fotoemp" alt=" ">
+    </div>
+
+    <div class="profile-card__cnt js-profile-cnt">
+      <div class="profile-card__title"><p id="TPublicacion"></p></div>
+      <div class="profile-card__name"><p id="Nempresa"></p></div>
+      <p id="fecha" style="margin-top: 26px;"></p> 
+      <div class="profile-card-loc">
+        <span class="profile-card-loc__icon">
+          <svg class="iconus"><use xlink:href="#icon-location"></use></svg>
+        </span>
+
+<span class="profile-card-loc__txt"><p id="Ubic"></p> </span>
+      </div><br>
+<div class="profile-card__txt"><p id="Cuerpo" style="margin-top: -3px; margin-bottom: 5px;"</div>
+<div class="profile-card-inf__item">
+ 
+        </div>
+      <div class="profile-card-ctr">
+        <button id="llamar" class="profile-card__button button--blue js-message-btn">Llamar</button>
+        <button id="correoOf" class="profile-card__button button--naranja js-message-btn">Correo</button>
+      </div>
+    </div>
+    <div class="profile-card-message js-message">
+      <form class="profile-card-form">
+        <div class="profile-card-form__container">
+          <textarea placeholder="Say something..."></textarea>
+        </div>
+ 
+        <div class="profile-card-form__bottom">
+          <button class="profile-card__button button--blue js-message-close">
+            Send
+          </button>
+ 
+          <button class="profile-card__button button--gray js-message-close">
+            Cancel
+          </button>
+        </div>
+      </form>
+
+      <div class="profile-card__overlay js-message-close"></div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<svg hidden="hidden">
+  <defs>
+    <symbol id="icon-codepen" viewBox="0 0 32 32">
+      <title>codepen</title>
+      <path d="M31.872 10.912v-0.032c0-0.064 0-0.064 0-0.096v-0.064c0-0.064 0-0.064-0.064-0.096 0 0 0-0.064-0.064-0.064 0-0.064-0.064-0.064-0.064-0.096 0 0 0-0.064-0.064-0.064 0-0.064-0.064-0.064-0.064-0.096l-0.192-0.192v-0.064l-0.064-0.064-14.592-9.696c-0.448-0.32-1.056-0.32-1.536 0l-14.528 9.696-0.32 0.32c0 0-0.064 0.064-0.064 0.096 0 0 0 0.064-0.064 0.064 0 0.064-0.064 0.064-0.064 0.096 0 0 0 0.064-0.064 0.064 0 0.064 0 0.064-0.064 0.096v0.064c0 0.064 0 0.064 0 0.096v0.064c0 0.064 0 0.096 0 0.16v9.696c0 0.064 0 0.096 0 0.16v0.064c0 0.064 0 0.064 0 0.096v0.064c0 0.064 0 0.064 0.064 0.096 0 0 0 0.064 0.064 0.064 0 0.064 0.064 0.064 0.064 0.096 0 0 0 0.064 0.064 0.064 0 0.064 0.064 0.064 0.064 0.096l0.256 0.256 0.064 0.032 14.528 9.728c0.224 0.16 0.48 0.224 0.768 0.224s0.544-0.064 0.768-0.224l14.528-9.728 0.32-0.32c0 0 0.064-0.064 0.064-0.096 0 0 0-0.064 0.064-0.064 0-0.064 0.064-0.064 0.064-0.096 0 0 0-0.064 0.064-0.064 0-0.064 0-0.064 0.064-0.096v-0.032c0-0.064 0-0.064 0-0.096v-0.064c0-0.064 0-0.096 0-0.16v-9.664c0-0.064 0-0.096 0-0.224zM17.312 4l10.688 7.136-4.768 3.168-5.92-3.936v-6.368zM14.56 4v6.368l-5.92 3.968-4.768-3.168 10.688-7.168zM2.784 13.664l3.392 2.304-3.392 2.304c0 0 0-4.608 0-4.608zM14.56 28l-10.688-7.136 4.768-3.2 5.92 3.936v6.4zM15.936 19.2l-4.832-3.232 4.832-3.232 4.832 3.232-4.832 3.232zM17.312 28v-6.432l5.92-3.936 4.8 3.168-10.72 7.2zM29.12 18.272l-3.392-2.304 3.392-2.304v4.608z"></path>
+    </symbol>
+
+    <symbol id="icon-github" viewBox="0 0 32 32">
+      <title>github</title>
+      <path d="M16.192 0.512c-8.832 0-16 7.168-16 16 0 7.072 4.576 13.056 10.944 15.168 0.8 0.16 1.088-0.352 1.088-0.768 0-0.384 0-1.632-0.032-2.976-4.448 0.96-5.376-1.888-5.376-1.888-0.736-1.856-1.792-2.336-1.792-2.336-1.44-0.992 0.096-0.96 0.096-0.96 1.6 0.128 2.464 1.664 2.464 1.664 1.44 2.432 3.744 1.728 4.672 1.344 0.128-1.024 0.544-1.728 1.024-2.144-3.552-0.448-7.296-1.824-7.296-7.936 0-1.76 0.64-3.168 1.664-4.288-0.16-0.416-0.704-2.016 0.16-4.224 0 0 1.344-0.416 4.416 1.632 1.28-0.352 2.656-0.544 4-0.544s2.72 0.192 4 0.544c3.040-2.080 4.384-1.632 4.384-1.632 0.864 2.208 0.32 3.84 0.16 4.224 1.024 1.12 1.632 2.56 1.632 4.288 0 6.144-3.744 7.488-7.296 7.904 0.576 0.512 1.088 1.472 1.088 2.976 0 2.144-0.032 3.872-0.032 4.384 0 0.416 0.288 0.928 1.088 0.768 6.368-2.112 10.944-8.128 10.944-15.168 0-8.896-7.168-16.032-16-16.032z"></path>
+      <path d="M6.24 23.488c-0.032 0.064-0.16 0.096-0.288 0.064-0.128-0.064-0.192-0.16-0.128-0.256 0.032-0.096 0.16-0.096 0.288-0.064 0.128 0.064 0.192 0.16 0.128 0.256v0z"></path>
+      <path d="M6.912 24.192c-0.064 0.064-0.224 0.032-0.32-0.064s-0.128-0.256-0.032-0.32c0.064-0.064 0.224-0.032 0.32 0.064s0.096 0.256 0.032 0.32v0z"></path>
+      <path d="M7.52 25.12c-0.096 0.064-0.256 0-0.352-0.128s-0.096-0.32 0-0.384c0.096-0.064 0.256 0 0.352 0.128 0.128 0.128 0.128 0.32 0 0.384v0z"></path>
+      <path d="M8.384 26.016c-0.096 0.096-0.288 0.064-0.416-0.064s-0.192-0.32-0.096-0.416c0.096-0.096 0.288-0.064 0.416 0.064 0.16 0.128 0.192 0.32 0.096 0.416v0z"></path>
+      <path d="M9.6 26.528c-0.032 0.128-0.224 0.192-0.384 0.128-0.192-0.064-0.288-0.192-0.256-0.32s0.224-0.192 0.416-0.128c0.128 0.032 0.256 0.192 0.224 0.32v0z"></path>
+      <path d="M10.912 26.624c0 0.128-0.16 0.256-0.352 0.256s-0.352-0.096-0.352-0.224c0-0.128 0.16-0.256 0.352-0.256 0.192-0.032 0.352 0.096 0.352 0.224v0z"></path>
+      <path d="M12.128 26.4c0.032 0.128-0.096 0.256-0.288 0.288s-0.352-0.032-0.384-0.16c-0.032-0.128 0.096-0.256 0.288-0.288s0.352 0.032 0.384 0.16v0z"></path>
+    </symbol>
+
+    <symbol id="icon-location" viewBox="0 0 32 32">
+      <title>location</title>
+      <path d="M16 31.68c-0.352 0-0.672-0.064-1.024-0.16-0.8-0.256-1.44-0.832-1.824-1.6l-6.784-13.632c-1.664-3.36-1.568-7.328 0.32-10.592 1.856-3.2 4.992-5.152 8.608-5.376h1.376c3.648 0.224 6.752 2.176 8.608 5.376 1.888 3.264 2.016 7.232 0.352 10.592l-6.816 13.664c-0.288 0.608-0.8 1.12-1.408 1.408-0.448 0.224-0.928 0.32-1.408 0.32zM15.392 2.368c-2.88 0.192-5.408 1.76-6.912 4.352-1.536 2.688-1.632 5.92-0.288 8.672l6.816 13.632c0.128 0.256 0.352 0.448 0.64 0.544s0.576 0.064 0.832-0.064c0.224-0.096 0.384-0.288 0.48-0.48l6.816-13.664c1.376-2.752 1.248-5.984-0.288-8.672-1.472-2.56-4-4.128-6.88-4.32h-1.216zM16 17.888c-3.264 0-5.92-2.656-5.92-5.92 0-3.232 2.656-5.888 5.92-5.888s5.92 2.656 5.92 5.92c0 3.264-2.656 5.888-5.92 5.888zM16 8.128c-2.144 0-3.872 1.728-3.872 3.872s1.728 3.872 3.872 3.872 3.872-1.728 3.872-3.872c0-2.144-1.76-3.872-3.872-3.872z"></path>
+      <path d="M16 32c-0.384 0-0.736-0.064-1.12-0.192-0.864-0.288-1.568-0.928-1.984-1.728l-6.784-13.664c-1.728-3.456-1.6-7.52 0.352-10.912 1.888-3.264 5.088-5.28 8.832-5.504h1.376c3.744 0.224 6.976 2.24 8.864 5.536 1.952 3.36 2.080 7.424 0.352 10.912l-6.784 13.632c-0.32 0.672-0.896 1.216-1.568 1.568-0.48 0.224-0.992 0.352-1.536 0.352zM15.36 0.64h-0.064c-3.488 0.224-6.56 2.112-8.32 5.216-1.824 3.168-1.952 7.040-0.32 10.304l6.816 13.632c0.32 0.672 0.928 1.184 1.632 1.44s1.472 0.192 2.176-0.16c0.544-0.288 1.024-0.736 1.28-1.28l6.816-13.632c1.632-3.264 1.504-7.136-0.32-10.304-1.824-3.104-4.864-5.024-8.384-5.216h-1.312zM16 29.952c-0.16 0-0.32-0.032-0.448-0.064-0.352-0.128-0.64-0.384-0.8-0.704l-6.816-13.664c-1.408-2.848-1.312-6.176 0.288-8.96 1.536-2.656 4.16-4.32 7.168-4.512h1.216c3.040 0.192 5.632 1.824 7.2 4.512 1.6 2.752 1.696 6.112 0.288 8.96l-6.848 13.632c-0.128 0.288-0.352 0.512-0.64 0.64-0.192 0.096-0.384 0.16-0.608 0.16zM15.424 2.688c-2.784 0.192-5.216 1.696-6.656 4.192-1.504 2.592-1.6 5.696-0.256 8.352l6.816 13.632c0.096 0.192 0.256 0.32 0.448 0.384s0.416 0.064 0.608-0.032c0.16-0.064 0.288-0.192 0.352-0.352l6.816-13.664c1.312-2.656 1.216-5.792-0.288-8.352-1.472-2.464-3.904-4-6.688-4.16h-1.152zM16 18.208c-3.424 0-6.24-2.784-6.24-6.24 0-3.424 2.816-6.208 6.24-6.208s6.24 2.784 6.24 6.24c0 3.424-2.816 6.208-6.24 6.208zM16 6.4c-3.072 0-5.6 2.496-5.6 5.6 0 3.072 2.528 5.6 5.6 5.6s5.6-2.496 5.6-5.6c0-3.104-2.528-5.6-5.6-5.6zM16 16.16c-2.304 0-4.16-1.888-4.16-4.16s1.888-4.16 4.16-4.16c2.304 0 4.16 1.888 4.16 4.16s-1.856 4.16-4.16 4.16zM16 8.448c-1.952 0-3.552 1.6-3.552 3.552s1.6 3.552 3.552 3.552c1.952 0 3.552-1.6 3.552-3.552s-1.6-3.552-3.552-3.552z"></path>
+    </symbol>
+
+    <symbol id="icon-facebook" viewBox="0 0 32 32">
+      <title>facebook</title>
+      <path d="M19 6h5v-6h-5c-3.86 0-7 3.14-7 7v3h-4v6h4v16h6v-16h5l1-6h-6v-3c0-0.542 0.458-1 1-1z"></path>
+    </symbol>
+
+    <symbol id="icon-instagram" viewBox="0 0 32 32">
+      <title>instagram</title>
+      <path d="M16 2.881c4.275 0 4.781 0.019 6.462 0.094 1.563 0.069 2.406 0.331 2.969 0.55 0.744 0.288 1.281 0.638 1.837 1.194 0.563 0.563 0.906 1.094 1.2 1.838 0.219 0.563 0.481 1.412 0.55 2.969 0.075 1.688 0.094 2.194 0.094 6.463s-0.019 4.781-0.094 6.463c-0.069 1.563-0.331 2.406-0.55 2.969-0.288 0.744-0.637 1.281-1.194 1.837-0.563 0.563-1.094 0.906-1.837 1.2-0.563 0.219-1.413 0.481-2.969 0.55-1.688 0.075-2.194 0.094-6.463 0.094s-4.781-0.019-6.463-0.094c-1.563-0.069-2.406-0.331-2.969-0.55-0.744-0.288-1.281-0.637-1.838-1.194-0.563-0.563-0.906-1.094-1.2-1.837-0.219-0.563-0.481-1.413-0.55-2.969-0.075-1.688-0.094-2.194-0.094-6.463s0.019-4.781 0.094-6.463c0.069-1.563 0.331-2.406 0.55-2.969 0.288-0.744 0.638-1.281 1.194-1.838 0.563-0.563 1.094-0.906 1.838-1.2 0.563-0.219 1.412-0.481 2.969-0.55 1.681-0.075 2.188-0.094 6.463-0.094zM16 0c-4.344 0-4.887 0.019-6.594 0.094-1.7 0.075-2.869 0.35-3.881 0.744-1.056 0.412-1.95 0.956-2.837 1.85-0.894 0.888-1.438 1.781-1.85 2.831-0.394 1.019-0.669 2.181-0.744 3.881-0.075 1.713-0.094 2.256-0.094 6.6s0.019 4.887 0.094 6.594c0.075 1.7 0.35 2.869 0.744 3.881 0.413 1.056 0.956 1.95 1.85 2.837 0.887 0.887 1.781 1.438 2.831 1.844 1.019 0.394 2.181 0.669 3.881 0.744 1.706 0.075 2.25 0.094 6.594 0.094s4.888-0.019 6.594-0.094c1.7-0.075 2.869-0.35 3.881-0.744 1.050-0.406 1.944-0.956 2.831-1.844s1.438-1.781 1.844-2.831c0.394-1.019 0.669-2.181 0.744-3.881 0.075-1.706 0.094-2.25 0.094-6.594s-0.019-4.887-0.094-6.594c-0.075-1.7-0.35-2.869-0.744-3.881-0.394-1.063-0.938-1.956-1.831-2.844-0.887-0.887-1.781-1.438-2.831-1.844-1.019-0.394-2.181-0.669-3.881-0.744-1.712-0.081-2.256-0.1-6.6-0.1v0z"></path>
+      <path d="M16 7.781c-4.537 0-8.219 3.681-8.219 8.219s3.681 8.219 8.219 8.219 8.219-3.681 8.219-8.219c0-4.537-3.681-8.219-8.219-8.219zM16 21.331c-2.944 0-5.331-2.387-5.331-5.331s2.387-5.331 5.331-5.331c2.944 0 5.331 2.387 5.331 5.331s-2.387 5.331-5.331 5.331z"></path>
+      <path d="M26.462 7.456c0 1.060-0.859 1.919-1.919 1.919s-1.919-0.859-1.919-1.919c0-1.060 0.859-1.919 1.919-1.919s1.919 0.859 1.919 1.919z"></path>
+    </symbol>
+
+    <symbol id="icon-twitter" viewBox="0 0 32 32">
+      <title>twitter</title>
+      <path d="M32 7.075c-1.175 0.525-2.444 0.875-3.769 1.031 1.356-0.813 2.394-2.1 2.887-3.631-1.269 0.75-2.675 1.3-4.169 1.594-1.2-1.275-2.906-2.069-4.794-2.069-3.625 0-6.563 2.938-6.563 6.563 0 0.512 0.056 1.012 0.169 1.494-5.456-0.275-10.294-2.888-13.531-6.862-0.563 0.969-0.887 2.1-0.887 3.3 0 2.275 1.156 4.287 2.919 5.463-1.075-0.031-2.087-0.331-2.975-0.819 0 0.025 0 0.056 0 0.081 0 3.181 2.263 5.838 5.269 6.437-0.55 0.15-1.131 0.231-1.731 0.231-0.425 0-0.831-0.044-1.237-0.119 0.838 2.606 3.263 4.506 6.131 4.563-2.25 1.762-5.075 2.813-8.156 2.813-0.531 0-1.050-0.031-1.569-0.094 2.913 1.869 6.362 2.95 10.069 2.95 12.075 0 18.681-10.006 18.681-18.681 0-0.287-0.006-0.569-0.019-0.85 1.281-0.919 2.394-2.075 3.275-3.394z"></path>
+    </symbol>
+
+    <symbol id="icon-behance" viewBox="0 0 32 32">
+      <title>behance</title>
+      <path d="M9.281 6.412c0.944 0 1.794 0.081 2.569 0.25 0.775 0.162 1.431 0.438 1.988 0.813 0.55 0.375 0.975 0.875 1.287 1.5 0.3 0.619 0.45 1.394 0.45 2.313 0 0.994-0.225 1.819-0.675 2.481-0.456 0.662-1.119 1.2-2.006 1.625 1.213 0.35 2.106 0.962 2.706 1.831 0.6 0.875 0.887 1.925 0.887 3.163 0 1-0.194 1.856-0.575 2.581-0.387 0.731-0.912 1.325-1.556 1.781-0.65 0.462-1.4 0.8-2.237 1.019-0.831 0.219-1.688 0.331-2.575 0.331h-9.544v-19.688h9.281zM8.719 14.363c0.769 0 1.406-0.181 1.906-0.55 0.5-0.363 0.738-0.963 0.738-1.787 0-0.456-0.081-0.838-0.244-1.131-0.169-0.294-0.387-0.525-0.669-0.688-0.275-0.169-0.588-0.281-0.956-0.344-0.356-0.069-0.731-0.1-1.113-0.1h-4.050v4.6h4.388zM8.956 22.744c0.425 0 0.831-0.038 1.213-0.125 0.387-0.087 0.731-0.219 1.019-0.419 0.287-0.194 0.531-0.45 0.706-0.788 0.175-0.331 0.256-0.756 0.256-1.275 0-1.012-0.287-1.738-0.856-2.175-0.569-0.431-1.325-0.644-2.262-0.644h-4.7v5.419h4.625z"></path>
+      <path d="M22.663 22.675c0.587 0.575 1.431 0.863 2.531 0.863 0.788 0 1.475-0.2 2.044-0.6s0.913-0.825 1.044-1.262h3.45c-0.556 1.719-1.394 2.938-2.544 3.675-1.131 0.738-2.519 1.113-4.125 1.113-1.125 0-2.131-0.181-3.038-0.538-0.906-0.363-1.663-0.869-2.3-1.531-0.619-0.663-1.106-1.45-1.45-2.375-0.337-0.919-0.512-1.938-0.512-3.038 0-1.069 0.175-2.063 0.525-2.981 0.356-0.925 0.844-1.719 1.494-2.387s1.413-1.2 2.313-1.588c0.894-0.387 1.881-0.581 2.975-0.581 1.206 0 2.262 0.231 3.169 0.706 0.9 0.469 1.644 1.1 2.225 1.887s0.994 1.694 1.25 2.706c0.256 1.012 0.344 2.069 0.275 3.175h-10.294c0 1.119 0.375 2.188 0.969 2.756zM27.156 15.188c-0.462-0.512-1.256-0.794-2.212-0.794-0.625 0-1.144 0.106-1.556 0.319-0.406 0.213-0.738 0.475-0.994 0.787-0.25 0.313-0.425 0.65-0.525 1.006-0.1 0.344-0.163 0.663-0.181 0.938h6.375c-0.094-1-0.438-1.738-0.906-2.256z"></path>
+      <path d="M20.887 8h7.981v1.944h-7.981v-1.944z"></path>
+    </symbol>
+
+    <symbol id="icon-link" viewBox="0 0 32 32">
+      <title>link</title>
+      <path d="M17.984 11.456c-0.704 0.704-0.704 1.856 0 2.56 2.112 2.112 2.112 5.568 0 7.68l-5.12 5.12c-2.048 2.048-5.632 2.048-7.68 0-1.024-1.024-1.6-2.4-1.6-3.84s0.576-2.816 1.6-3.84c0.704-0.704 0.704-1.856 0-2.56s-1.856-0.704-2.56 0c-1.696 1.696-2.624 3.968-2.624 6.368 0 2.432 0.928 4.672 2.656 6.4 1.696 1.696 3.968 2.656 6.4 2.656s4.672-0.928 6.4-2.656l5.12-5.12c3.52-3.52 3.52-9.248 0-12.8-0.736-0.672-1.888-0.672-2.592 0.032z"></path>
+      <path d="M29.344 2.656c-1.696-1.728-3.968-2.656-6.4-2.656s-4.672 0.928-6.4 2.656l-5.12 5.12c-3.52 3.52-3.52 9.248 0 12.8 0.352 0.352 0.8 0.544 1.28 0.544s0.928-0.192 1.28-0.544c0.704-0.704 0.704-1.856 0-2.56-2.112-2.112-2.112-5.568 0-7.68l5.12-5.12c2.048-2.048 5.632-2.048 7.68 0 1.024 1.024 1.6 2.4 1.6 3.84s-0.576 2.816-1.6 3.84c-0.704 0.704-0.704 1.856 0 2.56s1.856 0.704 2.56 0c1.696-1.696 2.656-3.968 2.656-6.4s-0.928-4.704-2.656-6.4z"></path>
+    </symbol>
+  </defs>
+</svg>
+   <div id="card-containeremp" style="display: flex;flex-direction: column-reverse;width: 95%;"></div>
+ 
+<script src="https://apis.google.com/js/api.js"></script>
+  <script src="https://fenixfgx.github.io/Fenix/styles/style.js"></script>
+  <script>
+
+
+  gapi.load('client:auth2', initClientE);
+
+  function initClientE() {
+    gapi.client.init({
+      apiKey: API_KEYE,
+      discoveryDocs: ["https://sheets.googleapis.com/$discovery/rest?version=v4"],
+    }).then(() => {
+      gapi.client.sheets.spreadsheets.values.get({
+        spreadsheetId: spreadx00,
+        range: SHEET_NAMEE,
+      }).then((response) => {
+        const data = response.result.values;
+
+        const cardContaineremp = document.getElementById("card-containeremp");
+
+        for (let i = 1; i < data.length; i++) {
+          const cardCloneem = document.querySelector(".js-profile-card").cloneNode(true);
+          cardCloneem.setAttribute("data-state", "#" + i);
+
+          const Nempresa = cardCloneem.querySelector("#Nempresa");
+          const TPublicacion = cardCloneem.querySelector("#TPublicacion");
+          const Cuerpo = cardCloneem.querySelector("#Cuerpo");
+          const Ubic = cardCloneem.querySelector("#Ubic");
+          const fecha = cardCloneem.querySelector("#fecha");
+          const fotoemp = cardCloneem.querySelector("#fotoemp");
+          const llamar = cardCloneem.querySelector("#llamar");
+          const correoOf = cardCloneem.querySelector("#correoOf");
+
+          Nempresa.innerHTML = data[i][1];
+          TPublicacion.innerHTML = data[i][4];
+          Cuerpo.innerHTML = data[i][5];
+          Ubic.innerHTML = data[i][11];
+          fecha.innerHTML = data[i][3];
+          fotoemp.src = data[i][12];
+          // Agregar manejadores de eventos click a los botones
+          llamar.addEventListener("click", function() {
+            // Redirigir al usuario al número de teléfono asignado al ID
+            window.location.href = "tel:" + data[i][9]; // Reemplaza data[i][9] con el número de teléfono adecuado
+          });
+          
+          correoOf.addEventListener("click", function() {
+            // Redirigir al usuario al correo electrónico asignado al ID
+            window.location.href = "mailto:" + data[i][10]; // Reemplaza data[i][10] con el correo electrónico adecuado
+          });
+
+          cardContaineremp.appendChild(cardCloneem);
+        }
+      });
+    });
+  }
+</script>
+<style>
+@import url("https://fonts.googleapis.com/css?family=Quicksand:400,500,700&subset=latin-ext");
+* {
+  box-sizing: border-box;
+}
+
+a, a:hover {
+  text-decoration: none;
+}
+
+.iconus {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+
+.wrapper {
+  width: 100%;
+  width: 100%;
+  height: auto;
+  min-height: 100vh;
+  padding: 50px 20px;
+  padding-top: 77px;
+  display: flex;
+}
+@media screen and (max-width: 5768px) {
+  .wrapper {
+    height: auto;
+    min-height: 100vh;
+    padding-top: 77px;
+    justify-content: center;
+  }
+}
+
+.profile-card {
+  width: 100%;
+  min-height: 370px;
+  margin: auto;
+  box-shadow: 0px 8px 60px -10px rgba(13, 28, 39, 0.6);
+  background: #fff;
+  border-radius: 12px;
+  max-width: 389px;
+  position: relative;
+  margin-bottom: 80px;
+}
+  
+  .dark .profile-card {
+    background-color: #131c31;
+    color: #ffffffc4;
+    box-shadow: 0px 8px 60px -10px rgb(25 137 219);
+  }  
+  
+.profile-card.active .profile-card__cnt {
+  filter: blur(6px);
+}
+.profile-card.active .profile-card-message,
+.profile-card.active .profile-card__overlay {
+  opacity: 1;
+  pointer-events: auto;
+  transition-delay: 0.1s;
+}
+.profile-card.active .profile-card-form {
+  transform: none;
+  transition-delay: 0.1s;
+}
+.profile-card__img {
+    width: 150px;
+    height: 150px;
+    margin-left: auto;
+    margin-right: auto;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    z-index: 4;
+    /* box-shadow: 0px 5px 50px 0px #6c44fc, 0px 0px 0px 7px rgba(107, 74, 255, 0.5); */
+    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2);
+}
+@media screen and (max-width: 5576px) {
+  .profile-card__img {
+    width: 100px;
+    height: 100px;
+  }
+}
+.profile-card__img img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.profile-card__cnt {
+  margin-top: -57px;
+  text-align: center;
+  padding: 0 20px;
+  padding-bottom: 17px;
+  transition: all 0.3s;
+}
+.profile-card__name {
+  font-weight: 700;
+  font-size: 15px;
+  color: black;
+  margin-bottom: -18px;
+  margin-top: 15px;
+}
+  
+  .profile-card__title {
+  font-weight: 700;
+  font-size: 20px;
+  color: black;
+  margin-bottom: -18px;
+  margin-top: 15px;
+}
+  
+  .dark .profile-card__name {
+  color: #ffffffc4;
+  }
+  
+  .dark .profile-card__title {
+  color: #ffffffc4;
+  }
+  
+.profile-card__txt {
+  font-size: 16px;
+  font-weight: 500;
+  color: #324e63;
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+  
+.dark .profile-card__txt {
+  color: white;
+}  
+  
+.profile-card__txt strong {
+  font-weight: 700;
+}
+.profile-card-loc {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+  font-weight: 600;
+  margin-top: 6px;
+  margin-bottom: -18px;
+}
+.profile-card-loc__icon {
+  display: inline-flex;
+  font-size: 27px;
+  margin-right: 10px;
+}
+.profile-card-inf {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  margin-top: 35px;
+}
+.profile-card-inf__item {
+  padding: 10px 35px;
+  min-width: 150px;
+}
+@media screen and (max-width: 768px) {
+  .profile-card-inf__item {
+    padding: 10px 20px;
+    min-width: 120px;
+    margin-top: -2px;
+    margin-bottom: -29px;
+  }
+}
+.profile-card-inf__title {
+  font-weight: 700;
+  font-size: 18px;
+  color: #324e63;
+}
+  
+.dark .profile-card-inf__title {
+    font-weight: 700;
+    font-size: 18px;
+    color: #ffffffc4;
+}
+  
+.profile-card-inf__txt {
+  font-weight: 500;
+  margin-top: 1px;
+}
+.profile-card-social {
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.profile-card-social__item {
+  display: inline-flex;
+  width: 55px;
+  height: 55px;
+  margin: 15px;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background: #405de6;
+  box-shadow: 0px 7px 30px rgba(43, 98, 169, 0.5);
+  position: relative;
+  font-size: 21px;
+  flex-shrink: 0;
+  transition: all 0.3s;
+}
+@media screen and (max-width: 768px) {
+  .profile-card-social__item {
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .profile-card-social__item:hover {
+    transform: scale(1.2);
+  }
+}
+.profile-card-social__item.facebook {
+  background: linear-gradient(45deg, #3b5998, #0078d7);
+  box-shadow: 0px 4px 30px rgba(43, 98, 169, 0.5);
+}
+.profile-card-social__item.twitter {
+  background: linear-gradient(45deg, #1da1f2, #0e71c8);
+  box-shadow: 0px 4px 30px rgba(19, 127, 212, 0.7);
+}
+.profile-card-social__item.instagram {
+  background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+  box-shadow: 0px 4px 30px rgba(120, 64, 190, 0.6);
+}
+.profile-card-social__item.behance {
+  background: linear-gradient(45deg, #1769ff, #213fca);
+  box-shadow: 0px 4px 30px rgba(27, 86, 231, 0.7);
+}
+.profile-card-social__item.github {
+  background: linear-gradient(45deg, #333333, #626b73);
+  box-shadow: 0px 4px 30px rgba(63, 65, 67, 0.6);
+}
+.profile-card-social__item.codepen {
+  background: linear-gradient(45deg, #324e63, #414447);
+  box-shadow: 0px 4px 30px rgba(55, 75, 90, 0.6);
+}
+.profile-card-social__item.link {
+  background: linear-gradient(45deg, #d5135a, #f05924);
+  box-shadow: 0px 4px 30px rgba(223, 45, 70, 0.6);
+}
+.profile-card-social .icon-font {
+  display: inline-flex;
+}
+.profile-card-ctr {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+}
+@media screen and (max-width: 5076px) {
+  .profile-card-ctr {
+    flex-wrap: wrap;
+  }
+}
+.profile-card__button {
+  background: none;
+  border: none;
+  font-family: "Quicksand", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  margin: 15px 35px;
+  padding: 15px 23px;
+  min-width: 201px;
+  border-radius: 50px;
+  min-height: 55px;
+  color: #fff;
+  cursor: pointer;
+  backface-visibility: hidden;
+  transition: all 0.3s;
+}
+@media screen and (max-width: 5768px) {
+  .profile-card__button {
+    min-width: 170px;
+    margin: 15px 25px;
+  }
+}
+@media screen and (max-width: 5576px) {
+  .profile-card__button {
+    min-width: inherit;
+    margin: 0;
+    width: 50%;
+    max-width: 300px;
+  }
+  .profile-card__button:last-child {
+    margin-bottom: 0;
+  }
+}
+.profile-card__button:focus {
+  outline: none !important;
+}
+@media screen and (min-width: 768px) {
+  .profile-card__button:hover {
+    transform: translateY(-5px);
+  }
+}
+.profile-card__button:first-child {
+  margin-left: 0;
+}
+.profile-card__button:last-child {
+  margin-right: 0;
+}
+.profile-card__button.button--blue {
+  background: linear-gradient(45deg, #1da1f2, #0e71c8);
+  box-shadow: 0px 4px 30px rgba(19, 127, 212, 0.4);
+}
+.profile-card__button.button--blue:hover {
+  box-shadow: 0px 7px 30px rgba(19, 127, 212, 0.75);
+}
+.profile-card__button.button--naranja {
+  background: linear-gradient(45deg, #f2a61d, #c8530e);
+  box-shadow: 0px 4px 30px rgba(212, 117, 19, 0.4);
+}
+.profile-card__button.button--naranja:hover {
+  box-shadow: 0px 4px 30px rgba(212, 117, 19, 0.75);
+}
+.profile-card__button.button--orange {
+  background: linear-gradient(45deg, #d5135a, #f05924);
+  box-shadow: 0px 4px 30px rgba(223, 45, 70, 0.35);
+}
+.profile-card__button.button--orange:hover {
+  box-shadow: 0px 7px 30px rgba(223, 45, 70, 0.75);
+}
+.profile-card__button.button--gray {
+  box-shadow: none;
+  background: #dcdcdc;
+  color: #142029;
+}
+.profile-card-message {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding-top: 130px;
+  padding-bottom: 100px;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s;
+}
+.profile-card-form {
+  box-shadow: 0 4px 30px rgba(15, 22, 56, 0.35);
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 100%;
+  background: #fff;
+  border-radius: 10px;
+  padding: 35px;
+  transform: scale(0.8);
+  position: relative;
+  z-index: 3;
+  transition: all 0.3s;
+}
+@media screen and (max-width: 768px) {
+  .profile-card-form {
+    max-width: 90%;
+    height: auto;
+  }
+}
+@media screen and (max-width: 576px) {
+  .profile-card-form {
+    padding: 20px;
+  }
+}
+.profile-card-form__bottom {
+  justify-content: space-between;
+  display: flex;
+}
+@media screen and (max-width: 576px) {
+  .profile-card-form__bottom {
+    flex-wrap: wrap;
+  }
+}
+.profile-card textarea {
+  width: 100%;
+  resize: none;
+  height: 210px;
+  margin-bottom: 20px;
+  border: 2px solid #dcdcdc;
+  border-radius: 10px;
+  padding: 15px 20px;
+  color: #324e63;
+  font-weight: 500;
+  font-family: "Quicksand", sans-serif;
+  outline: none;
+  transition: all 0.3s;
+}
+.profile-card textarea:focus {
+  outline: none;
+  border-color: #8a979e;
+}
+.profile-card__overlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  opacity: 0;
+  background: rgba(22, 33, 72, 0.35);
+  border-radius: 12px;
+  transition: all 0.3s;
+}
+</style>
+ 
+</body>
+</html>
+</section>
+<section id="Aspirantes" style="display: none; margin-top: 12px; margin-bottom: 80px;">
+<link rel="stylesheet" href="https://fenixfgx.github.io/Fenix/BOLSADEEMPLEO/stylexy.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<div style="display:none">
+<div class="cardas" data-state="#aboutas">
+  <div class="cardas-header">
+    <div class="cardas-cover"></div>
+    <img class="cardas-avatar" id="fotoas" alt="avatar" />
+    <h1 class="cardas-fullname" id="nombreas"></h1>
+    <h2 class="cardas-apel" id="apellidoas"></h2>
+    <h2 class="cardas-jobtitle" id="profesionas"></h2>
+  </div>
+  <div class="cardas-main">
+    <div class="cardas-section is-active" id="aboutas">
+      <div class="cardas-content">
+        <div class="cardas-subtitle">ACERCA DE</div>
+        <p class="card-desc" style="margin-bottom: 10px;">Nivel Educativo: <span id="NivelEducativoas"></span></p>
+        <p class="cardas-desc" id="acercaas">
+        </p>
+<div style="margin-top: 12px;">
+       <p class="cardas-desc" >Edad: <span id="edadas"></span> Años.</p>
+</div>
+      </div>
+    </div>
+    <div class="cardas-section" id="experienceas">
+      <div class="cardas-content">
+        <div class="cardas-subtitle">EXPERIENCIA LABORAL</div>
+        <div class="cardas-timeline">
+          <div class="cardas-item" >
+            <div class="cardas-item-title" id="expas"></div>
+          </div>
+          <div class="cardas-item" style="display:none" >
+            
+          </div>
+          <div class="cardas-item" style="display:none">
+            <div class="cardas-item-title"></div>
+            <div class="cardas-item-desc"></div>
+          </div>
+          <div class="cardas-item" style="display:none">
+            <div class="cardas-item-title"></div>
+            <div class="cardas-item-desc"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cardas-section" id="contactas">
+      <div class="cardas-content">
+        <div class="cardas-subtitle">CONTACTO</div>
+        <div class="cardas-contact-wrapper">
+          <div class="cardas-contact">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+              <circle cx="12" cy="10" r="3" />
+            </svg>
+           <p id="ubicacionas">  </p>
+          </div>
+          <div class="cardas-contact">
+            <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" />
+            </svg><p id="telas">  </p>
+          </div>
+          <div class="cardas-contact">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+              <path d="M22 6l-10 7L2 6" />
+            </svg>
+            <p id="emailas">  </p>
+          </div>
+          </div>
+      </div>
+    </div>
+    <div class="cardas-buttons">
+      <button data-section="#aboutas" class="is-active">ACERCA DE</button>
+      <button data-section="#experienceas">EXPERIENCIA</button>
+      <button data-section="#contactas">CONTACTO</button>
+    </div>
+  </div>
+</div>
+</div>
+<style>
+.cardas {
+    margin-bottom: 25px;
+}
+.dark .cardas {
+    margin-bottom: 25px;
+}
+</style>
+
+<div id="card-container" style="display: flex;
+    flex-direction: column-reverse;">
+
+<script src="https://apis.google.com/js/api.js"></script>
+<script>
+
+  gapi.load('client:auth2', initClient);
+
+  function initClient() {
+    gapi.client.init({
+      apiKey: Dax01800,
+      discoveryDocs: ["https://sheets.googleapis.com/$discovery/rest?version=v4"],
+    }).then(() => {
+      gapi.client.sheets.spreadsheets.values.get({
+        spreadsheetId: spreadx00,
+        range: sn01x1,
+      }).then((response) => {
+        const data = response.result.values;
+
+        const cardContainer = document.getElementById("card-container");
+
+        for (let i = 1; i < data.length; i++) {
+          const cardClone = document.querySelector(".cardas").cloneNode(true);
+          cardClone.setAttribute("data-state", "#" + i);
+
+          const nombreas = cardClone.querySelector("#nombreas");
+          const apellidoas = cardClone.querySelector("#apellidoas");
+          const profesionas = cardClone.querySelector("#profesionas");
+          const NivelEducativoas = cardClone.querySelector("#NivelEducativoas");
+          const acercaas = cardClone.querySelector("#acercaas");
+          const ubicacionas = cardClone.querySelector("#ubicacionas");
+          const telas = cardClone.querySelector("#telas");
+          const emailas = cardClone.querySelector("#emailas");
+          const expas = cardClone.querySelector("#expas");
+          const edadas = cardClone.querySelector("#edadas");
+          const fotoas = cardClone.querySelector("#fotoas");
+
+          nombreas.innerHTML = data[i][1];
+          apellidoas.innerHTML = data[i][2];
+          profesionas.innerHTML = data[i][11];
+          acercaas.innerHTML = data[i][14];
+          NivelEducativoas.innerHTML = data[i][18];
+          ubicacionas.innerHTML = data[i][13];
+          telas.innerHTML = data[i][10];
+          emailas.innerHTML = data[i][20];
+          edadas.innerHTML = data[i][12];
+          expas.innerHTML = data[i][16];
+          fotoas.src = data[i][15];
+
+          cardContainer.appendChild(cardClone);
+          setupCardButtons(cardClone);
+        }
+      });
+    });
+  }
+
+  function setupCardButtons(card) {
+    const buttons = card.querySelectorAll(".cardas-buttons button");
+    const sections = card.querySelectorAll(".cardas-section");
+
+    const handleButtonClick = (e) => {
+        const targetSection = e.target.getAttribute("data-section");
+        const section = card.querySelector(targetSection);
+        targetSection !== "#aboutas"
+            ? card.classList.add("is-active")
+            : card.classList.remove("is-active");
+        card.setAttribute("data-state", targetSection);
+        sections.forEach((s) => s.classList.remove("is-active"));
+        buttons.forEach((b) => b.classList.remove("is-active"));
+        e.target.classList.add("is-active");
+        section.classList.add("is-active");
+    };
+
+    buttons.forEach((btn) => {
+        btn.addEventListener("click", handleButtonClick);
+    });
+
+    const telasButton = card.querySelector("#telas");
+    telasButton.addEventListener("click", () => {
+        const phoneNumber = telasButton.textContent.trim();
+        if (phoneNumber !== "") {
+            window.location.href = `tel:${phoneNumber}`;
+        }
+    });
+
+    const emailasButton = card.querySelector("#emailas");
+    emailasButton.addEventListener("click", () => {
+        const emailAddress = emailasButton.textContent.trim();
+        if (emailAddress !== "") {
+            window.location.href = `mailto:${emailAddress}`;
+        }
+    });
+}
+</script>
+   <script>
+ // Obtener una referencia al input del searchbar
+  const searchbar = document.querySelector('.searchbar');
+
+// Agregar un evento de escucha al input del searchbar
+searchbar.addEventListener('input', filterItems);
+
+// Función para filtrar y actualizar las tarjetas de aspirantes y directorio
+function filterItems() {
+  const searchTerm = searchbar.value.toLowerCase(); // Obtener el contenido del searchbar en minúsculas
+
+  const cardsAspirantes = document.querySelectorAll('.cardas'); // Obtener todas las tarjetas de aspirantes
+  const cardsDirectorio = document.querySelectorAll('.carddc'); // Obtener todas las tarjetas de directorio
+  const cardsOfertas = document.querySelectorAll('.profile-card'); // Obtener todas las tarjetas de ofertas
+
+
+  // Filtrar tarjetas de aspirantes
+  cardsAspirantes.forEach(card => {
+    const nombre = card.querySelector('#nombreas').textContent.toLowerCase();
+    const apellido = card.querySelector('#apellidoas').textContent.toLowerCase();
+    const profesion = card.querySelector('#profesionas').textContent.toLowerCase();
+    const nivelEducativo = card.querySelector('#NivelEducativoas').textContent.toLowerCase();
+
+    // Verificar si al menos uno de los campos coincide con el término de búsqueda
+    if (
+      nombre.includes(searchTerm) ||
+      apellido.includes(searchTerm) ||
+      profesion.includes(searchTerm) ||
+      nivelEducativo.includes(searchTerm)
+    ) {
+      card.style.display = 'block'; // Mostrar la tarjeta
+    } else {
+      card.style.display = 'none'; // Ocultar la tarjeta
+    }
+  });
+
+  // Filtrar tarjetas de directorio
+  cardsDirectorio.forEach(card => {
+    const nombre = card.querySelector('#nombredc').textContent.toLowerCase();
+    const apellido = card.querySelector('#apellidodc').textContent.toLowerCase();
+    const profesion = card.querySelector('#profesiondc').textContent.toLowerCase();
+    const nivelEducativo = card.querySelector('#NivelEducativodc').textContent.toLowerCase();
+    const ubicacion = card.querySelector('#ubicaciondc').textContent.toLowerCase();
+    const telefono = card.querySelector('#teldc').textContent.toLowerCase();
+    const email = card.querySelector('#emaildc').textContent.toLowerCase();
+
+    // Verificar si al menos uno de los campos coincide con el término de búsqueda
+    if (
+      nombre.includes(searchTerm) ||
+      apellido.includes(searchTerm) ||
+      profesion.includes(searchTerm) ||
+      nivelEducativo.includes(searchTerm) ||
+      ubicacion.includes(searchTerm) ||
+      telefono.includes(searchTerm) ||
+      email.includes(searchTerm)
+    ) {
+      card.style.display = 'block'; // Mostrar la tarjeta
+    } else {
+      card.style.display = 'none'; // Ocultar la tarjeta
+    }
+  });
+  
+// Filtrar tarjetas de ofertas
+  cardsOfertas.forEach(card => {
+    const nombreEmpresa = card.querySelector('#Nempresa').textContent.toLowerCase();
+    const tituloPublicacion = card.querySelector('#TPublicacion').textContent.toLowerCase();
+    const ubicacion = card.querySelector('#Ubic').textContent.toLowerCase();
+    const cuerpo = card.querySelector('#Cuerpo').textContent.toLowerCase();
+
+    // Verificar si al menos uno de los campos coincide con el término de búsqueda
+    if (
+      nombreEmpresa.includes(searchTerm) ||
+      tituloPublicacion.includes(searchTerm) ||
+      ubicacion.includes(searchTerm) ||
+      cuerpo.includes(searchTerm)
+    ) {
+      card.style.display = 'block'; // Mostrar la tarjeta
+    } else {
+      card.style.display = 'none'; // Ocultar la tarjeta
+    }
+  });
+}
+
+// Llamar a la función de filtrado inicial para manejar las tarjetas mostradas al cargar la página
+filterItems();
+     
+</script>
+</section>
+<section id="Directorio" style="display: none; margin-top: 17px;margin-bottom: 80px;">
+<link rel="stylesheet" href="https://fenixfgx.github.io/Fenix/BOLSADEEMPLEO/stylexyd.css">  
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<div style="display:none">
+<div class="carddc" data-state="#aboutdc">
+  <div class="carddc-header">
+    <div class="carddc-cover"></div>
+    <img class="carddc-avatar" id="fotodc" alt="avatar" />
+    <h1 class="carddc-fullname" id="nombredc"></h1>
+    <h2 class="carddc-apel" id="apellidodc"></h2>
+    <h2 class="carddc-jobtitle" id="profesiondc"></h2>
+  </div>
+  <div class="carddc-main">
+    <div class="carddc-section is-active" id="aboutdc">
+      <div class="carddc-content">
+        <div class="carddc-subtitle">ACERCA DE</div>
+        <p class="card-desc" style="margin-bottom: 10px; display: none;">Nivel Educativo: <span id="NivelEducativodc"></span></p>
+        <p class="carddc-desc" id="acercadc">
+        </p>
+<div style="margin-top: 12px;">
+       <p class="carddc-desc" style="display: none;" >Experiencia: <span id="edaddc"></span> Años.</p>
+</div>
+      </div>
+    </div>
+    <div class="carddc-section" id="experiencedc">
+      <div class="carddc-content">
+        <div class="carddc-subtitle">EXPERIENCIA LABORAL</div>
+        <div class="carddc-timeline">
+          <div class="carddc-item" >
+            <div class="carddc-item-title" id="expdc"></div>
+          </div>
+          <div class="carddc-item" style="display:none" >
+            
+          </div>
+          <div class="carddc-item" style="display:none">
+            <div class="carddc-item-title"></div>
+            <div class="carddc-item-desc"></div>
+          </div>
+          <div class="carddc-item" style="display:none">
+            <div class="carddc-item-title"></div>
+            <div class="carddc-item-desc"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="carddc-section" id="contactdc">
+      <div class="carddc-content">
+        <div class="carddc-subtitle">CONTACTO</div>
+        <div class="carddc-contact-wrapper">
+          <div class="carddc-contact">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+              <circle cx="12" cy="10" r="3" />
+            </svg>
+           <p id="ubicaciondc">  </p>
+          </div>
+          <div class="carddc-contact">
+            <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" />
+            </svg><p id="teldc">  </p>
+          </div>
+          <div class="carddc-contact">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+              <path d="M22 6l-10 7L2 6" />
+            </svg>
+            <p id="emaildc">  </p>
+          </div>
+          <div class="carddc-contact">
+            <svg fill="currentcolor" version="1.1"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" stroke="currentColor" viewBox="0 0 209.281 209.281" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="2"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M203.456,139.065c3.768-10.786,5.824-22.369,5.824-34.425s-2.056-23.639-5.824-34.425c-0.092-0.324-0.201-0.64-0.333-0.944 C188.589,28.926,149.932,0,104.641,0S20.692,28.926,6.159,69.271c-0.132,0.305-0.242,0.62-0.333,0.944 c-3.768,10.786-5.824,22.369-5.824,34.425s2.056,23.639,5.824,34.425c0.092,0.324,0.201,0.64,0.333,0.944 c14.534,40.346,53.191,69.271,98.482,69.271s83.948-28.926,98.482-69.271C203.255,139.705,203.364,139.39,203.456,139.065z M104.641,194.281c-3.985,0-10.41-7.212-15.78-23.324c-2.592-7.775-4.667-16.713-6.179-26.436H126.6 c-1.512,9.723-3.587,18.66-6.178,26.436C115.051,187.069,108.626,194.281,104.641,194.281z M80.862,129.521 c-0.721-7.998-1.102-16.342-1.102-24.881s0.381-16.883,1.102-24.881h47.557c0.721,7.998,1.102,16.342,1.102,24.881 s-0.381,16.883-1.102,24.881H80.862z M15.001,104.641c0-8.63,1.229-16.978,3.516-24.881h47.3 c-0.701,8.163-1.057,16.529-1.057,24.881s0.355,16.718,1.057,24.881h-47.3C16.23,121.618,15.001,113.271,15.001,104.641z M104.641,15c3.985,0,10.411,7.212,15.781,23.324c2.591,7.775,4.667,16.713,6.178,26.435H82.681 c1.512-9.723,3.587-18.66,6.179-26.435C94.231,22.212,100.656,15,104.641,15z M143.464,79.76h47.3 c2.287,7.903,3.516,16.251,3.516,24.881s-1.229,16.978-3.516,24.881h-47.3c0.701-8.163,1.057-16.529,1.057-24.881 S144.165,87.923,143.464,79.76z M184.903,64.76h-43.16c-2.668-18.397-7.245-34.902-13.666-46.644 C152.972,24.865,173.597,42.096,184.903,64.76z M81.204,18.115C74.783,29.857,70.206,46.362,67.538,64.76h-43.16 C35.685,42.096,56.309,24.865,81.204,18.115z M24.378,144.521h43.16c2.668,18.397,7.245,34.902,13.666,46.645 C56.309,184.416,35.685,167.186,24.378,144.521z M128.077,191.166c6.421-11.742,10.998-28.247,13.666-46.645h43.16 C173.597,167.186,152.972,184.416,128.077,191.166z"></path> </g></svg>
+            <p id="webdc">  </p>
+          </div>
+          </div>
+      </div>
+    </div>
+    <div class="carddc-buttons">
+      <button data-section="#aboutdc" class="is-active">ACERCA DE</button>
+      <button style="display:none;" data-section="#experiencedc">EXPERIENCIA</button>
+      <button data-section="#contactdc">CONTACTO</button>
+    </div>
+  </div>
+</div>
+</div>
+<style>
+.carddc {
+    margin-bottom: 25px;
+}
+</style>
+
+<div id="cardcontainer2">
+
+<script src="https://apis.google.com/js/api.js"></script>
+<script>
+
+  gapi.load('client:auth2', initClient2);
+
+  function initClient2() {
+    gapi.client.init({
+      apiKey: Dax01800,
+      discoveryDocs: ["https://sheets.googleapis.com/$discovery/rest?version=v4"],
+    }).then(() => {
+      gapi.client.sheets.spreadsheets.values.get({
+        spreadsheetId: spreadx00,
+        range: sn10x1,
+      }).then((response) => {
+        const data = response.result.values;
+
+        const cardcontainer2 = document.getElementById("cardcontainer2");
+
+        for (let i = 1; i < data.length; i++) {
+          const cardClone2 = document.querySelector(".carddc").cloneNode(true);
+          cardClone2.setAttribute("data-state", "#" + i);
+
+          const nombredc = cardClone2.querySelector("#nombredc");
+          const apellidodc = cardClone2.querySelector("#apellidodc");
+          const profesiondc = cardClone2.querySelector("#profesiondc");
+          const NivelEducativodc = cardClone2.querySelector("#NivelEducativodc");
+          const acercadc = cardClone2.querySelector("#acercadc");
+          const ubicaciondc = cardClone2.querySelector("#ubicaciondc");
+          const teldc = cardClone2.querySelector("#teldc");
+          const emaildc = cardClone2.querySelector("#emaildc");
+          const webdc = cardClone2.querySelector("#webdc");
+          const expdc = cardClone2.querySelector("#expdc");
+          const edaddc = cardClone2.querySelector("#edaddc");
+          const fotodc = cardClone2.querySelector("#fotodc");
+
+          nombredc.innerHTML = data[i][1];
+          apellidodc.innerHTML = data[i][2];
+          profesiondc.innerHTML = data[i][11];
+          acercadc.innerHTML = data[i][14];
+          NivelEducativodc.innerHTML = data[i][18];
+          ubicaciondc.innerHTML = data[i][13];
+          teldc.innerHTML = data[i][10];
+          emaildc.innerHTML = data[i][20];
+          webdc.innerHTML = data[i][19];
+          edaddc.innerHTML = data[i][12];
+          expdc.innerHTML = data[i][16];
+          fotodc.src = data[i][15];
+          
+          cardcontainer2.appendChild(cardClone2);
+          setupCardButtons2(cardClone2);
+        }
+      });
+    });
+  }
+  function setupCardButtons2(card) {
+    const buttons = card.querySelectorAll(".carddc-buttons button");
+    const sections = card.querySelectorAll(".carddc-section");
+
+    const handleButtonClick = (e) => {
+        const targetSection = e.target.getAttribute("data-section");
+        const section = card.querySelector(targetSection);
+        targetSection !== "#aboutdc"
+            ? card.classList.add("is-active")
+            : card.classList.remove("is-active");
+        card.setAttribute("data-state", targetSection);
+        sections.forEach((s) => s.classList.remove("is-active"));
+        buttons.forEach((b) => b.classList.remove("is-active"));
+        e.target.classList.add("is-active");
+        section.classList.add("is-active");
+    };
+
+    buttons.forEach((btn) => {
+        btn.addEventListener("click", handleButtonClick);
+    });
+
+    const teldcButton = card.querySelector("#teldc");
+    teldcButton.addEventListener("click", () => {
+        const phoneNumber = teldcButton.textContent.trim();
+        if (phoneNumber !== "") {
+            window.location.href = `tel:${phoneNumber}`;
+        }
+    });
+    
+   const webdcButton = card.querySelector("#webdc");
+webdcButton.addEventListener("click", () => {
+    const web = webdcButton.textContent.trim();
+    if (web !== "") {
+         window.open(`https://${web}`);
+    }
+});
+
+    const emaildcButton = card.querySelector("#emaildc");
+    emaildcButton.addEventListener("click", () => {
+        const emailAddress = emaildcButton.textContent.trim();
+        if (emailAddress !== "") {
+            window.location.href = `mailto:${emailAddress}`;
+        }
+    });
+}
+</script>
+</section>
+</div>
+  <script>
+    const categoryButtons = document.querySelectorAll('.category-button');
+
+    categoryButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Desactivar la clase activa de todos los botones
+        categoryButtons.forEach(btn => btn.classList.remove('active'));
+
+        // Activar la clase en el botón seleccionado
+        button.classList.add('active');
+
+        // Obtener el nombre de la categoría desde el atributo 'name'
+        const activeCategoryName = button.getAttribute('name');
+
+        // Actualizar el nombre de la categoría activa en el recuadro
+        const activeCategoryElement = document.getElementById('active-category-name');
+        activeCategoryElement.textContent = activeCategoryName;
+      });
+    });
+  </script>
+<script>
+    function showAspirante() {
+      document.getElementById('Aspirantes').style.display = 'block';
+      document.getElementById('Ofertas').style.display = 'none';
+      document.getElementById('Directorio').style.display = 'none';
+    }
+    function showOfertas() {
+      document.getElementById('Aspirantes').style.display = 'none';
+      document.getElementById('Ofertas').style.display = 'block';
+      document.getElementById('Directorio').style.display = 'none';
+    }
+    function showDirectorio() {
+      document.getElementById('Aspirantes').style.display = 'none';
+      document.getElementById('Ofertas').style.display = 'none';
+      document.getElementById('Directorio').style.display = 'block';
+    }
+  </script>
+</html1>
+  <p style="display:none;">ID: <span id="user-id"></span></p>
+  <!-- Buscador con Toggle Button de Busco: Trabajo o Trabajadores -->
+  <!-- Para Trabajadores, Filtro por región, modalidad de trabajo: virtual etc, Profesion -->
+  <!-- Para Empresas, Filtro nivel academico, region, profesión -->
+  <!-- Cards HV DISPONIBLE en orden de llegada, los primeros arriba -->
+  <!-- Cards Publicaciones de Empresas, es posible que las publicaciones tengan formatos diferentes a las HV -->
+  <!-- Directorio de Empresas -->
+</section>
+
+<section id="Inbox" style="display: none;">
+  <h1>INBOX</h1>
+  <p>Correo Electrónico: <span id="user-email"></span></p>
+  <!-- Inbox, para notificaciones de trabajadores, para notificación de postulantes a publicación de empleo-->
+</section>
+
+<section id="HV" style="display: none; width: 100%;" class="HV">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="https://fenixfgx.github.io/Fenix/BOLSADEEMPLEO/stylex.css">
+<bodyx><div class="card" data-state="#about">
+  <div class="card-header">
+<label for="stado" style="z-index: 12;height:22px;margin-left: 124px;margin-top: 6px;">Estado:</label>
+<form id="IForm" method="post" style="z-index: 13;">
+  <input type="text" id="codigox" name="codigox" placeholder="Código" required="" style="display: none;">
+  <select id="estados" name="estado" required="" style="z-index: 12;height: 22px;margin-top: 5px;margin-left: 4px;border-radius: 12px;width: 109px;background: center;text-align: center;">
+    <option value="" disabled="" id="estado" selected="">Estado</option>
+    <option value="Publicado">Publicar</option>
+    <option value="No Publicado">No Publicar</option>
+  </select>
+</form>
+<script>
+  document.getElementById("estados").addEventListener("change", function(event) {
+    // Obtener los valores del formulario
+    var codigox = document.getElementById("codigox").value;
+    var estados = document.getElementById("estados").value;
+
+    fetch("https://script.google.com/macros/s/AKfycbzyDPhlzPjtFjGC5yS0Kvj5Gec2jXufmKhe3AWRrkmsO-HVUk0NzzUkQbYIxT7-GDXg/exec", {
+      method: "POST",
+      body: new URLSearchParams({
+        codigo: codigox,
+        estado: estados
+      }),
+    })
+    .then(function(response) {
+      // Hacer algo con la respuesta si es necesario
+      console.log("Datos enviados correctamente");
+    })
+    .catch(function(error) {
+      // Manejar errores
+      console.error("Error al enviar los datos:", error);
+    });
+  });
+</script>
+<button onclick="showFormModal()" id="editButton" class="button" style="z-index: 1;position: absolute;right: 1px;border-radius: 80%;padding: 10px;padding-top: 11px;padding-bottom: 11px;padding-right: 8px;padding-left: 8px;rotate: 84deg;/* box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16); */border: none;font-size: 25px;/* border-radius: 50%; */background-color: transparent;">✎</button>
+<div id="bubble" class="bubble-content" style="position: absolute;top: 39px;right: 19%;transform: translateX(50%);background-color: rgb(51, 51, 51);color: rgb(255, 255, 255);padding: 6px;border-radius: 4px;white-space: nowrap;visibility: visible;">Edita tu Perfil ⇧</div>
+
+
+<div class="card-cover"></div>
+    <img class="card-avatar" id="foto" />
+    <h1 class="card-fullname" id="nombre"></h1>
+    <h2 class="card-apel" id="apellido"></h2>
+    <h2 class="card-jobtitle" id="profesion"></h2>
+  </div>
+  <div class="card-main">
+    <div class="card-section is-active" id="about">
+      <div class="card-content">
+        <div class="card-subtitle">ACERCA DE</div>
+<p class="card-desc" style="margin-bottom: 10px;">Nivel Educativo: <span id="NivelEducativo">Universidad</span></p>
+        <p class="card-desc" id="acerca"></p>
+<div style="margin-top: 12px;">
+       <p class="card-desc" >Edad: <span id="edad"></span> Años.</p>
+</div>
+      </div>
+    </div>
+    <div class="card-section" id="experience">
+      <div class="card-content">
+        <div class="card-subtitle">EXPERIENCIA LABORAL</div>
+        <div class="card-timeline">
+          <div class="card-item" >
+            <div class="card-item-title" id="exp"></div>
+          </div>
+          <div class="card-item" style="display:none" >
+            
+          </div>
+          <div class="card-item" style="display:none">
+            <div class="card-item-title"></div>
+            <div class="card-item-desc"></div>
+          </div>
+          <div class="card-item" style="display:none">
+            <div class="card-item-title"></div>
+            <div class="card-item-desc"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-section" id="contact">
+      <div class="card-content">
+        <div class="card-subtitle">CONTACTO</div>
+        <div class="card-contact-wrapper">
+          <div class="card-contact">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+              <circle cx="12" cy="10" r="3" />
+            </svg>
+           <p id="ubicacion">  </p>
+          </div>
+          <div class="card-contact">
+            <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" />
+            </svg><p id="tel">  </p>
+          </div>
+          <div class="card-contact">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+              <path d="M22 6l-10 7L2 6" />
+            </svg>
+            <p id="correo">  </p>
+          </div>
+          </div>
+      </div>
+    </div>
+    <div class="card-buttons">
+      <button data-section="#about" class="is-active">ACERCA DE</button>
+      <button data-section="#experience">EXPERIENCIA</button>
+      <button data-section="#contact">CONTACTO</button>
+    </div>
+  </div>
+</div></button>
+  <!-- Agrega este input fuera del modal -->
+<input type="hidden" id="tempCodexx">
+<p id="coddex" style="display: none;"></p>
+<script>
+
+  </script>
+<style>
+    /* Estilos del formulario */
+    .formulario-hv body { font-family: Arial, sans-serif; }
+    .formulario-hv form { max-width: 500px; margin: 0 auto; border: 1px solid #ccc; border-radius: 5px; }
+    .formulario-hv input[type="text"], .formulario-hv input[type="date"], .formulario-hv input[type="tel"], .formulario-hv input[type="email"], .formulario-hv textarea, .formulario-hv select { width: 100%; padding: 14px; margin-bottom: -13px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; font-size: 15px }
+    .formulario-hv textarea { width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; resize: vertical; height: 212px;}
+  
+.dark .formulario-hv input[type="text"], .dark .formulario-hv input[type="date"], .dark .formulario-hv input[type="tel"], .dark .formulario-hv input[type="email"], .dark .formulario-hv textarea, .dark .formulario-hv select { width: 100%;
+    padding: 10px;
+    margin-bottom: -13px;
+    border: 1px solid #1e356b;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 13px;
+    background-color: #1e356b;
+    color: white;}
+
+  .dark ::placeholder {
+  color: white; 
+}
+  
+  .dark .copy {
+  color: white; 
+}
+  
+  input[type="date"]::before {
+    content: attr(value);
+    color: #000;
+}
+    .formulario-hv input[type="submit"] { background-color: #4CAF50; color: #fff; border: none; border-radius: 4px; cursor: pointer; padding: 12px 20px; font-size: 16px; }
+    .formulario-hv input[type="submit"]:hover { background-color: #45a049; }
+    .formulario-hv .form-group { display: none; }
+    .formulario-hv .form-group.active { display: flex; flex-wrap: wrap; gap: 20px; }
+    .formulario-hv .step-buttons { display: flex; justify-content: space-between; margin-top: 20px; }
+    .formulario-hv .step-buttons button { background-color: #007BFF; color: #fff; border: none; border-radius: 4px; cursor: pointer; padding: 10px 20px; font-size: 14px; }
+    .formulario-hv .step-buttons button:hover { background-color: #0056b3; }
+    @media (max-width: 200px) {
+      .formulario-hv .form-group { flex-direction: column; }
+      .formulario-hv .step-buttons { flex-direction: column; align-items: center; }
+      .formulario-hv .step-buttons button { margin-bottom: 10px; }
+    }
+    /* Estilos para el botón personalizado de carga */
+    .formulario-hv .custom-file-input {
+      display: none;
+    }
+    .formulario-hv .custom-file-label {
+      background-color: #007BFF;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      padding: 10px 20px;
+      font-size: 14px;
+      text-align: center;
+    }
+    .formulario-hv .custom-file-label:hover {
+      background-color: #0056b3;
+    }
+  
+  /* Estilo para el contenedor del input */
+input[type="date"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 16px;
+}
+
+/* Estilo para el texto dentro del input */
+input[type="date"]::before {
+  content: attr(value);
+  color: #aaa;
+}
+
+/* Estilo para el texto seleccionado */
+input[type="date"]:valid::before {
+  content: none;
+}
+  
+    .swal2-html-container {
+    z-index: 1;
+    justify-content: center;
+    margin-bottom: -17px;
+    color: #545454;
+    font-size: 1.125em;
+    font-weight: 400;
+    line-height: normal;
+    text-align: center;
+    word-wrap: break-word;
+    word-break: break-word;
+}
+    .swal2-popup {
+    position: relative;
+    box-sizing: border-box;
+    width: 32em;
+    max-width: 100%;
+    padding: 1em 0 1.25em;
+    border: none;
+    background: #fff;
+    font-family: inherit;
+    font-size: 1rem;
+}
+  
+  .dark .swal2-title {
+    color: white;
+}
+  
+  .dark .swal2-popup {
+    background: #131c31;
+    
+}
+  
+  .swal2-content {
+    z-index: 1;
+    justify-content: center;
+    margin: 0;
+    padding: 0 1em;
+    color: #545454;
+    font-size: 1.125em;
+    font-weight: 400;
+    line-height: normal;
+    text-align: center;
+    word-wrap: break-word;
+}
+  
+  .swal2-container {
+    display: flex;
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 0.625em;
+    overflow-x: hidden;
+    transition: background-color .1s;
+    -webkit-overflow-scrolling: touch;
+    top: 1px;
+}
+  
+ .swal2-container:not(.swal2-top):not(.swal2-top-start):not(.swal2-top-end):not(.swal2-top-left):not(.swal2-top-right):not(.swal2-center-start):not(.swal2-center-end):not(.swal2-center-left):not(.swal2-center-right):not(.swal2-bottom):not(.swal2-bottom-start):not(.swal2-bottom-end):not(.swal2-bottom-left):not(.swal2-bottom-right):not(.swal2-grow-fullscreen)>.swal2-modal {
+    margin: auto;
+    margin-top: 10%;
+    width: 95%;
+}
+  
+  .noty_theme__sunset.noty_type__info, .noty_theme__sunset.noty_type__information {
+    background-color: #2b599be8;
+    color: #fff;
+}
+  </style>
+  <script>
+    
+      function areAllFieldsFilled(formGroup) {
+      const inputs = formGroup.querySelectorAll('input[required], textarea[required]');
+      for (const input of inputs) {
+        if (!input.value.trim()) {
+          return false;
+        }
+      }
+      return true;
+    }
+    
+    function prefillFormFields() {
+  const nombresInput = document.getElementById('nombres');
+  const apellidosInput = document.getElementById('apellidos');
+  const fnInput = document.getElementById('fn');
+  const profesionInput = document.getElementById('profesion');
+
+  // Establecer valores predeterminados
+  nombresInput.value = 'Tu nombre predeterminado';
+  apellidosInput.value = 'Tus apellidos predeterminados';
+  fnInput.value = 'Tu fecha de nacimiento predeterminada';
+  profesionInput.value = 'Tu profesión predeterminada';
+}
+    
+      function showFormModal() {
+        const formHTML = `<img style="z-index: -3;position: absolute;width: 120px;margin-left: 23%; margin-top: 23%;" src="https://cdn.pixabay.com/animation/2023/10/08/03/19/03-19-26-213_512.gif"><iframe
+  width="100%"
+  height="400px"   
+  style="border:none" src="https://script.google.com/macros/s/AKfycbw2H0k9bSg_OgJg5vhNe3lTu78_yqh8ma2Z5NkXpDZdcuo_bhGkuwxx_SCHNwxjnDGC/exec">
+</iframe>
+`; 
+
+        Swal.fire({
+        title: 'Mi Perfil',
+        width: '95%' ,
+        height: '95%',
+        html: formHTML,
+        showConfirmButton: false,
+        showCloseButton: true,
+        didOpen: () => {
+          const formGroups = document.querySelectorAll('.form-group');
+          const stepButtons = document.querySelector('.step-buttons');
+          let currentStep = 1;
+
+          function showStep(step) {
+            formGroups.forEach(group => group.classList.remove('active'));
+            document.querySelector(`.step${step}`).classList.add('active');
+
+            if (step === 1) {
+              stepButtons.querySelector('button:first-child').style.display = 'none';
+            } else if (step === 6) {
+              stepButtons.querySelector('button:last-child').innerText = 'Enviar';
+            } else {
+              stepButtons.querySelector('button:first-child').style.display = 'inline-block';
+              stepButtons.querySelector('button:last-child').innerText = 'Siguiente';
+            }
+          }
+
+function nextStep() {
+  const currentFormGroup = document.querySelector(`.step${currentStep}`);
+  if (areAllFieldsFilled(currentFormGroup)) {
+    Swal.resetValidationMessage(); // Restablecer el mensaje de validación
+    currentStep++;
+    if (currentStep > 6) {
+      // Si estamos en el último paso, enviamos el formulario
+      const form = document.getElementById("miFormulario");
+      const formData = new FormData(form);
+      const xhr = new XMLHttpRequest();
+      xhr.open("POST", form.action);
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+          if (xhr.status === 200) {
+            // Mostrar la notificación personalizada de éxito con SweetAlert
+            Swal.fire({
+              icon: 'success',
+              title: 'Tu Hoja de Vida Acaba de ser actualizada, para ver los cambios reinicia el App',
+              showConfirmButton: true,
+              confirmButtonText: 'Cerrar',
+              timer: 15000 // Ocultar automáticamente la notificación después de 1.5 segundos
+            });
+
+            // Restablecer el formulario después del envío si lo deseas
+            form.reset();
+          } else {
+            // Mostrar la notificación personalizada de error con SweetAlert
+            Swal.fire({
+              icon: 'success',
+              title: 'Perfil Actualizado con Exito',
+              text: 'Tu Hoja de Vida Acaba de ser actualizada, para ver los cambios reinicia el App',
+              confirmButtonText: 'Cerrar'
+            });
+          }
+        }
+      };
+      xhr.send(formData);
+    } else {
+      showStep(currentStep);
+    }
+  } else {
+    Swal.showValidationMessage('Completa todos los campos obligatorios antes de continuar.');
+  }
+}
+const tempCodexxElement = document.getElementById('tempCodexx');
+const codexxElement = document.getElementById('codexx');
+const idElement = document.getElementById('ID');
+
+codexxElement.textContent = tempCodexxElement.value;
+idElement.value = tempCodexxElement.value;
+          
+          
+
+
+          function prevStep() {
+            currentStep--;
+            if (currentStep < 1) currentStep = 1;
+            showStep(currentStep);
+          }
+
+          showStep(currentStep);
+
+          const prevButton = document.querySelector('.step-buttons button:first-child');
+          const nextButton = document.querySelector('.step-buttons button:last-child');
+
+          prevButton.addEventListener('click', () => prevStep());
+          nextButton.addEventListener('click', () => nextStep());
+        },
+        willClose: () => {
+          formModal = null;  // Ocultar el mensaje de validación al cerrar el modal
+        }
+      });
+    }
+  </script>
+    
+    <script>
+    // Agregar el evento submit al formulario
+    document.getElementById("miFormulario").addEventListener("submit", function(event) {
+        // Evitar la redirección predeterminada del formulario
+        event.preventDefault();
+
+        // Obtener los datos del formulario
+        var formData = new FormData(document.getElementById("miFormulario"));
+
+        // Enviar el formulario al script de Google Apps Script usando Ajax
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "https://script.google.com/macros/s/AKfycbxKgfLJzdgrs65jYiM8p3TpdP-p7XBkjft_jDMuNET2fWoWx7B6WuV8eZPTroQ4cP5z/exec");
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    // Mostrar la notificación personalizada de éxito con SweetAlert
+                    Swal.fire({
+                        icon: 'success',
+                        title: '¡Usuario Activado con Éxito!',
+                        showConfirmButton: false,
+                        timer: 1500 // Ocultar automáticamente la notificación después de 1.5 segundos
+                    });
+
+                    document.getElementById("miFormulario").reset();
+                } else {
+                    // Mostrar la notificación personalizada de error con SweetAlert
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Usuario Activado',
+                        text: 'Ya puedes cerrar esta Pestaña e Iniciar Sesión en la APP',
+                        confirmButtonText: 'Cerrar'
+                    });
+                }
+            }
+        };
+        xhr.send(formData);
+    });
+</script>
+  <!--Perfil Empresa-->
+</section>
+
+<section id="Activity" style="display: none;">
+<style>
+    .containers2 {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+    .cardadd {
+    border-radius: 5px;
+    padding: 10px;
+    margin: 5px;
+    width: 98%;
+    position: relative;
+    background-image: linear-gradient(143deg, #00a1ff2e, #355fff08);
+    border: none;
+    font-family: sans-serif;
+    box-shadow: 5px 5px 9px 0px #00000030;
+    }
+    .deleteButton {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    color: white;
+    background-image: linear-gradient(143deg, #e70b0b, #670505);
+    border: none;
+    border-radius: 3px;
+    padding: 5px 10px;
+    cursor: pointer;
+    }
+    .editButton {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    padding: 5px 10px;
+    cursor: pointer;
+    width: 69px;
+    background-image: linear-gradient(143deg, #1a6511, #218d15a3);
+    }
+</style>
+</head>
+<body>
+<h1>Buscador de Ofertas</h1>
+<input type="hidden" id="searchInput" placeholder="Buscar por título">
+<input type="hidden" id="nombrepublicador00" placeholder="Buscar por título">
+<input type="hidden" id="tipopublicador00" placeholder="Buscar por título">
+<input type="hidden" id="tel00" placeholder="tel">  
+<input type="hidden" id="correo00" placeholder="email">  
+<input type="hidden" id="urlfp" placeholder="urlfp"> 
+<input type="hidden" id="id00" placeholder="id00">
+  
+<div class="containers2" id="cardsContainer"></div>
+<button type="button" class="plusadd" onclick="plusadd()">+</button>
+  
+<script>
+function plusadd() {
+  const searchInputValue = document.getElementById("searchInput").value;
+  const nombrepublicadorValue = document.getElementById("nombrepublicador00").value;
+  const tipopublicadorValue = document.getElementById("tipopublicador00").value;
+  const tel00Value = document.getElementById("tel00").value;
+  const correo00Value = document.getElementById("correo00").value;
+  const urlfpValue = document.getElementById("urlfp").value;
+  const id00Value = document.getElementById("id00").value;
+ 
+  Swal.fire({
+    title: 'Crear Oferta',
+    html: `
+      <form id="crearoferta" class="ofertass">
+        <input type="hidden" id="id00" name="id00" placeholder="id" value="${id00Value}">
+        
+        <input type="hidden" id="nombrepublicador00" name="nombrepublicador00" placeholder="Nombre de Publicador" value="${nombrepublicadorValue}">
+
+        <input type="hidden" id="tipodep" name="tipodep" placeholder="tipodepublicador" value="${tipopublicadorValue}">
+        
+        <input type="hidden" id="fecha00" name="fecha00" placeholder="Fecha">
+        <label for="titulodepub">Título de Publicación:</label>
+        <input type="text" id="titulodepub" name="titulodepub" placeholder="Titulo de Publicación" required>
+        <label for="cuerpodepub">Cuerpo de Publicación:</label>
+        <textarea type="text" style="overflow: hidden; box-shadow: 0px 1px 4px 0px gray; height: 90px;" id="cuerpodepub" resize="none" name="cuerpodepub" placeholder="Cuenta acerca de tu Publicación..." required> </textarea>
+        
+        <input type="hidden" id="fijador" name="fijador" value="si">
+        
+        <input type="hidden" id="idusuario00" name="idusuario00" placeholder="id usuario" value="${searchInputValue}">
+        
+        <input type="hidden" id="idunicopub" name="idunicopub" placeholder="idunicopub">
+        <label for="tel00">Telefono de Contacto:</label>
+        <input type="text" id="tel00" name="tel00" placeholder="Telefono a Publicar" value="${tel00Value}" required>
+        <label for="correo00">Correo de Contacto:</label>
+        <input type="email" id="correo00" name="correo00" placeholder="Correo para Publicación" value="${correo00Value}">
+        <label for="ubic00">Ubicación de Oferta:</label>
+        <input type="text" id="ubic00" name="ubic00" placeholder="Ubicación / Municipio">
+        
+        <input type="hidden" id="fot00" name="fot00" placeholder="urlfotoperf" value="${urlfpValue}">
+        
+        <input type="hidden" id="postu0" name="postu0" placeholder="postuladoshipo">
+        
+        <input type="hidden" id="ubc0" name="ubc0" placeholder="ubc0">
+
+        <button type="submit">Enviar</button>
+      </form>
+    `,
+    focusConfirm: false,
+          confirmButtonText: 'Cerrar',
+    didOpen: () => {
+      
+      const idunicopubInput = document.getElementById("idunicopub");
+      
+      function generateRandomId() {
+        const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz";
+        let randomId = "";
+        for (let i = 0; i < 7; i++) {
+          randomId += chars.charAt(Math.floor(Math.random() * chars.length));
+        }
+        return randomId;
+      }
+      
+      idunicopubInput.value = generateRandomId();
+        
+      const fechaInput = document.getElementById("fecha00");
+      
+      function getCurrentDateTime() {
+        const date = new Date();
+        const year = date.getFullYear();
+        const month = date.getMonth() + 1;
+        const day = date.getDate();
+        const hour = date.getHours();
+        const minute = date.getMinutes();
+        const second = date.getSeconds();
+        return `${day}/${month}/${year}   ${hour}:${minute}:${second}`;
+      }
+      
+      setInterval(() => {
+        fechaInput.value = getCurrentDateTime();
+      }, 1000); // 1000ms = 1 segundo
+    
+      
+      document.getElementById("crearoferta").addEventListener("submit", function(event) {
+        event.preventDefault();
+        var formData = new FormData(this);
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "https://script.google.com/macros/s/AKfycbwrR7kOQbxg_LkIdssCL4EkXCvEEvjqUhHVmsmJJrhECHklzvUZlw6LSucUPcb3VnzN/exec", true);
+        xhr.send(formData);
+        xhr.onload = function() {
+          if (xhr.status === 200) {
+            var response = JSON.parse(xhr.responseText);
+            if (response.success) {
+              alert("La publicación fue actualizada satisfactoriamente");
+            } else {
+              alert("Error al actualizar datos");
+            }
+          } else {
+            alert("Error al actualizar datos");
+          }
+        };
+    setTimeout(function() {
+    Swal.fire({
+      title: 'Éxito!',
+      text: 'Publicación hecha con exito',
+      icon:'success',
+      confirmButtonText: 'Aceptar'
+    }).then(function() {
+      search();
+    });
+  }, 1000); // 1000ms = 1 segundo
+});
+    }
+  });
+}
+</script> 
+  
+<script>
+async function fetchData() {
+  const response = await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${spreadx00}/values/Ofertas!A:Z?key=${Dax01800}`);
+  const data = await response.json();
+  return data.values.slice(1); // Remove header row
+}
+
+    function createCardadd(title, subtitle, rowId) {
+        const cardadd = document.createElement('div');
+        cardadd.classList.add('cardadd');
+        cardadd.dataset.rowId = rowId;
+        cardadd.innerHTML = `
+            <h2 style="margin: 1px;">${title}</h2>
+            <p style="margin: 3px;">${subtitle}</p>
+            <button class="deleteButton" onclick="deleteCard(${rowId})">Eliminar</button>
+            <button class="editButton" onclick="editCard(${rowId})">Editar</button>
+        `;
+        return cardadd;
+    }
+
+    async function deleteRow(rowId) {
+        const response = await fetch('https://script.google.com/macros/s/AKfycbzKn3g4FVAePCbK3oMmIdVedJQAmpo6HEq764dvTwykEZv8bv3tuDp4YjG-H-HHmGYj/exec', {
+            method: 'POST',
+            body: JSON.stringify({ row: rowId })
+        });
+        if (response.ok) {
+            console.log('Row deleted successfully');
+        } else {
+            console.error('Error deleting row');
+        }
+    }
+
+    async function search() {
+        const searchInput = document.getElementById('searchInput');
+        const cardsContainer = document.getElementById('cardsContainer');
+        const searchTerm = searchInput.value.toLowerCase();
+        cardsContainer.innerHTML = '';
+
+        const data = await fetchData();
+
+        data.forEach((row, index) => {
+            const title = row[4]; // Column E
+            const subtitle = row[3]; // Column D
+            const searchKeyword = row[7]; // Column H
+
+            if (searchKeyword && searchKeyword.toLowerCase().includes(searchTerm)) {
+                const cardadd = createCardadd(title, subtitle, index + 2); // Adding 2 because sheet rows start from 2
+                cardsContainer.appendChild(cardadd);
+            }
+        });
+    }
+
+    async function deleteCard(rowId) {
+        const shouldDelete = await confirmDelete();
+        if (shouldDelete) {
+            await deleteRow(rowId);
+            const cardToDelete = document.querySelector(`.cardadd[data-row-id="${rowId}"]`);
+            if (cardToDelete) {
+                cardToDelete.style.display = 'none';
+            }
+        }
+    }
+
+    async function confirmDelete() {
+        const result = await Swal.fire({
+            title: '¿Estás seguro?',
+            text: '¿Deseas eliminar la publicación?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Sí',
+            cancelButtonText: 'No'
+        });
+        return result.isConfirmed;
+    }
+
+    async function editCard(rowId) {
+        const rowData = await fetchRowData(rowId);
+        showEditForm(rowData);
+    }
+
+
+async function fetchRowData(rowId) {
+  const response = await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${spreadx00}/values/Ofertas!A${rowId}:Z${rowId}?key=${Dax01800}`);
+  const data = await response.json();
+  return data.values[0];
+}
+
+    function showEditForm(rowData) {
+        Swal.fire({
+            title: 'Editar Publicación',
+            html:
+`<form id="formof" class="ofertass" method="POST">` +
+                `<br><input type="hidden" id="ID" name="rowId" value="${rowData[0]}">` +
+                `<br><label for="titulo">Título:</label>` +
+                `<input type="text" id="titulo" name="titulo" value="${rowData[4]}">` +
+              `<input type="hidden" id="publicador" name="publicador" value="${rowData[1]}">` +
+              `<input type="hidden" id="tp" name="tp" value="${rowData[2]}">` +
+             `<input type="hidden" id="hora_fecha" name="hora_fecha" value="${rowData[3]}">` +
+                `<label for="ubicacion">Ubicación/Lugar de Publicación:</label>` +
+               `<input type="text" id="ubicacion" name="ubicacion" value="${rowData[11]}">` +
+               `<label for="telefono">Teléfono a Publicar:</label>` +
+               `<input type="text" id="telefono" name="telefono" value="${rowData[9]}">` +
+                `<label for="correo">Correo de Contacto:</label>` +
+                `<input type="text" id="correo" name="correo" value="${rowData[10]}">` +
+                `<label for="cuerpo">Cuerpo de Publicación:</label>` +
+                `<textarea id="cuerpo" name="cuerpo">${rowData[5]}</textarea>` +
+                `<input type="hidden" id="idu" name="idu" value="${rowData[8]}">` +
+                `<input type="hidden" id="fijador" name="fijador" value="${rowData[6]}">` +
+                `<input type="hidden" id="iduser" name="iduser" value="${rowData[7]}">` +
+                `<input type="hidden" id="foto" name="foto" value="${rowData[12]}">` +
+              `<input type="hidden" id="postulados" name="postulados" value="${rowData[13]}">` +
+                `<input type="hidden" id="numer" name="numer" value="${rowData[14]}">` +
+                `<br><button type="submit">Guardar cambios</button>` +
+                `</form>`,
+ focusConfirm: false,
+          confirmButtonText: 'Cerrar',
+    didOpen: () => {
+      document.getElementById("formof").addEventListener("submit", function(event) {
+        event.preventDefault();
+        var formData = new FormData(this);
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "https://script.google.com/macros/s/AKfycbz_mNZ6HCsZEVCFmTAHk-_iim7Bo6ijZlOOiO2GqxW0FQKSzvQ61cTJh3NBR5CJnNVd/exec", true);
+        xhr.send(formData);
+        xhr.onload = function() {
+          if (xhr.status === 200) {
+            var response = JSON.parse(xhr.responseText);
+            if (response.success) {
+              alert("La publicación fue actualizada satisfactoriamente");
+            } else {
+              alert("Error al actualizar datos");
+            }
+          } else {
+            alert("Error al actualizar datos");
+          }
+        };
+    setTimeout(function() {
+    Swal.fire({
+      title: 'Éxito!',
+      text: 'Los cambios fueron realizados satisfactoriamente',
+      icon:'success',
+      confirmButtonText: 'Aceptar'
+    }).then(function() {
+      search();
+    });
+  }, 1000); // 1000ms = 1 segundo
+});
+    }
+  });
+}
+    document.getElementById('searchInput').addEventListener('input', search);
+</script>
+
+</body>
+</html>
+
+<style>
+ .ofertass {
+    max-width: 600px;
+    margin-top: 0px;
+    font-family: sans-serif;
+    
+  }
+
+ .ofertass label {
+    display: block;
+    text-align: left;
+    margin-left: 7%;
+    padding-bottom: 3px;
+    padding-top: 7px;
+    font-size: 15px;
+  }
+
+ .ofertass input[type="text"], input[type="email"], input[type="number"], .ofertass textarea {
+    width: 85%;
+    padding: 10px;
+    border: none;
+    border-bottom: revert;
+    background-color: transparent;
+    font-size: 17px;
+  }
+
+ .ofertass input[type="text"]:focus,.ofertass textarea:focus {
+    border-color: #aaa;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+ .ofertass button[type="submit"] {
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 12px;
+    font-size: 15px;
+  }
+
+ .ofertass button[type="submit"]:hover {
+    background-color: #3e8e41;
+  }
+  
+  .swal2-popup .swal2-modal .swal2-show {
+    background-image: linear-gradient(143deg, #f1eaf5, #cccccc);
+  }
+  
+  input:focus {
+  outline: none;
+}
+  textarea:focus {
+  outline: none;
+}
+  .plusadd {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 35px;
+    border: none;
+    color: white;
+    background-color: #0000ffba;
+    align-content: center;
+    right: 17px;
+    bottom: 81px;
+    position: fixed;
+    cursor: pointer;
+  }
+  
+  .cardadd{ h2{
+    font-size: large;
+  }
+    p{
+     font-family: sans-serif;
+    font-size: 15px;
+    margin-top: 5px;
+    color: #0606069e;
+    font-weight: bold; 
+    }
+  }
+
+</style>
+</section>
+
+<section id="Settings" style="display: none;"><div style="text-align: center;">
+ <div id="CON" > <svg class="Config"width="70px" height="70px" viewBox="0 0 48 48" id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><defs><style>.cls-1{fill:none;stroke:#000000;stroke-linecap:round;stroke-linejoin:round;}</style></defs><path class="cls-1" d="M39.23,26a16.52,16.52,0,0,0,.14-2,16.52,16.52,0,0,0-.14-2l4.33-3.39a1,1,0,0,0,.25-1.31l-4.1-7.11a1,1,0,0,0-1.25-.44l-5.11,2.06a15.68,15.68,0,0,0-3.46-2l-.77-5.43a1,1,0,0,0-1-.86H19.9a1,1,0,0,0-1,.86l-.77,5.43a15.36,15.36,0,0,0-3.46,2L9.54,9.75a1,1,0,0,0-1.25.44L4.19,17.3a1,1,0,0,0,.25,1.31L8.76,22a16.66,16.66,0,0,0-.14,2,16.52,16.52,0,0,0,.14,2L4.44,29.39a1,1,0,0,0-.25,1.31l4.1,7.11a1,1,0,0,0,1.25.44l5.11-2.06a15.68,15.68,0,0,0,3.46,2l.77,5.43a1,1,0,0,0,1,.86h8.2a1,1,0,0,0,1-.86l.77-5.43a15.36,15.36,0,0,0,3.46-2l5.11,2.06a1,1,0,0,0,1.25-.44l4.1-7.11a1,1,0,0,0-.25-1.31ZM24,31.18A7.18,7.18,0,1,1,31.17,24,7.17,7.17,0,0,1,24,31.18Z"></path></g></svg>
+  <div class="button-containerf">
+        <button onclick="showCC()" class="buttonf">Cambio de Contraseña</button>
+        <button onclick="showPT()" class="buttonf">Preguntas o Tutoriales</button>
+        <button onclick="showEC()" class="buttonf">Eliminar Cuenta</button>
+        <button onclick="showAA()" class="buttonf">Acerca de APP</button>
+    </div></div>
+  <section id="CC" style="display: none;">
+<h1 style="margin: auto;width: 200px;margin-top: -50px;">Cambio de Contraseña</h1>
+    
+       <div class="form-containerQ">
+        <div class="form-boxQ">
+            <form id="passwordForm" action="https://script.google.com/macros/s/AKfycbxaQlKeplPeIp4BBE1Gp6-_FPaDM6iOazit7xhnw2g2oqXjwebtWe2JNsNLcCG2a-Rl5w/exec" method="post">
+              
+<input type="hidden" id="codigo" name="codigo" class="form-inputQ" placeholder="Código" required>
+<input type="hidden" id="pass" name="pass" class="form-inputQ" placeholder="PASS" required>
+<input type="hidden" id="temp" name="temp" class="form-inputQ" placeholder="temp" required>
+<input type="password" id="contrasenaActual" name="contrasenaActual" class="form-inputQ" 
+       placeholder="Contraseña Actual" pattern="^(?=.*[a-zA-Z])(?=.*[0-9]).{5,}$" 
+       title="Ingrese al menos 5 caracteres alfanuméricos, incluyendo al menos una letra y un número" required><br>
+
+<input type="password" id="nuevaContrasena" name="nuevaContrasena" class="form-inputQ" 
+       placeholder="Nueva Contraseña" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z0-9]{5,}$" 
+       title="Ingrese al menos 5 caracteres alfanuméricos, incluyendo al menos una letra y un número" required><br>
+
+<input type="password" id="confirmacionContrasena" name="confirmacionContrasena" class="form-inputQ" 
+       placeholder="Confirmación de Contraseña" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z0-9]{5,}$" 
+       title="Ingrese al menos 5 caracteres alfanuméricos, incluyendo al menos una letra y un número" required><br>
+
+                <button type="submit" class="form-buttonQ">Cambiar Contraseña</button>
+            </form>
+        </div>
+    </div>
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    var passwordForm = document.getElementById('passwordForm');
+    var nuevaContrasenaInput = document.getElementById('nuevaContrasena');
+    var confirmacionContrasenaInput = document.getElementById('confirmacionContrasena');
+
+    passwordForm.addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevenir la redirección predeterminada
+
+        var contrasenaActualInput = document.getElementById('contrasenaActual');
+        var nuevaContrasena = nuevaContrasenaInput.value;
+        var confirmacionContrasena = confirmacionContrasenaInput.value;
+        var passInput = document.getElementById('pass');
+        var tempInput = document.getElementById('temp');
+
+        if (contrasenaActualInput.value === nuevaContrasena) {
+            alert("La Contraseña Actual y Nueva Contraseña no pueden ser iguales.");
+        } else if (nuevaContrasena !== confirmacionContrasena) {
+            alert("La Nueva Contraseña y la Confirmación de Contraseña deben ser iguales.");
+        } else if (contrasenaActualInput.value !== passInput.value && contrasenaActualInput.value !== tempInput.value) {
+    alert("La Contraseña Actual Ingresada es Incorrecta");
+        } else {
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', passwordForm.action, true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        alert("Contraseña cambiada exitosamente");
+                        contrasenaActualInput.value = ""; // Limpiar contraseña actual
+                        nuevaContrasenaInput.value = ""; // Limpiar nueva contraseña
+                        confirmacionContrasenaInput.value = ""; // Limpiar confirmación de contraseña
+                    } else {
+                        alert("Código o contraseña actual incorrectos");
+                    }
+                }
+            };
+            var formData = new URLSearchParams({
+                'codigo': passwordForm.elements.codigo.value,
+                'contrasenaActual': passwordForm.elements.contrasenaActual.value,
+                'nuevaContrasena': passwordForm.elements.nuevaContrasena.value,
+                'confirmacionContrasena': passwordForm.elements.confirmacionContrasena.value
+            }).toString();
+            xhr.send(formData);
+        }
+    });
+});
+    </script>
+  <button onclick="showCON()" class="buttonf">Volver</button>
+</section>
+  <section id="PT" style="display: none;">
+  <h1>Preguntas o Tutoriales</h1>
+    <button onclick="showCON()" class="buttonf">Volver</button>
+</section>
+  <section id="EC" style="display: none;">
+  <h1 style="margin-top: -80px;">Eliminar Cuenta</h1>
+     <div class="form-containerQ">
+        <div class="form-boxQ">
+            <form id="DEL" action="https://script.google.com/macros/s/AKfycbzOK0QUXpYKM7p1BzaKPCKiCMRfg6uNY9QwLvc6Y2vdkYp9OuMOV5YG3kyzjSuoQeGR/exec" method="post">
+<h4 style="margin-bottom: -22px;">Codigo de Seguridad: </h4><h1 id="codigodel2" ></h1>
+<input type="hidden" id="coding" name="coding" class="form-inputQ" placeholder="Código de Seguridad ID" required>
+<input type="text" id="cod" name="cod" class="form-inputQ" placeholder="Ingresa acá el Código de Seguridad" required="" style="font-size: 14px;">
+<input type="hidden" id="corrP" name="corrP" class="form-inputQ" placeholder="CORREO DE PERFIL" required><br>
+<input type="text" id="correod" name="correod" class="form-inputQ" placeholder="Correo de Inicio de Sesión" style="font-size: 14px;" required><br>
+              
+<input type="hidden" id="passw" name="passw" class="form-inputQ" placeholder="PASS" required>
+
+<input type="password" id="contrasenaD" name="contrasenaD" class="form-inputQ" placeholder="Contraseña" style="font-size: 14px;" required><br>
+
+<input type="password" id="confirmacionContrasenaD" name="confirmacionContrasenaD" class="form-inputQ" placeholder="Confirmación de Contraseña" style="font-size: 14px;" required><br>
+
+<button type="button" id="eliminarCuentaButton" class="form-buttonQ">Eliminar Cuenta</button>
+            </form>
+        </div>
+    </div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+var eliminarCuentaButton = document.getElementById('eliminarCuentaButton');
+var codingInput = document.getElementById('coding');
+var codInput = document.getElementById('cod');
+var corrPInput = document.getElementById('corrP');
+var correodInput = document.getElementById('correod');
+var passwInput = document.getElementById('passw');
+var contrasenaDInput = document.getElementById('contrasenaD');
+var confirmacionContrasenaDInput = document.getElementById('confirmacionContrasenaD');
+
+eliminarCuentaButton.addEventListener('click', function() {
+if (codingInput.value !== codInput.value ||
+corrPInput.value !== correodInput.value ||
+passwInput.value !== contrasenaDInput.value ||
+passwInput.value !== confirmacionContrasenaDInput.value) {
+alert("Los campos no coinciden correctamente.");
+return;
+}
+
+var xhr = new XMLHttpRequest();
+xhr.open('POST', DEL.action, true);
+xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+xhr.onreadystatechange = function() {
+if (xhr.readyState === 4) {
+if (xhr.status === 200) {
+var response = JSON.parse(xhr.responseText);
+if (response.success) {
+alert("Cuenta eliminada satisfactoriamente");
+codingInput.value = "";
+codInput.value = "";
+corrPInput.value = "";
+correodInput.value = "";
+passwInput.value = "";
+contrasenaDInput.value = "";
+confirmacionContrasenaDInput.value = "";
+} else {
+alert("El código no fue encontrado en la hoja de cálculo");
+}
+} else {
+alert("Error al eliminar la cuenta");
+}
+}
+};
+
+var formData = new URLSearchParams({
+'cod': codInput.value
+}).toString();
+
+xhr.send(formData);
+});
+});
+</script>
+    <button onclick="showCON()" class="buttonf">Volver</button>
+</section>
+  <section id="AA" style="display: none;">
+  <h1>Acerca de APP</h1>
+    <button onclick="showCON()" class="buttonf">Volver</button>
+</section>
+  <!-- Cambio de Contraseña con verificación de la anterior -->
+  <!-- Preguntas -->
+  <!-- Eliminar mi Cuenta -->
+  <!-- Acerca de -->
+</section>
+
+<script>
+  function showCON() {
+    document.getElementById('CC').style.display = 'none';
+    document.getElementById('PT').style.display = 'none';
+    document.getElementById('EC').style.display = 'none';
+    document.getElementById('AA').style.display = 'none';
+    document.getElementById('CON').style.display = 'block';
+  }
+  function showCC() {
+    document.getElementById('CC').style.display = 'block';
+    document.getElementById('PT').style.display = 'none';
+    document.getElementById('EC').style.display = 'none';
+    document.getElementById('AA').style.display = 'none';
+    document.getElementById('CON').style.display = 'none';
+  }
+  function showPT() {
+    document.getElementById('CC').style.display = 'none';
+    document.getElementById('PT').style.display = 'block';
+    document.getElementById('EC').style.display = 'none';
+    document.getElementById('AA').style.display = 'none';
+    document.getElementById('CON').style.display = 'none';
+  }
+  function showEC() {
+    document.getElementById('CC').style.display = 'none';
+    document.getElementById('PT').style.display = 'none';
+    document.getElementById('EC').style.display = 'block';
+    document.getElementById('AA').style.display = 'none';
+    document.getElementById('CON').style.display = 'none';
+  }
+  function showAA() {
+    document.getElementById('CC').style.display = 'none';
+    document.getElementById('PT').style.display = 'none';
+    document.getElementById('EC').style.display = 'none';
+    document.getElementById('AA').style.display = 'block';
+    document.getElementById('CON').style.display = 'none';
+  }
+  
+  function showW() {
+    document.getElementById('W').style.display = 'block';
+    document.getElementById('Dashboard').style.display = 'none';
+    document.getElementById('Inbox').style.display = 'none';
+    document.getElementById('HV').style.display = 'none';
+    document.getElementById('Activity').style.display = 'none';
+    document.getElementById('Settings').style.display = 'none';
+  }
+
+  function showDashboard() {
+    document.getElementById('W').style.display = 'none';
+    document.getElementById('Dashboard').style.display = 'block';
+    document.getElementById('Inbox').style.display = 'none';
+    document.getElementById('HV').style.display = 'none';
+    document.getElementById('Activity').style.display = 'none';
+    document.getElementById('Settings').style.display = 'none';
+  }
+  
+  function showInbox() {
+    document.getElementById('W').style.display = 'none';
+    document.getElementById('Dashboard').style.display = 'none';
+    document.getElementById('Inbox').style.display = 'block';
+    document.getElementById('HV').style.display = 'none';
+    document.getElementById('Activity').style.display = 'none';
+    document.getElementById('Settings').style.display = 'none';
+  }
+
+  function showHV() {
+    document.getElementById('W').style.display = 'none';
+    document.getElementById('Dashboard').style.display = 'none';
+    document.getElementById('Inbox').style.display = 'none';
+    document.getElementById('HV').style.display = 'block';
+    document.getElementById('Activity').style.display = 'none';
+    document.getElementById('Settings').style.display = 'none';
+  }
+
+  function showActivity() {
+    document.getElementById('W').style.display = 'none';
+    document.getElementById('Dashboard').style.display = 'none';
+    document.getElementById('Inbox').style.display = 'none';
+    document.getElementById('HV').style.display = 'none';
+    document.getElementById('Activity').style.display = 'block';
+    document.getElementById('Settings').style.display = 'none';
+  }
+
+  function showSettings() {
+    document.getElementById('W').style.display = 'none';
+    document.getElementById('Dashboard').style.display = 'none';
+    document.getElementById('Inbox').style.display = 'none';
+    document.getElementById('HV').style.display = 'none';
+    document.getElementById('Activity').style.display = 'none';
+    document.getElementById('Settings').style.display = 'block';
+  }
+</script>
+  
+<html1 style="display:none">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sidebar</title>
+</head>
+<body>
+  <div class="sidebar-container shrink">
+    <div class="sidebar-profileSection">
+      <span id="user-name"></span>
+    </div>
+    <button class="sidebar-viewButton" type="button" aria-label="Expand Sidebar" title="Expand" onClick="handleSidebarView()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+        class="feather feather-chevron-left">
+        <polyline points="15 18 9 12 15 6"></polyline>
+      </svg>
+    </button>
+    <div class="sidebar-wrapper">
+      <ul class="sidebar-list">
+<li class="sidebar-listItem" style="margin-top:-20px;">
+  <a href="#" onclick="showDashboard()">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="sidebar-listIcon">
+      <rect x="3" y="3" rx="2" ry="2" class="sidebar-listIcon"></rect>
+      <path d="M3 9h18M9 21V9"></path>
+    </svg>
+    <span class="sidebar-listItemText">Dashboard</span>
+  </a>
+</li>
+<li class="sidebar-listItem">
+  <a href="#" onclick="showInbox()">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="sidebar-listIcon">
+      <polyline points="22 12 16 12 14 15 10 15 8 12 2 12"></polyline>
+      <path
+        d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z">
+      </path>
+    </svg>
+    <span class="sidebar-listItemText">Inbox</span>
+  </a>
+</li>
+<li class="sidebar-listItem">
+  <a href="#" onclick="showHV()">
+<svg stroke-width="15.872" stroke="#4183c4" xml:space="preserve" viewBox="0 0 512 512" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" id="Layer_1" version="1.1" fill="#4183c4" style="
+    width: 20px;
+"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <g> <path d="M504.441,172.066l-36.506-36.506c-10.078-10.078-26.428-10.078-36.506,0L230.623,336.358 c-2.842,2.833-4.975,6.289-6.238,10.095l-18.253,54.758c-0.913,2.748-1.203,5.572-1.178,8.38h-25.515H51.202v25.6h135.091h44.109 v-0.154c2.807,0.026,5.632-0.256,8.38-1.178l54.758-18.253c3.806-1.271,7.262-3.405,10.095-6.238l200.798-200.798 C514.519,198.502,514.519,182.153,504.441,172.066z M230.623,409.378l18.253-54.758l36.506,36.506L230.623,409.378z M303.643,372.873l-36.514-36.514l182.554-182.545l36.506,36.506L303.643,372.873z"></path> </g> </g> <g> <g> <path d="M137.73,51.2c-42.351,0-76.8,34.449-76.8,76.8s34.449,76.8,76.8,76.8c42.351,0,76.8-34.449,76.8-76.8 S180.081,51.2,137.73,51.2z M137.73,179.2c-28.279,0-51.2-22.921-51.2-51.2s22.921-51.2,51.2-51.2c28.279,0,51.2,22.921,51.2,51.2 S166.009,179.2,137.73,179.2z"></path> </g> </g> <g> <g> <path d="M214.12,225.826c-2.219-12.177-12.817-21.026-25.19-21.026h-51.2h-51.2c-12.373,0-22.972,8.849-25.182,21.026 L51.202,281.6H77.22l9.31-51.2h38.4v51.2h25.6v-51.2h38.4l9.31,51.2h26.018L214.12,225.826z"></path> </g> </g> <g> <g> <rect height="25.6" width="153.6" y="76.8" x="230.402"></rect> </g> </g> <g> <g> <path d="M51.202,332.8v25.6h142.217l6.682-20.053c0.657-1.954,1.732-3.703,2.611-5.547H51.202z"></path> </g> </g> <g> <g> <polygon points="230.402,153.6 230.402,179.2 351.583,179.2 377.183,153.6 "></polygon> </g> </g> <g> <g> <path d="M413.331,117.444c6.17-6.17,13.722-10.351,21.871-12.74V0H0.002v512h435.2V314.027l-25.6,25.6V486.4h-384V25.6h384v95.573 L413.331,117.444z"></path> </g> </g> </g></svg>
+<span class="sidebar-listItemText" style="margin-left: 5px;"> Mi Pefil HV</span>
+  </a>
+</li>
+<li class="sidebar-listItem">
+  <a href="#" onclick="showActivity()">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="sidebar-listIcon">
+      <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+    </svg>
+    <span class="sidebar-listItemText">Actividad</span>
+  </a>
+</li>
+<li class="sidebar-listItem">
+  <a href="#" onclick="showSettings(); showCON()">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="sidebar-listIcon">
+      <circle cx="12" cy="12" r="3"></circle>
+     <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"></path>
+    </svg>
+    <span class="sidebar-listItemText">Ajustes</span>
+  </a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</body>
+</html1>
+ <div class="doc">
+  <div class="barunix">
+  <a onclick="showHV()" class="but"><img class="perfiltab" id="user-photo" width="40" height="40"></a>
+  <div 
+  
+  <li class="sidebar-listItem" style="padding-right: -2px;">
+  <a href="#" onclick="showDashboard()" style="padding-right: 0px;">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="sidebar-listIcon">
+      <rect x="3" y="3" rx="2" ry="2" class="sidebar-listIcon"></rect>
+      <path d="M3 9h18M9 21V9"></path>
+    </svg>
+    <span class="sidebar-listItemText"></span>
+  </a>
+</li>
+   <li class="sidebar-listItem">
+  <a href="#" onclick="showActivity()">
+    <svg width="20px" height="20px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>plus-circle</title> <desc>Created with Sketch Beta.</desc> <defs> </defs> <g id="Page-1" stroke="currentColor" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage"> <g id="Icon-Set" sketch:type="MSLayerGroup" transform="translate(-464.000000, -1087.000000)" fill="#0080ff"> <path d="M480,1117 C472.268,1117 466,1110.73 466,1103 C466,1095.27 472.268,1089 480,1089 C487.732,1089 494,1095.27 494,1103 C494,1110.73 487.732,1117 480,1117 L480,1117 Z M480,1087 C471.163,1087 464,1094.16 464,1103 C464,1111.84 471.163,1119 480,1119 C488.837,1119 496,1111.84 496,1103 C496,1094.16 488.837,1087 480,1087 L480,1087 Z M486,1102 L481,1102 L481,1097 C481,1096.45 480.553,1096 480,1096 C479.447,1096 479,1096.45 479,1097 L479,1102 L474,1102 C473.447,1102 473,1102.45 473,1103 C473,1103.55 473.447,1104 474,1104 L479,1104 L479,1109 C479,1109.55 479.447,1110 480,1110 C480.553,1110 481,1109.55 481,1109 L481,1104 L486,1104 C486.553,1104 487,1103.55 487,1103 C487,1102.45 486.553,1102 486,1102 L486,1102 Z" id="plus-circle" sketch:type="MSShapeGroup"> </path> </g> </g> </g></svg>
+    <span class="sidebar-listItemText"></span>
+  </a>
+</li>
+<li class="sidebar-listItem">
+  <a href="#" onclick="showSettings(); showCON()" style="padding-right: 0px;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="sidebar-listIcon">
+      <circle cx="12" cy="12" r="3"></circle>
+     <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"></path>
+    </svg>
+    <span class="sidebar-listItemText"></span>
+  </a>
+</li>
+   <div class="sidebar-themeContainer">
+        <label labelFor="theme-toggle" class="sidebar-themeLabel">
+          <input class="sidebar-themeInput" type="checkbox" id="theme-toggle" onChange="handleThemeChange()">
+          <div onclick="startTimer()" class="sidebar-themeType light">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="sidebar-listIcon">
+              <circle cx="12" cy="12" r="5"></circle>
+              <path
+                d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42">
+              </path>
+            </svg>
+            <span class="sidebar-themeInputText"></span>
+          </div>
+          <div onclick="startTimer()" class="sidebar-themeType dark">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="sidebar-listIcon">
+              <path
+                d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+            <span class="sidebar-themeInputText"></span>
+          </div>
+        </label>
+      </div>
+</div>
+</div> 
+</section>
+<!-- /APP -->
+
+<script id="main-script">
+
+</script>
+
+<script>
+  // Lógica para mostrar las secciones correspondientes al hacer clic en los enlaces
+  document.addEventListener('DOMContentLoaded', function() {
+    var links = document.querySelectorAll('.tabs-style-flip a');
+    var sections = document.querySelectorAll('.content-wrap section');
+
+    function showSection(e) {
+      e.preventDefault();
+      var target = e.target.getAttribute('href');
+      sections.forEach(function(section) {
+        section.classList.remove('content-current');
+      });
+      document.querySelector(target).classList.add('content-current');
+    }
+
+    links.forEach(function(link) {
+      link.addEventListener('click', showSection);
+    });
+  });
+</script>
+<script>
+  document.getElementById("login-form").addEventListener("submit", function(event) {
+    event.preventDefault(); // Evitar el envío del formulario por defecto
+
+    var accederButton = document.getElementById("acceder-button");
+    var progressWheel = document.createElement("div");
+    progressWheel.classList.add("progress-wheel");
+
+    accederButton.appendChild(progressWheel);
+
+    // Simular el tiempo de carga durante 5 segundos
+    setTimeout(function() {
+      progressWheel.remove();
+      // Aquí puedes realizar cualquier otra acción que desees después del tiempo de carga
+      // Por ejemplo, redireccionar a otra página
+    }, 7000);
+  });
+</script>
+<!-- partial -->
+  <script  src="./script.js"></script>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>
