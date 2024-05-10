@@ -1227,3 +1227,21 @@ body {
    overflow: auto;
    width: 100%;
 }
+
+.cargarmas {
+  bottom: 80px;
+    position: absolute;
+    margin: auto;
+    display: grid;
+    width: 100%;
+    place-items: center;
+}
+
+.bcargarmas {
+border: none;
+    background-color: #0000ffba;
+    color: white;
+    padding: 12px;
+    border-radius: 20px;
+    box-shadow: 1px 1px 8px 0 gray;
+}

@@ -2,7 +2,7 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>CodePen - PJ2</title>
+  <title>Bolsa de Empleo PJ2</title>
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/semantic.min.css'><link rel="stylesheet" href="./style.css">
 
 </head>
@@ -205,7 +205,7 @@
 </head>
 <div class="bodys"><div>
   <div class="containerDX">
-    <input type="text" maxlength= "12"             placeholder="Search..." class="searchbar">
+    <input type="text" maxlength= "12" placeholder="Search..." class="searchbar">
   <img src="https://images-na.ssl-images-amazon.com/images/I/41gYkruZM2L.png" alt="Magnifying Glass" class="buttonsearch">
   </div>
   <div class="category-buttons">
@@ -335,31 +335,124 @@
     </symbol>
   </defs>
 </svg>
-   <div id="card-containeremp" style="display: flex;flex-direction: column-reverse;width: 95%;"></div>
- 
-<script src="https://apis.google.com/js/api.js"></script>
+   <div id="card-containeremp" style="display: flex;flex-direction: column;width: 95%;"></div>
+   <script src="https://apis.google.com/js/api.js"></script>
   <script src="https://fenixfgx.github.io/Fenix/styles/style.js"></script>
   <script>
+let startIndex = 1; // Índice de inicio para cargar las filas
+let endIndex = 10; // Índice de fin para cargar las filas
+let searchTimeout; // Variable para almacenar el temporizador de búsqueda
 
+gapi.load('client:auth2', initClientE);
 
-  gapi.load('client:auth2', initClientE);
+function initClientE() {
+  gapi.client.init({
+    apiKey: API_KEYE,
+    discoveryDocs: ["https://sheets.googleapis.com/$discovery/rest?version=v4"],
+  }).then(() => {
+    loadRows(startIndex, endIndex); // Cargar las primeras 10 filas
+  });
+}
 
-  function initClientE() {
-    gapi.client.init({
-      apiKey: API_KEYE,
-      discoveryDocs: ["https://sheets.googleapis.com/$discovery/rest?version=v4"],
-    }).then(() => {
-      gapi.client.sheets.spreadsheets.values.get({
-        spreadsheetId: spreadx00,
-        range: SHEET_NAMEE,
-      }).then((response) => {
-        const data = response.result.values;
+function loadRows(start, end) {
+  gapi.client.sheets.spreadsheets.values.get({
+    spreadsheetId: spreadx00,
+    range: SHEET_NAMEE + "!A" + start + ":M" + end, // Ajustar el rango según el inicio y el fin
+  }).then((response) => {
+    const data = response.result.values;
 
-        const cardContaineremp = document.getElementById("card-containeremp");
+    const cardContaineremp = document.getElementById("card-containeremp");
 
-        for (let i = 1; i < data.length; i++) {
+    for (let i = 0; i < data.length; i++) {
+      const cardCloneem = document.querySelector(".js-profile-card").cloneNode(true);
+      cardCloneem.setAttribute("data-state", "#" + (start + i));
+
+      const Nempresa = cardCloneem.querySelector("#Nempresa");
+      const TPublicacion = cardCloneem.querySelector("#TPublicacion");
+      const Cuerpo = cardCloneem.querySelector("#Cuerpo");
+      const Ubic = cardCloneem.querySelector("#Ubic");
+      const fecha = cardCloneem.querySelector("#fecha");
+      const fotoemp = cardCloneem.querySelector("#fotoemp");
+      const llamar = cardCloneem.querySelector("#llamar");
+      const correoOf = cardCloneem.querySelector("#correoOf");
+
+      Nempresa.innerHTML = data[i][1];
+      TPublicacion.innerHTML = data[i][4];
+      Cuerpo.innerHTML = data[i][5];
+      Ubic.innerHTML = data[i][11];
+      fecha.innerHTML = data[i][3];
+      fotoemp.src = data[i][12];
+      // Agregar manejadores de eventos click a los botones
+      llamar.addEventListener("click", function() {
+        // Redirigir al usuario al número de teléfono asignado al ID
+        window.location.href = "tel:" + data[i][9]; // Reemplaza data[i][9] con el número de teléfono adecuado
+      });
+
+      correoOf.addEventListener("click", function() {
+        // Redirigir al usuario al correo electrónico asignado al ID
+        window.location.href = "mailto:" + data[i][10]; // Reemplaza data[i][10] con el correo electrónico adecuado
+      });
+
+      cardContaineremp.appendChild(cardCloneem);
+    }
+
+    if (data.length < 10) {
+      // Si la cantidad de datos es inferior a 10, ocultar el botón
+      document.querySelector(".bcargarmas").style.display = "none";
+    } else {
+      // Mostrar el botón si hay más datos disponibles
+      document.querySelector(".bcargarmas").style.display = "block";
+    }
+  });
+}
+
+function cargarMas() {
+  startIndex += 10; // Actualizar el índice de inicio para cargar las siguientes 10 filas
+  endIndex += 10; // Actualizar el índice de fin para cargar las siguientes 10 filas
+  loadRows(startIndex, endIndex); // Cargar las siguientes 10 filas y anexarlas al final
+}
+
+document.querySelector(".searchbar").addEventListener("input", function() {
+  const searchTerm = this.value.toLowerCase(); // Obtener el término de búsqueda en minúsculas
+
+  // Cancelar el temporizador anterior para reiniciar la cuenta
+  clearTimeout(searchTimeout);
+
+  // Establecer un nuevo temporizador de búsqueda después de 2000ms (2 segundos)
+  searchTimeout = setTimeout(function() {
+    // Ocultar todas las tarjetas
+    document.querySelectorAll(".js-profile-card").forEach(function(card) {
+      card.style.display = "none";
+    });
+
+    // Mostrar solo las tarjetas que contienen el término de búsqueda en el nombre del publicador
+    document.querySelectorAll("#Nempresa").forEach(function(Nempresa) {
+      if (Nempresa.textContent.toLowerCase().includes(searchTerm)) {
+        Nempresa.closest(".js-profile-card").style.display = "block";
+      }
+    });
+
+    // Si no se han cargado las filas aún, buscar en los datos que se cargarán
+    if (startIndex === 1) {
+      searchInData(searchTerm);
+    }
+  }, 2000); // 2000ms (2 segundos) de retraso antes de realizar la búsqueda
+});
+
+function searchInData(term) {
+  gapi.client.sheets.spreadsheets.values.get({
+    spreadsheetId: spreadx00,
+    range: SHEET_NAMEE,
+  }).then((response) => {
+    const data = response.result.values;
+
+    if (data) {
+      for (let i = 0; i < data.length; i++) {
+        if (data[i][1].toLowerCase().includes(term)) {
+          // Crear y agregar la tarjeta si se encuentra una coincidencia
+          const cardContaineremp = document.getElementById("card-containeremp");
           const cardCloneem = document.querySelector(".js-profile-card").cloneNode(true);
-          cardCloneem.setAttribute("data-state", "#" + i);
+          cardCloneem.setAttribute("data-state", "#" + (i + 1));
 
           const Nempresa = cardCloneem.querySelector("#Nempresa");
           const TPublicacion = cardCloneem.querySelector("#TPublicacion");
@@ -381,7 +474,7 @@
             // Redirigir al usuario al número de teléfono asignado al ID
             window.location.href = "tel:" + data[i][9]; // Reemplaza data[i][9] con el número de teléfono adecuado
           });
-          
+
           correoOf.addEventListener("click", function() {
             // Redirigir al usuario al correo electrónico asignado al ID
             window.location.href = "mailto:" + data[i][10]; // Reemplaza data[i][10] con el correo electrónico adecuado
@@ -389,9 +482,11 @@
 
           cardContaineremp.appendChild(cardCloneem);
         }
-      });
-    });
-  }
+      }
+    }
+  });
+}
+
 </script>
 <style>
 @import url("https://fonts.googleapis.com/css?family=Quicksand:400,500,700&subset=latin-ext");
@@ -809,10 +904,14 @@ a, a:hover {
   transition: all 0.3s;
 }
 </style>
- 
 </body>
+  </div> 
 </html>
+<div class="cargarmas">    
+<button class="bcargarmas" onclick="cargarMas()">Cargar más...</button>    
+</div>    
 </section>
+  
 <section id="Aspirantes" style="display: none; margin-top: 12px; margin-bottom: 80px;">
 <link rel="stylesheet" href="https://fenixfgx.github.io/Fenix/BOLSADEEMPLEO/stylexy.css">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -1080,7 +1179,7 @@ function filterItems() {
 
 // Llamar a la función de filtrado inicial para manejar las tarjetas mostradas al cargar la página
 filterItems();
-     
+ setInterval(filterItems, 300);    
 </script>
 </section>
 <section id="Directorio" style="display: none; margin-top: 17px;margin-bottom: 80px;">
