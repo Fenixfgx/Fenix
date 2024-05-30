@@ -219,18 +219,7 @@ row.appendChild(cell3);
         cell4.textContent = rowData[2]; // Suponiendo que la columna C es la tercera columna (índice 2)
         row.appendChild(cell4);
 
-        // Crea la quinta celda con un botón para abrir el modal con la imagen de la columna D
-        const cell5 = document.createElement('td');
-        const button = document.createElement('button');
-        button.textContent = 'Comprobante';
-        button.onclick = function() {
-            const modal = document.getElementById('imageModal');
-            const modalImg = document.getElementById('img01');
-            modal.style.display = 'block';
-            modalImg.src = rowData[3]; // Suponiendo que la columna D es la cuarta columna (índice 3)
-        };
-        cell5.appendChild(button);
-        row.appendChild(cell5);
+        
 
         table.appendChild(row);
     });
@@ -366,19 +355,7 @@ function populateCarteraList(data, table) {
         cell4.textContent = rowData[2]; // Suponiendo que la columna C es la tercera columna (índice 2)
         row.appendChild(cell4);
 
-        // Crea la quinta celda con un botón para abrir el modal con la imagen de la columna D
-        const cell5 = document.createElement('td');
-        const button = document.createElement('button');
-        button.textContent = 'Comprobante';
-        button.onclick = function() {
-            const modal = document.getElementById('imageModal');
-            const modalImg = document.getElementById('img01');
-            modal.style.display = 'block';
-            modalImg.src = rowData[3]; // Suponiendo que la columna D es la cuarta columna (índice 3)
-        };
-        cell5.appendChild(button);
-        row.appendChild(cell5);
-
+        
         table.appendChild(row);
     });
 }
