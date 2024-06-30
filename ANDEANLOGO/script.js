@@ -90,7 +90,7 @@ function downloadPNG() {
                 const pngUrl = canvas.toDataURL('image/png');
                 const downloadLink = document.createElement('a');
                 downloadLink.href = pngUrl;
-                downloadLink.download = 'image.png';
+                downloadLink.download = 'AndeanLogo.png';
                 document.body.appendChild(downloadLink);
                 downloadLink.click();
                 document.body.removeChild(downloadLink);
