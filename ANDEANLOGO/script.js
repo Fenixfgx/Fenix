@@ -22,29 +22,32 @@ function pickColor() {
 
 let currentImageUrl = '';
 const defaultColor = 'rgb(140, 96, 65)';
+let selectedColor = defaultColor;
 
 function showImage(imageUrl) {
     currentImageUrl = imageUrl;
     const imageElement = document.getElementById('displayedImage');
     
-    const xhr = new XMLHttpRequest();
-    xhr.open('GET', imageUrl, true);
-    xhr.onload = function() {
-        if (xhr.status === 200) {
-            const svgData = xhr.responseText;
-            const coloredSvgData = svgData.replace(/fill="[^"]*"/g, `fill="${defaultColor}"`);
-            const svgBlob = new Blob([coloredSvgData], { type: 'image/svg+xml' });
-            const url = URL.createObjectURL(svgBlob);
-            imageElement.src = url;
-            imageElement.style.display = 'block';
-        }
-    };
-    xhr.send();
+    if (currentImageUrl) {
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', currentImageUrl, true);
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                const svgData = xhr.responseText;
+                const coloredSvgData = svgData.replace(/fill="[^"]*"/g, `fill="${selectedColor}"`);
+                const svgBlob = new Blob([coloredSvgData], { type: 'image/svg+xml' });
+                const url = URL.createObjectURL(svgBlob);
+                imageElement.src = url;
+                imageElement.style.display = 'block';
+            }
+        };
+        xhr.send();
+    }
 }
 
 function changeColor() {
     const colorPicker = document.getElementById('color');
-    const selectedColor = colorPicker.value;
+    selectedColor = colorPicker.value;
     const imageElement = document.getElementById('displayedImage');
     
     if (currentImageUrl) {
@@ -61,7 +64,6 @@ function changeColor() {
         };
         xhr.send();
     }
-  //SGVjaG8gcG9yOiBEYXZpZCBFbnJpcXVlIFphcGF0YSBTaWFjaG9xdWUsIHRvZG9zIGxvcyBkZXJlY2hvcyByZXNlcnZhZG9z
 }
 
 function downloadPNG() {
@@ -88,7 +90,7 @@ function downloadPNG() {
                 const pngUrl = canvas.toDataURL('image/png');
                 const downloadLink = document.createElement('a');
                 downloadLink.href = pngUrl;
-                downloadLink.download = 'AndeanLogo.png';
+                downloadLink.download = 'image.png';
                 document.body.appendChild(downloadLink);
                 downloadLink.click();
                 document.body.removeChild(downloadLink);
@@ -102,6 +104,7 @@ function downloadPNG() {
     xhr.send();
 }
 
+// Function to hide body and show alert
 function handleAuthorLabelRemoval(mutations) {
     mutations.forEach(mutation => {
         if (mutation.type === 'childList' && !document.getElementById('author-label')) {
@@ -111,6 +114,5 @@ function handleAuthorLabelRemoval(mutations) {
     });
 }
 
-// Observe the DOM for changes
 const observer = new MutationObserver(handleAuthorLabelRemoval);
 observer.observe(document.body, { childList: true, subtree: true });
