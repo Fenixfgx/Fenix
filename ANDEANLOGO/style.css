@@ -90,7 +90,6 @@ form {
     height: 350px;
     top: 50%;
     position: absolute;
-    z-index: -2;
 }
 
 img {

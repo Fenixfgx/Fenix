@@ -27,8 +27,9 @@ let selectedColor = defaultColor;
 function showImage(imageUrl) {
     currentImageUrl = imageUrl;
     const imageElement = document.getElementById('displayedImage');
-    
-    if (currentImageUrl) {
+    const extension = imageUrl.split('.').pop().toLowerCase();
+
+    if (extension === 'svg') {
         const xhr = new XMLHttpRequest();
         xhr.open('GET', currentImageUrl, true);
         xhr.onload = function() {
@@ -42,6 +43,9 @@ function showImage(imageUrl) {
             }
         };
         xhr.send();
+    } else if (extension === 'png') {
+        imageElement.src = currentImageUrl;
+        imageElement.style.display = 'block';
     }
 }
 
@@ -49,8 +53,9 @@ function changeColor() {
     const colorPicker = document.getElementById('color');
     selectedColor = colorPicker.value;
     const imageElement = document.getElementById('displayedImage');
-    
-    if (currentImageUrl) {
+    const extension = currentImageUrl.split('.').pop().toLowerCase();
+
+    if (extension === 'svg') {
         const xhr = new XMLHttpRequest();
         xhr.open('GET', currentImageUrl, true);
         xhr.onload = function() {
@@ -67,41 +72,45 @@ function changeColor() {
 }
 
 function downloadPNG() {
-    const svgElement = document.getElementById('displayedImage');
-    const svgUrl = svgElement.src;
+    const imageElement = document.getElementById('displayedImage');
+    const imageUrl = imageElement.src;
     const bodyStyles = getComputedStyle(document.body);
     const backgroundColor = bodyStyles.backgroundColor;
-    
-    const xhr = new XMLHttpRequest();
-    xhr.open('GET', svgUrl, true);
-    xhr.onload = function() {
-        if (xhr.status === 200) {
-            const svgData = xhr.responseText;
-            const canvas = document.createElement('canvas');
-            const ctx = canvas.getContext('2d');
-            const img = new Image();
-            
-            img.onload = function() {
-                canvas.width = img.width;
-                canvas.height = img.height;
-                ctx.fillStyle = backgroundColor;
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
-                ctx.drawImage(img, 0, 0);
-                const pngUrl = canvas.toDataURL('image/png');
-                const downloadLink = document.createElement('a');
-                downloadLink.href = pngUrl;
-                downloadLink.download = 'AndeanLogo.png';
-                document.body.appendChild(downloadLink);
-                downloadLink.click();
-                document.body.removeChild(downloadLink);
-            };
-            
-            const svgBlob = new Blob([svgData], { type: 'image/svg+xml' });
-            const url = URL.createObjectURL(svgBlob);
-            img.src = url;
-        }
+    const extension = currentImageUrl.split('.').pop().toLowerCase();
+
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    const img = new Image();
+
+    img.onload = function() {
+        canvas.width = img.width;
+        canvas.height = img.height;
+        ctx.fillStyle = backgroundColor;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(img, 0, 0);
+        const pngUrl = canvas.toDataURL('image/png');
+        const downloadLink = document.createElement('a');
+        downloadLink.href = pngUrl;
+        downloadLink.download = 'image.png';
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        document.body.removeChild(downloadLink);
     };
-    xhr.send();
+
+    if (extension === 'svg') {
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', imageUrl, true);
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                const svgBlob = new Blob([xhr.responseText], { type: 'image/svg+xml' });
+                const url = URL.createObjectURL(svgBlob);
+                img.src = url;
+            }
+        };
+        xhr.send();
+    } else if (extension === 'png') {
+        img.src = imageUrl;
+    }
 }
 
 // Function to hide body and show alert
@@ -114,5 +123,6 @@ function handleAuthorLabelRemoval(mutations) {
     });
 }
 
+// Observe the DOM for changes
 const observer = new MutationObserver(handleAuthorLabelRemoval);
 observer.observe(document.body, { childList: true, subtree: true });
