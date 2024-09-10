@@ -1,5 +1,5 @@
 const SHEET_ID = '1KwJ5OZAzZ385FlPcFYuOdXmtSdd1VhRVfaAU8Nxs3VA';
-const USERS_RANGE = 'USERS!D:G';
+const USERS_RANGE = 'USERS!D:J';
 const CARTERA_RANGE = 'CARTERA!A:F'; // Asegúrate de incluir la columna F para la sección de Cartera 2
 
 let carteraData1 = []; // Variable global para almacenar los datos originales de la cartera de la sección 1
@@ -20,6 +20,7 @@ document.getElementById('login-form').addEventListener('submit', async (e) => {
         document.getElementById('login-section').classList.add('hidden');
         document.getElementById('hola-section').classList.remove('hidden');
         document.getElementById('content').textContent = userData[userIndex][2];
+        document.getElementById('Rifa').textContent = userData[userIndex][6];
 
         const defaultSearchValue = document.getElementById('content').textContent.trim(); // Obtener el valor después de "Hola" y limpiar espacios en blanco
         document.getElementById('search').value = defaultSearchValue;
